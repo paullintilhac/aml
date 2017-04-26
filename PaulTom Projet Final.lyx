@@ -2526,6 +2526,13 @@ key "MohriRosTalw2012"
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+*****need to summarize argument****
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \begin{aligned}\left|R_{k}\left(f_{T}\right)-R\left(f_{T}\right)\right| & <\epsilon+\beta\end{aligned}
@@ -2590,6 +2597,10 @@ key "BelkinMatveevaNiyogi2004"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+****discuss learning bounds************
 \end_layout
 
 \begin_layout Section
@@ -3573,6 +3584,14 @@ key "HerbsterPontilWainer2005"
 
 .
  Herbster seeks to minimize
+\end_layout
+
+\begin_layout Standard
+–projection description (tom)
+\end_layout
+
+\begin_layout Standard
+–learning bounds (Paul)
 \end_layout
 
 \begin_layout Standard
