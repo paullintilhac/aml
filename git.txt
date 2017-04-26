@@ -7,8 +7,12 @@ git commit -a -m "message"
 git pull origin master
 
 push:
+git add -A
 git commit -a -m "commit before merge"
 git pull origin master
 git push origin master
 
+if there is a space between words, put a \ (backslash) before the space, e.g. 
+folder name: Application Support
+cd /D/Library/Application\ Support.
 
