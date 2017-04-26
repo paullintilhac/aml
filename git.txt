@@ -1,0 +1,14 @@
+git clone https://github.com/paullintilhac/aml.git
+cd aml
+
+pull:
+git add -A
+git commit -a -m "message"
+git pull origin master
+
+push:
+git commit -a -m "commit before merge"
+git pull origin master
+git push origin master
+
+
