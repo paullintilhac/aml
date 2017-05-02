@@ -1810,6 +1810,7 @@ will have exponentially more non-zero entries, and will thus be much larger,
  Therefore, if we want to optimize label propagation in practice, we may
  want to take as many term of the Taylor expansion as we can without exceeded
  our memory.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -3592,6 +3593,13 @@ key "HerbsterPontilWainer2005"
 
 \begin_layout Standard
 –learning bounds (Paul)
+\end_layout
+
+\begin_layout Standard
+Extension of the herbster paper – use different laplacians simulataneously
+ by considering them each as different kernels in some set of kernels, and
+ then applying the objective function for multiple kernels (need to flesh
+ out this idea)
 \end_layout
 
 \begin_layout Standard
