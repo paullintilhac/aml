@@ -2983,7 +2983,10 @@ key "HerbsterPontilWainer2005"
 \end_inset
 
  using projection and kernel methods.
- 
+ The method uses minimal norm interpolation, which I will later explain
+ can be thought of as finding the distribution over the vertices that minimizes
+ the total flux induced over the graph, under the constraint that the labelled
+ points are approximately correct.
 \end_layout
 
 \begin_layout Subsection
@@ -3230,11 +3233,7 @@ The projection of a point
  is defined by 
 \begin_inset Formula 
 \begin{equation}
-<<<<<<< HEAD
 P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.7}
-=======
-P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.15}
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end{equation}
 
 \end_inset
@@ -3282,11 +3281,7 @@ From the definition, we can see that
 Therefore by the Pythagorean Theorem, we have 
 \begin_inset Formula 
 \begin{equation}
-<<<<<<< HEAD
 \left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}.
-=======
-\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}\ge\min_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert =\left\Vert \boldsymbol{u^{*}}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}.
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end{equation}
 
 \end_inset
@@ -3379,11 +3374,7 @@ reference "alg:3.4"
  is updated by the projection 
 \begin_inset CommandInset ref
 LatexCommand ref
-<<<<<<< HEAD
 reference "eq:3.7"
-=======
-reference "eq:3.15"
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 
 \end_inset
 
@@ -3396,7 +3387,6 @@ reference "eq:3.15"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:3.1"
-<<<<<<< HEAD
 
 \end_inset
 
@@ -3453,94 +3443,10 @@ Input
 
 
 \end_layout
-=======
-
-\end_inset
-
- implies, for all 
-\begin_inset Formula $\boldsymbol{u}\in\mathcal{U}$
-\end_inset
-
-, that 
-\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}\geq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t+1}\right\Vert ^{2}+\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}$
-\end_inset
-
-, which is 
-\begin_inset Formula $\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}+\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t+1}\right\Vert ^{2}$
-\end_inset
-
-.
- Therefore, by summing it from 
-\begin_inset Formula $t=1$
-\end_inset
-
- to 
-\begin_inset Formula $t=l$
-\end_inset
-
-, we have 
-\begin_inset Formula $\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
-\end_inset
-
-, where 
-\begin_inset Formula $\mathcal{U}_{t}\in\mathcal{H}$
-\end_inset
-
-, and 
-\begin_inset Formula $\boldsymbol{u}\in\cap_{t=1}^{l}\mathcal{U}_{t}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 
 \begin_layout Plain Layout
 
 \series bold
-<<<<<<< HEAD
-Initialization
-\series default
-: 
-\begin_inset Formula $\boldsymbol{w}_{1}\in\mathcal{H}$
-=======
-Input
-\series default
-: A sequence of closed convex sets 
-\begin_inset Formula $\left\{ \mathcal{U}_{t}\right\} _{t=1}^{l}\subset\mathcal{H}$
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-<<<<<<< HEAD
-for
-\series default
- 
-\begin_inset Formula $t=1,\,2,\,\cdots,\,l$
-\end_inset
-
- 
-\series bold
-do
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $\qquad$
-\end_inset
-
-
-\begin_inset Formula $\boldsymbol{w}_{t+1}=P\left(\mathcal{U}_{t};\,\boldsymbol{w}_{t}\right)$
-=======
 Initialization
 \series default
 : 
@@ -3557,7 +3463,6 @@ for
 \series default
  
 \begin_inset Formula $t=1,\,2,\,\cdots,\,l$
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end_inset
 
  
@@ -3566,24 +3471,7 @@ do
 \end_layout
 
 \begin_layout Plain Layout
-<<<<<<< HEAD
-
-\series bold
-end
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Prototypical Projection Algorithm
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:3.4"
-
-=======
 \begin_inset Formula $\qquad$
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end_inset
 
 
@@ -3602,9 +3490,6 @@ end
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
-<<<<<<< HEAD
-
-=======
 \begin_layout Plain Layout
 Prototypical Projection Algorithm
 \begin_inset CommandInset label
@@ -3621,10 +3506,13 @@ name "alg:3.4"
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end_layout
 
 \begin_layout Lemma
@@ -3645,11 +3533,7 @@ If
 , then 
 \begin_inset Formula 
 \begin{equation}
-<<<<<<< HEAD
 P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}\label{eq:3.11}
-=======
-P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end{equation}
 
 \end_inset
@@ -3657,11 +3541,7 @@ P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\rig
 
 \begin_inset Formula 
 \begin{equation}
-<<<<<<< HEAD
 P\left(\left\{ \boldsymbol{u}:\,y\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle \geq1\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{y\max\left(0,\,1-y\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}\label{eq:3.12}
-=======
-P\left(\left\{ \boldsymbol{u}:\,y\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle \geq1\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{y\max\left(0,\,1-y\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end{equation}
 
 \end_inset
@@ -3684,7 +3564,6 @@ reference "eq:3.12"
 
 \end_inset
 
-<<<<<<< HEAD
 .
  We know that 
 \begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} =\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u}-\frac{\boldsymbol{x}y}{\left\Vert \boldsymbol{x}\right\Vert ^{2}},\,\boldsymbol{x}\right\rangle =0\right\} $
@@ -3703,50 +3582,17 @@ reference "eq:3.12"
 \end_inset
 
  
-=======
-\begin_layout Standard
-Proof:
-\end_layout
-
-\begin_layout Standard
-We give a proof of (3.11), which is almost exactly the same as the proof
- of (3.12).
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} =\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u-\frac{xy}{||x||^{2}}},\,\boldsymbol{x}\right\rangle =0\right\} $
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now let 
-\begin_inset Formula $v(\boldsymbol{u})=\boldsymbol{u-\frac{xy}{||x||^{2}}}$
-\end_inset
-
-.
- Then we can find this projection of 
-\series bold
-w 
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \series default
 onto 
 \begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} $
 \end_inset
 
  by first projecting 
-<<<<<<< HEAD
 \begin_inset Formula $\boldsymbol{v}\left(\boldsymbol{w}\right)$
-=======
-\begin_inset Formula $v(\boldsymbol{w})$
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end_inset
 
  onto 
 \begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} $
-<<<<<<< HEAD
 \end_inset
 
 , 
@@ -3775,38 +3621,14 @@ Thus
 \begin{equation}
 \boldsymbol{w}^{*}=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
 \end{equation}
-=======
-\end_inset
 
-, 
-\begin_inset Formula $v^{*}=Proj(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;v(\boldsymbol{w}))$
-\end_inset
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
-
- and then taking 
-\begin_inset Formula $w^{*}=v^{-1}(v^{*}).$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
 \begin_inset Separator plain
-=======
-\begin_inset Formula $v^{*}=Proj(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;v(\boldsymbol{w}))=v(\boldsymbol{w})-Proj_{x}(v(\boldsymbol{w}))=v(\boldsymbol{w})-\boldsymbol{\frac{\left\langle \boldsymbol{v(w)},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x=v(\boldsymbol{w})+\boldsymbol{\frac{\left\langle \boldsymbol{w-\frac{xy}{||x||^{2}}},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x=v(\boldsymbol{w})+\boldsymbol{\frac{y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x}}}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Thus
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\boldsymbol{w}^{*}=\boldsymbol{w+}\frac{y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x$
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end_inset
 
 
@@ -4130,7 +3952,6 @@ reference "alg:3.5"
 \end_layout
 
 \begin_layout Subsection
-<<<<<<< HEAD
 Online Learning over Graphs 
 \end_layout
 
@@ -4148,31 +3969,15 @@ reference "subsec:3.1"
 \end_inset
 
  This suggests that we can apply the above projection algorithm, with its
-=======
-Online learning over graphs
-\end_layout
-
-\begin_layout Standard
-As shown in section 3.1, the reproducing kernel of the Hilbert space defined
- over the graph is given by the pseudoinverse of the Laplacian matrix, 
-\begin_inset Formula $\boldsymbol{L}^{+}.$
-\end_inset
-
- Ths suggests that we can apply the above projection algorithm, with its
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
  associated guarantees, by letting the input vector 
 \begin_inset Formula $x_{t}$
 \end_inset
 
-<<<<<<< HEAD
 be replaced by the 
 \begin_inset Formula $t^{th}$
 \end_inset
 
  row of 
-=======
-be replaced by the t-th row of 
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \begin_inset Formula $\boldsymbol{L}^{+}.$
 \end_inset
 
@@ -4194,612 +3999,8 @@ be replaced by the t-th row of
 
 .
  In the following analysis, we will derive upper bounds for each of these
-<<<<<<< HEAD
  terms using the properties of our graph, and of the labellings given to
  us.
-=======
- terms using the properties of our graph, and of the labelings given to
- us.
-\end_layout
-
-\begin_layout Standard
-Claim:
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $g^{+}$
-\end_inset
-
- be the positively labeled vertices, and let 
-\begin_inset Formula $g^{-}$
-\end_inset
-
-be the negatively labeled vertices.
- Let 
-\begin_inset Formula $|g|^{+}=n^{+},|g^{-}|=n^{-},$
-\end_inset
-
- and assume WLOG that 
-\begin_inset Formula $n^{+}>=n^{-}.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $||U||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Proof.
- To show this, we consider the vector 
-\begin_inset Formula $f$
-\end_inset
-
-, with 
-\begin_inset Formula $f_{i}=1$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=1$
-\end_inset
-
-, and 
-\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=-1.$
-\end_inset
-
-Now suppose we order our vertices so that the first 
-\begin_inset Formula $n^{+}$
-\end_inset
-
-vertices are those in 
-\begin_inset Formula $g^{+},$
-\end_inset
-
- while the last 
-\begin_inset Formula $n_{-}$
-\end_inset
-
-vertices are those in 
-\begin_inset Formula $g^{-}.$
-\end_inset
-
- Now consider the Laplacian 
-\begin_inset Formula $L$
-\end_inset
-
- of this matrix with the vertices ordered in such a way.
- We are interested in the sums of the entries in the off-diagonal blocks,
- the sums of whose entries are each the negative of the number of intra-partitio
-n edges.
- We will denote this sum by S, as opposed to the sub-matrix 
-\series bold
-S.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}L & =\left[\begin{array}{cc}
-\boldsymbol{A} & -\boldsymbol{S}\\
-\boldsymbol{-S}^{T} & \boldsymbol{B}
-\end{array}\right]\end{aligned}
-,
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Note that the sum of entries in the left partition of the matrix for any
- given row is always the negative of the sum to the right of the partition.
- Using this and the fact that the sum of entries in both 
-\series bold
-S
-\series default
- and 
-\begin_inset Formula $\boldsymbol{\boldsymbol{S}^{T}}$
-\end_inset
-
- are both equal to S, we find after some algebra that
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Finally, combined with the bound on the power mean of the input patterns
- in terms of the graph diameter, we acheive a bound on the number of mistakes.
-\end_layout
-
-\begin_layout Standard
-As before, our weight vector 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- reoresents a real-valued function on our hilbert space.
- But in the graph setting, this Hilbert space and its reproducing kernel
- 
-\begin_inset Formula $\boldsymbol{L}^{+}$
-\end_inset
-
-and the vector 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- admit a specific interpretation.
-\end_layout
-
-\begin_layout Standard
-We can get more intuition about the basic objects such as 
-\begin_inset Formula $\left\Vert \boldsymbol{g}\right\Vert $
-\end_inset
-
- and 
-\begin_inset Formula $\boldsymbol{L}^{+}$
-\end_inset
-
- by using the concept of conductance (it is no coincidence that the continuous
- version of the Laplacian appears in the heat equation).
- If we think of f as some distribution over the nodes, we can think of 
-\begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
- roughly as the flux induced at each of the nodes by that distribution over
- the graph.
- Then the form 
-\begin_inset Formula $\boldsymbol{g}^{T}\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
- represents some weighted measurement of this flux with the weights given
- by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
-.
- For example, if f is a binary vector representing the boundary of some
- open set on the graph 
-\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
-\end_inset
-
- would be the flux produced by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- as measured on the boundary represented by 
-\begin_inset Formula $\boldsymbol{f}$
-\end_inset
-
-.
- We can even use this formalism to quickly prove a version of Stokes' Theorem
- on graphs (we know Stokes' Theorem holds on general smooth manifolds, so
- this just a particularly simple proof of a special case).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Let 
-\begin_inset Formula $G\left(V,\,E,\,W\right)$
-\end_inset
-
- be a graph imbued with the topology generated by the open neighbourhoods
- 
-\begin_inset Formula $N_{i}=\left\{ v_{j}\,:\,\left(i,\,j\right)\in E\right\} $
-\end_inset
-
-.
- Suppose we have some subset 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- of vertices set 
-\begin_inset Formula $V\left(G\right)$
-\end_inset
-
-, i.e.
- 
-\begin_inset Formula $U\left(G\right)\subset V\left(G\right)$
-\end_inset
-
-.
- Then we can define the boundary of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- as the set of all vertices contained in the closure of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- but not contained in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- itself 
-\begin_inset Formula $\partial U\left(G\right)=\left\{ v_{j}\,:\,v_{j}\in\bar{U}\left(G\right)-U\left(G\right)\right\} $
-\end_inset
-
-.
- Now suppose our vertices 
-\begin_inset Formula $V\left(G\right)$
-\end_inset
-
- are ordered such that 
-\begin_inset Formula $v_{1},\,\cdots,\,v_{k}\in U\left(G\right)$
-\end_inset
-
-, 
-\begin_inset Formula $v_{k+1},\,\cdots,\,v_{l}\in\partial U\left(G\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $v_{l+1},\,\cdots,\,v_{n}\in V\left(G\right)-\bar{U}\left(G\right)$
-\end_inset
-
-.
- Now let 
-\begin_inset Formula $\boldsymbol{1}_{U}$
-\end_inset
-
- be a binary vector with all 
-\begin_inset Formula $1$
-\end_inset
-
- for the first 
-\begin_inset Formula $k$
-\end_inset
-
- entries, and 
-\begin_inset Formula $0$
-\end_inset
-
- elsewhere, and let 
-\begin_inset Formula $\boldsymbol{1}_{\partial U}$
-\end_inset
-
- be the binary vector with all 
-\begin_inset Formula $1$
-\end_inset
-
- for entries 
-\begin_inset Formula $k+1$
-\end_inset
-
- through 
-\begin_inset Formula $l$
-\end_inset
-
-, and 
-\begin_inset Formula $0$
-\end_inset
-
- elsewhere.
- Then according to the above interpretation of the norm, 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{U}\coloneqq\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}
-\end{equation}
-
-\end_inset
-
- is the total flux induced by distribution g over the interior of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, while
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{\partial U}\coloneqq\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}
-\end{equation}
-
-\end_inset
-
-is the total flux induced by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- as measured over the boundary of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-.
- Our claim is that 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{U}=-\boldsymbol{F}_{\partial U}.\label{eq:3.9}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-We now give an informal proof.
- Let us denote by 
-\begin_inset Formula $d_{i}$
-\end_inset
-
- the degree of vertex 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $d_{i}^{int}$
-\end_inset
-
- by the number of edges connecting vertex 
-\begin_inset Formula $i$
-\end_inset
-
- to points in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $d_{i}^{ext}$
-\end_inset
-
- by the number of edges connecting vertex 
-\begin_inset Formula $i$
-\end_inset
-
- to points not in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, so that 
-\begin_inset Formula 
-\begin{equation}
-d_{i}=d_{i}^{int}+d_{i}^{ext}.
-\end{equation}
-
-\end_inset
-
-In particular, for any 
-\begin_inset Formula $v_{i}\in U$
-\end_inset
-
-, 
-\begin_inset Formula $d_{i}^{ext}$
-\end_inset
-
- is the number of edges connecting 
-\begin_inset Formula $v_{i}$
-\end_inset
-
- to points in 
-\begin_inset Formula $\partial U\left(G\right)$
-\end_inset
-
-, since by definition all other vertices are not connected to 
-\begin_inset Formula $v_{i}$
-\end_inset
-
-.
- Then for the left hand side of formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.9"
-
-\end_inset
-
-, note that the only contribution to the 
-\begin_inset Formula $i^{\text{th}}$
-\end_inset
-
- entry is given by the first 
-\begin_inset Formula $k$
-\end_inset
-
- columns of 
-\begin_inset Formula $\boldsymbol{L}$
-\end_inset
-
-, and a straightforward calculation shows that 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in U}(d_{i}-d_{i}^{int})=\sum_{i\in U}d^{ext}.
-\end{equation}
-
-\end_inset
-
-For the right hand side of formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.9"
-
-\end_inset
-
-, we can see that the only contribution to the sum is from entries 
-\begin_inset Formula $k+1$
-\end_inset
-
- to 
-\begin_inset Formula $l$
-\end_inset
-
-, which another straightforward calculation shows that
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in\partial U}d_{i}^{ext}.
-\end{equation}
-
-\end_inset
-
-Thus
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g},\qquad\forall\boldsymbol{g}\in H.
-\end{equation}
-
-\end_inset
-
-Despite the simplicity of the proof and the fact that there is a very general
- form of Stoke's theorem over smooth manifolds, this graphical version of
- Stokes' theorem has not been seen by the authors, and could potentially
- be leveraged for new graphical algorithms.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To gain intuition about 
-\begin_inset Formula $L^{+}$
-\end_inset
-
-, we turn back to the representation theorem, namely that 
-\begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
-.
- In the heat analogy, this could be interpreted as saying that the heat
- at each vertex can be expressed in terms of, or derived from, the flux
- through every vertex.
- So in this heat analogy, 
-\begin_inset Formula $\boldsymbol{L}$
-\end_inset
-
- sends a heat distribution 
-\begin_inset Formula $\boldsymbol{f}$
-\end_inset
-
- over each node to a flux through each vertex.
- Conversely, 
-\begin_inset Formula $\boldsymbol{L}_{i}^{+}$
-\end_inset
-
- sends some definition of fluxes over the graph back to some heat distribution
- that would have induced it.
- This relationship is shown in figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:3.1"
-
-\end_inset
-
-.
- 
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename 3-1.png
-	lyxscale 70
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Bidirectional Mapping Between Heat and Flux
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:3.1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Intuitively, if the graph is disconnected this distribution should not
- be unique, since a constant added to the distribution in each of the connected
- components will not affect the flux induced through the graph.
- Mathematically, this is affirmed by noting that
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{L}^{+}=\boldsymbol{L}^{-1}
-\end{equation}
-
-\end_inset
-
- if and only if all eigenvalues of L are non-zero which, is exactly when
- the graph is connected.
-\end_layout
-
-\begin_layout Subsection
-Drawbacks with the above approach
-\end_layout
-
-\begin_layout Standard
-Large diameter gaphs
-\end_layout
-
-\begin_layout Standard
-With that in mind, we can introduce the mathematical framework for the online
- projection algorithm of 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "HerbsterPontilWainer2005"
-
-\end_inset
-
-.
- Herbster seeks to minimize
-\end_layout
-
-\begin_layout Standard
-–projection description (tom)
-\end_layout
-
-\begin_layout Standard
-–learning bounds (Paul)
-\end_layout
-
-\begin_layout Standard
-Extension of the herbster paper – use different laplacians simulataneously
- by considering them each as different kernels in some set of kernels, and
- then applying the objective function for multiple kernels (need to flesh
- out this idea)
-\end_layout
-
-\begin_layout Subsection
-Bounding 
-\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}$
-\end_inset
-
- in the Graph Setting
->>>>>>> 3fff6779eb7d0f72c55e887f8fbdf4cdb9db3f29
 \end_layout
 
 \begin_layout Theorem
