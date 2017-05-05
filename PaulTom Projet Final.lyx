@@ -2972,11 +2972,135 @@ key "HerbsterPontilWainer2005"
 
 \end_inset
 
- using projection and kernel methods.
- The method uses minimal norm interpolation, which I will later explain
- can be thought of as finding the distribution over the vertices that minimizes
- the total flux induced over the graph, under the constraint that the labelled
- points are approximately correct.
+ using projection and and the concept of Reprducing Kernel Hilbert Spaces.
+\end_layout
+
+\begin_layout Section
+Bounding 
+\begin_inset Formula $||U||^{2}$
+\end_inset
+
+in the graph setting
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $g^{+}$
+\end_inset
+
+ be the positively labeled vertices, and let 
+\begin_inset Formula $g^{-}$
+\end_inset
+
+be the negatively labeled vertices.
+ Let 
+\begin_inset Formula $|g|^{+}=n^{+},|g^{-}|=n^{-},$
+\end_inset
+
+ and assume WLOG that 
+\begin_inset Formula $n^{+}>=n^{-}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Claim: 
+\begin_inset Formula $||U||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proof.
+ To show this, we consider the vector 
+\begin_inset Formula $f$
+\end_inset
+
+, with 
+\begin_inset Formula $f_{i}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=1$
+\end_inset
+
+, and 
+\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=-1.$
+\end_inset
+
+Now suppose we order our vertices so that the first 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+vertices are those in 
+\begin_inset Formula $g^{+},$
+\end_inset
+
+ while the last 
+\begin_inset Formula $n_{-}$
+\end_inset
+
+vertices are those in 
+\begin_inset Formula $g^{-}.$
+\end_inset
+
+ Now consider the Laplacian 
+\begin_inset Formula $L$
+\end_inset
+
+ of this matrix with the vertices ordered in such a way.
+ We are interested in the sums of the entries in the off-diagonal blocks,
+ the sums of whose entries are each the negative of the number of intra-partitio
+n edges.
+ We will denote this sum by S, as opposed to the sub-matrix 
+\series bold
+S.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}L & =\left[\begin{array}{cc}
+\boldsymbol{A} & -\boldsymbol{S}\\
+\boldsymbol{-S}^{T} & \boldsymbol{B}
+\end{array}\right]\end{aligned}
+,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the sum of entries in the left partition of the matrix for any
+ given row is always the negative of the sum to the right of the partition.
+ Using this and the fact that the sum of entries in both 
+\series bold
+S
+\series default
+ and 
+\begin_inset Formula $\boldsymbol{\boldsymbol{S}^{T}}$
+\end_inset
+
+ are both equal to S, we find after some algebra that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
