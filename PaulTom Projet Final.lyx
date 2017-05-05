@@ -79,6 +79,15 @@
 \addbibresource{bibliography.bib}
 %more options
 \ExecuteBibliographyOptions{sorting=nty,backref=true,doi=true}
+\DeclareFieldFormat[article]{volume}{\bibstring{jourvol}\addspace #1}
+\DeclareFieldFormat[article]{number}{\bibstring{number}\addspace #1}
+%\renewcommand*{\newunitpunct}{\addcomma\space}
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit{\adddot\space}%<---- was \setunit*{\addcomma}%
+  \printfield{number}%
+  \setunit{\addspace}%
+  \printfield{eid}}
 
 \usepackage[section]{algorithm}
 \usepackage{algorithmicx}
@@ -87,13 +96,13 @@
 \end_preamble
 \use_default_options true
 \begin_modules
-theorems-ams
 eqs-within-sections
 figs-within-sections
 tabs-within-sections
-theorems-sec
 shapepar
 enumitem
+theorems-bytype
+theorems-sec-bytype
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -261,7 +270,20 @@ AND
 \begin_inset Formula $\;$
 \end_inset
 
-THOMAS NANFENG LI
+THOMAS NANFENG L
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+v{I}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Foot
 status open
 
@@ -1483,25 +1505,25 @@ Graph Laplacian and Heat Equation
 
 \begin_layout Standard
 We can get more intuition about the basic objects in Graph learning by using
- the concept of conductance .
+ the concept of conductance.
  As we saw in the previous section, the Laplacian is closely related to
  a second derivative, and it is no coincidence that the continuous version
  of the Laplacian appears in the heat equation.
  Let 
-\begin_inset Formula $f$
+\begin_inset Formula $\boldsymbol{f}$
 \end_inset
 
- be some real-valued function defined over the nodes of the graph.
+ be some real-valued function defined over the vertices of the graph.
  If we think of 
-\begin_inset Formula $f$
+\begin_inset Formula $\boldsymbol{f}$
 \end_inset
 
  as a hat distribution, then we can think of 
 \begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
 \end_inset
 
- roughly as the flux induced at each of the nodes by that distribution over
- the graph, based on the graph structure.
+ roughly as the flux induced at each of the vertices by that distribution
+ over the graph, based on the graph structure.
  Then the form 
 \begin_inset Formula $\boldsymbol{g}^{T}\boldsymbol{L}\boldsymbol{f}$
 \end_inset
@@ -1513,8 +1535,8 @@ We can get more intuition about the basic objects in Graph learning by using
 
 .
  For example, if f is a binary vector representing the boundary of some
- open set on the graph 
-\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
+ open set on the graph, then 
+\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle \coloneqq\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{g}$
 \end_inset
 
  would be the flux produced by 
@@ -1554,7 +1576,7 @@ total flux
 \end_inset
 
  relative to the structure of the graph defined by 
-\begin_inset Formula $L.$
+\begin_inset Formula $\boldsymbol{L}.$
 \end_inset
 
 
@@ -1810,7 +1832,6 @@ will have exponentially more non-zero entries, and will thus be much larger,
  Therefore, if we want to optimize label propagation in practice, we may
  want to take as many term of the Taylor expansion as we can without exceeded
  our memory.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -2527,13 +2548,6 @@ key "MohriRosTalw2012"
 \end_inset
 
  
-\end_layout
-
-\begin_layout Standard
-*****need to summarize argument****
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \begin{aligned}\left|R_{k}\left(f_{T}\right)-R\left(f_{T}\right)\right| & <\epsilon+\beta\end{aligned}
@@ -2598,10 +2612,6 @@ key "BelkinMatveevaNiyogi2004"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-****discuss learning bounds************
 \end_layout
 
 \begin_layout Section
@@ -2943,7 +2953,7 @@ Label point
 Jacobi Iterative Label Propagation Algorithm
 \begin_inset CommandInset label
 LatexCommand label
-name "alg:1.3"
+name "alg:2.3"
 
 \end_inset
 
@@ -2972,135 +2982,8 @@ key "HerbsterPontilWainer2005"
 
 \end_inset
 
- using projection and and the concept of Reprducing Kernel Hilbert Spaces.
-\end_layout
-
-\begin_layout Section
-Bounding 
-\begin_inset Formula $||U||^{2}$
-\end_inset
-
-in the graph setting
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $g^{+}$
-\end_inset
-
- be the positively labeled vertices, and let 
-\begin_inset Formula $g^{-}$
-\end_inset
-
-be the negatively labeled vertices.
- Let 
-\begin_inset Formula $|g|^{+}=n^{+},|g^{-}|=n^{-},$
-\end_inset
-
- and assume WLOG that 
-\begin_inset Formula $n^{+}>=n^{-}.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Claim: 
-\begin_inset Formula $||U||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Proof.
- To show this, we consider the vector 
-\begin_inset Formula $f$
-\end_inset
-
-, with 
-\begin_inset Formula $f_{i}=1$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=1$
-\end_inset
-
-, and 
-\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=-1.$
-\end_inset
-
-Now suppose we order our vertices so that the first 
-\begin_inset Formula $n^{+}$
-\end_inset
-
-vertices are those in 
-\begin_inset Formula $g^{+},$
-\end_inset
-
- while the last 
-\begin_inset Formula $n_{-}$
-\end_inset
-
-vertices are those in 
-\begin_inset Formula $g^{-}.$
-\end_inset
-
- Now consider the Laplacian 
-\begin_inset Formula $L$
-\end_inset
-
- of this matrix with the vertices ordered in such a way.
- We are interested in the sums of the entries in the off-diagonal blocks,
- the sums of whose entries are each the negative of the number of intra-partitio
-n edges.
- We will denote this sum by S, as opposed to the sub-matrix 
-\series bold
-S.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}L & =\left[\begin{array}{cc}
-\boldsymbol{A} & -\boldsymbol{S}\\
-\boldsymbol{-S}^{T} & \boldsymbol{B}
-\end{array}\right]\end{aligned}
-,
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Note that the sum of entries in the left partition of the matrix for any
- given row is always the negative of the sum to the right of the partition.
- Using this and the fact that the sum of entries in both 
-\series bold
-S
-\series default
- and 
-\begin_inset Formula $\boldsymbol{\boldsymbol{S}^{T}}$
-\end_inset
-
- are both equal to S, we find after some algebra that
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
-\]
-
-\end_inset
-
-
+ using projection and kernel methods.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -3288,7 +3171,947 @@ Thus
 \end_layout
 
 \begin_layout Subsection
-Graph Laplacian and Heat Equation
+Online Projections over Graphs
+\end_layout
+
+\begin_layout Standard
+With that in mind, we can introduce the mathematical framework for the online
+ projection algorithm of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "HerbsterPontilWainer2005"
+
+\end_inset
+
+.
+ Herbster seeks to minimize the number of mistakes (cumulative error) on
+ the sequence of pattern-label pairs over a series of trials.
+ The key tool for this algorithm is projection, which is defined by definition
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:3.1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:3.1"
+
+\end_inset
+
+The projection of a point 
+\begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
+\end_inset
+
+, which is a Hilbert space with inner product 
+\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
+\end_inset
+
+ and norm 
+\begin_inset Formula $\left\Vert \cdot\right\Vert =\sqrt{\left\langle \cdot,\cdot\right\rangle }$
+\end_inset
+
+, onto a closed convex non-empty set 
+\begin_inset Formula $\mathcal{N}\subseteq\mathcal{H}$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\begin{equation}
+P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.15}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the definition, we can see that 
+\begin_inset Formula $\boldsymbol{u}$
+\end_inset
+
+ any point in 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ that is closest to 
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+.
+ If we assume 
+\begin_inset Formula $\boldsymbol{u}^{*}=P\left(\mathcal{N};\,\boldsymbol{w}\right)=\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert $
+\end_inset
+
+, then the solution is characterized by an orthogonality condition: 
+\begin_inset Formula $\boldsymbol{u}^{*}$
+\end_inset
+
+ is the solution if and only if 
+\begin_inset Formula 
+\begin{equation}
+\left\langle \boldsymbol{w}-\boldsymbol{u}^{*},\,\boldsymbol{u}-\boldsymbol{u}^{*}\right\rangle =0.
+\end{equation}
+
+\end_inset
+
+Therefore by the Pythagorean Theorem, we have 
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}.
+\end{equation}
+
+\end_inset
+
+Hence we have the following theorem.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:3.1"
+
+\end_inset
+
+If 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ is a closed convex subset of 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, then, for every 
+\begin_inset Formula $\boldsymbol{u}\in\mathcal{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
+\end_inset
+
+, we have that
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}\geq\left\Vert \boldsymbol{u}-P\left(\mathcal{N};\,\boldsymbol{w}\right)\right\Vert ^{2}+\left\Vert P\left(\mathcal{N};\,\boldsymbol{w}\right)-\boldsymbol{w}\right\Vert ^{2}.
+\end{equation}
+
+\end_inset
+
+In particular, if 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ is an affine set the equality holds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Based on theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:3.1"
+
+\end_inset
+
+, and we let 
+\begin_inset Formula $\mathcal{D}=\left\{ \left(x_{i,}\,y_{i}\right)\right\} _{t=1}^{l}\subseteq\mathcal{X}\times\left\{ -1,\,+1\right\} $
+\end_inset
+
+ be an example set, let 
+\begin_inset Formula $\mathcal{D}_{t}$
+\end_inset
+
+denote the first 
+\begin_inset Formula $t$
+\end_inset
+
+ examples of 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+.
+ if we consider an online learning algorithm (algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.4"
+
+\end_inset
+
+) such that at each iteration, 
+\begin_inset Formula $\boldsymbol{w}_{t}$
+\end_inset
+
+ is updated by the projection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.15"
+
+\end_inset
+
+, then it is convergent.
+ Because on any trial 
+\begin_inset Formula $t=1,\,2,\,\cdots,\,l$
+\end_inset
+
+, the theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:3.1"
+
+\end_inset
+
+ implies, for all 
+\begin_inset Formula $\boldsymbol{u}\in\mathcal{U}$
+\end_inset
+
+, that 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}\geq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t+1}\right\Vert ^{2}+\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}$
+\end_inset
+
+, which is 
+\begin_inset Formula $\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}+\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t+1}\right\Vert ^{2}$
+\end_inset
+
+.
+ Therefore, by summing it from 
+\begin_inset Formula $t=1$
+\end_inset
+
+ to 
+\begin_inset Formula $t=l$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathcal{U}_{t}\in\mathcal{H}$
+\end_inset
+
+, and 
+\begin_inset Formula $\boldsymbol{u}\in\cap_{t=1}^{l}\mathcal{U}_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Input
+\series default
+: A sequence of closed convex sets 
+\begin_inset Formula $\left\{ \mathcal{U}_{t}\right\} _{t=1}^{l}\subset\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Initialization
+\series default
+: 
+\begin_inset Formula $\boldsymbol{w}_{1}\in\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+for
+\series default
+ 
+\begin_inset Formula $t=1,\,2,\,\cdots,\,l$
+\end_inset
+
+ 
+\series bold
+do
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+
+\begin_inset Formula $\boldsymbol{w}_{t+1}=P\left(\mathcal{U}_{t};\,\boldsymbol{w}_{t}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+end
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Prototypical Projection Algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:3.4"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:3.1"
+
+\end_inset
+
+If 
+\begin_inset Formula $\left(x,\,y\right)\in\mathcal{H}\times\left\{ -1,\,+1\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\begin{equation}
+P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P\left(\left\{ \boldsymbol{u}:\,y\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle \geq1\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{y\max\left(0,\,1-y\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proof:
+\end_layout
+
+\begin_layout Standard
+We give a proof of (3.11), which is almost exactly the same as the proof
+ of (3.12).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} =\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u-\frac{xy}{||x||^{2}}},\,\boldsymbol{x}\right\rangle =0\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now let 
+\begin_inset Formula $v(\boldsymbol{u})=\boldsymbol{u-\frac{xy}{||x||^{2}}}$
+\end_inset
+
+.
+ Then we can find this projection of 
+\series bold
+w 
+\series default
+onto 
+\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} $
+\end_inset
+
+ by first projecting 
+\begin_inset Formula $v(\boldsymbol{w})$
+\end_inset
+
+ onto 
+\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $v^{*}=Proj(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;v(\boldsymbol{w}))$
+\end_inset
+
+ and then taking 
+\begin_inset Formula $w^{*}=v^{-1}(v^{*}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v^{*}=Proj(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;v(\boldsymbol{w}))=v(\boldsymbol{w})-Proj_{x}(v(\boldsymbol{w}))=v(\boldsymbol{w})-\boldsymbol{\frac{\left\langle \boldsymbol{v(w)},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x=v(\boldsymbol{w})+\boldsymbol{\frac{\left\langle \boldsymbol{w-\frac{xy}{||x||^{2}}},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x=v(\boldsymbol{w})+\boldsymbol{\frac{y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{w}^{*}=\boldsymbol{w+}\frac{y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Based on the prototypical projection algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.4"
+
+\end_inset
+
+ and lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:3.1"
+
+\end_inset
+
+, the main algorithm of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "HerbsterPontilWainer2005"
+
+\end_inset
+
+ is given in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
+\end_inset
+
+.
+ In the algorithm, 
+\begin_inset Formula $M$
+\end_inset
+
+ is the set of trials in which the algorithm predicts incorrectly, 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+ is the index set, which is determines by the 
+\begin_inset Formula $\boldsymbol{strategy}$
+\end_inset
+
+ function on trial 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ This in turn determines the 
+\begin_inset Formula $\boldsymbol{noncyclic}$
+\end_inset
+
+ feasible set 
+\begin_inset Formula $\mathcal{U}_{t}$
+\end_inset
+
+ or a 
+\begin_inset Formula $\boldsymbol{cyclic}$
+\end_inset
+
+ feasible sets 
+\begin_inset Formula $\left\{ \mathcal{U}_{t_{1}},\,\mathcal{U}_{t_{2}},\,\cdots\right\} $
+\end_inset
+
+, which each feasible set 
+\begin_inset Formula $\mathcal{U}_{t}$
+\end_inset
+
+ consists of those hypothesis vectors which are “compatible” with a subset
+ of the past examples 
+\begin_inset Formula $\left(x_{i},\,y_{i}\right)$
+\end_inset
+
+.
+ In this algorithm, there are two strategies for the non-cyclic case and
+ cyclic case.
+ The non-cyclic strategy projects the current hypothesis 
+\begin_inset Formula $\boldsymbol{w}_{t}$
+\end_inset
+
+ to a single affine set 
+\begin_inset Formula $af\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle =y_{i}\right\} $
+\end_inset
+
+ that is determined by the example indices in 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+.
+ The cyclic strategy projects on a sequence of half-spaces 
+\begin_inset Formula $hs\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
+\end_inset
+
+ determined by the example indices in 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+.
+ The boolean 
+\begin_inset Formula $\boldsymbol{aggressive}$
+\end_inset
+
+ controls whether an update is made on every trial (aggressive) or only
+ on those trials when a mistake occurs (non-aggressive).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align left
+
+\series bold
+\begin_inset Graphics
+	filename Algorithm 3.5.png
+	lyxscale 70
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Online Projection Algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:3.5"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:3.2"
+
+\end_inset
+
+If 
+\begin_inset Formula $\left\{ \left(\boldsymbol{x}_{i},\,y_{i}\right)\right\} _{i=1}^{l}\subseteq\mathcal{H}\times\left\{ -1,\,+1\right\} $
+\end_inset
+
+ is a sequence of examples, 
+\begin_inset Formula $\boldsymbol{w}_{1}\in\mathcal{H}$
+\end_inset
+
+ a start vector and 
+\begin_inset Formula $M$
+\end_inset
+
+ the set of trials in which Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
+\end_inset
+
+ predicted incorrectly, then the cumulative number of mistakes 
+\begin_inset Formula $\left|M\right|$
+\end_inset
+
+ of the algorithm is bounded by
+\begin_inset Formula 
+\begin{equation}
+\left|M\right|\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}B\label{eq:3.21}
+\end{equation}
+
+\end_inset
+
+for all 
+\begin_inset Formula $\boldsymbol{u}\in hs\left(\left\{ 1,\,\cdots,\,l\right\} \right)$
+\end_inset
+
+ with cyclic updating and for all 
+\begin_inset Formula $\boldsymbol{u}\in af\left(\left\{ 1,\,\cdots,\,l\right\} \right)$
+\end_inset
+
+ with non-cyclic updating, where
+\begin_inset Formula 
+\begin{equation}
+B=\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:3.2"
+
+\end_inset
+
+ bounds the number of mistakes as proportional to the squared norm (“complexity”
+) of the predictor 
+\begin_inset Formula $\boldsymbol{u}$
+\end_inset
+
+.
+ We can sketch the proof.
+ For instance, let us consider the non-cyclic case.
+ On each trial t there is a projection to a single affine set 
+\begin_inset Formula $\mathcal{U}_{t}=af\left(U_{t}\right)$
+\end_inset
+
+.
+ Since we showed that for all 
+\begin_inset Formula $\boldsymbol{u}\in af\left(\left\{ 1,\,\cdots,\,l\right\} \right)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+.
+ If a mistake has occurred at trial 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $y_{y}=\left\langle \boldsymbol{w}_{t+1},\,\boldsymbol{x}_{t}\right\rangle $
+\end_inset
+
+, then 
+\begin_inset Formula $1\leq\left|\left\langle \boldsymbol{w}_{t},\,\boldsymbol{x}_{t}\right\rangle -y_{t}\right|\leq\left|\left\langle \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1},\,\boldsymbol{x}_{t}\right\rangle -y_{t}\right|\leq\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert \left\Vert \boldsymbol{x}_{t}\right\Vert $
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $1\leq\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert \left\Vert \boldsymbol{x}_{t}\right\Vert $
+\end_inset
+
+, which implies 
+\begin_inset Formula $\left\Vert \boldsymbol{x}_{t}\right\Vert ^{-1}\leq\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert $
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\sum_{t\in M}\left\Vert \boldsymbol{x}_{t}\right\Vert ^{-2}\leq\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert ^{2}$
+\end_inset
+
+.
+ Combining them, we have 
+\begin_inset Formula $\sum_{t\in M}\left\Vert \boldsymbol{x}_{t}\right\Vert ^{-2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}+\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+, which gives us 
+\begin_inset Formula $\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)B$
+\end_inset
+
+.
+ After dropping the term 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+, we then get formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.21"
+
+\end_inset
+
+.
+ The argument for the cyclic case follows the above argument except that
+ the left hand side of the analogous inequality to 
+\begin_inset Formula $\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+ contains sub-terms due to repeatedly cycling through the past examples,
+ which is line 2 in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
+\end_inset
+
+.
+ These terms may all be lower-bounded by zero except the term corresponding
+ to the first projection, which is line 1 in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Online learning over graphs
+\end_layout
+
+\begin_layout Standard
+As shown in section 3.1, the reproducing kernel of the Hilbert space defined
+ over the graph is given by the pseudoinverse of the Laplacian matrix, 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+\end_inset
+
+ Ths suggests that we can apply the above projection algorithm, with its
+ associated guarantees, by letting the input vector 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+be replaced by the t-th row of 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+\end_inset
+
+ We saw in the previous section that the number of cumulative mistakes is
+ upper bounded by the product of two terms: one involving 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}$
+\end_inset
+
+, and the other involving the harmonic mean of the input patterns that were
+ misclassified.
+ Since the initial weight vector 
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+ is arbitrary, we will consider the first term to be bounded more generally
+ by 
+\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert ^{2}$
+\end_inset
+
+.
+ In the following analysis, we will derive upper bounds for each of these
+ terms using the properties of our graph, and of the labelings given to
+ us.
+\end_layout
+
+\begin_layout Standard
+Claim:
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $g^{+}$
+\end_inset
+
+ be the positively labeled vertices, and let 
+\begin_inset Formula $g^{-}$
+\end_inset
+
+be the negatively labeled vertices.
+ Let 
+\begin_inset Formula $|g|^{+}=n^{+},|g^{-}|=n^{-},$
+\end_inset
+
+ and assume WLOG that 
+\begin_inset Formula $n^{+}>=n^{-}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $||U||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proof.
+ To show this, we consider the vector 
+\begin_inset Formula $f$
+\end_inset
+
+, with 
+\begin_inset Formula $f_{i}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=1$
+\end_inset
+
+, and 
+\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=-1.$
+\end_inset
+
+Now suppose we order our vertices so that the first 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+vertices are those in 
+\begin_inset Formula $g^{+},$
+\end_inset
+
+ while the last 
+\begin_inset Formula $n_{-}$
+\end_inset
+
+vertices are those in 
+\begin_inset Formula $g^{-}.$
+\end_inset
+
+ Now consider the Laplacian 
+\begin_inset Formula $L$
+\end_inset
+
+ of this matrix with the vertices ordered in such a way.
+ We are interested in the sums of the entries in the off-diagonal blocks,
+ the sums of whose entries are each the negative of the number of intra-partitio
+n edges.
+ We will denote this sum by S, as opposed to the sub-matrix 
+\series bold
+S.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}L & =\left[\begin{array}{cc}
+\boldsymbol{A} & -\boldsymbol{S}\\
+\boldsymbol{-S}^{T} & \boldsymbol{B}
+\end{array}\right]\end{aligned}
+,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the sum of entries in the left partition of the matrix for any
+ given row is always the negative of the sum to the right of the partition.
+ Using this and the fact that the sum of entries in both 
+\series bold
+S
+\series default
+ and 
+\begin_inset Formula $\boldsymbol{\boldsymbol{S}^{T}}$
+\end_inset
+
+ are both equal to S, we find after some algebra that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, combined with the bound on the power mean of the input patterns
+ in terms of the graph diameter, we acheive a bound on the number of mistakes.
+\end_layout
+
+\begin_layout Standard
+As before, our weight vector 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ reoresents a real-valued function on our hilbert space.
+ But in the graph setting, this Hilbert space and its reproducing kernel
+ 
+\begin_inset Formula $\boldsymbol{L}^{+}$
+\end_inset
+
+and the vector 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ admit a specific interpretation.
 \end_layout
 
 \begin_layout Standard
@@ -3333,10 +4156,15 @@ We can get more intuition about the basic objects such as
 
 .
  We can even use this formalism to quickly prove a version of Stokes' Theorem
- on graphs.
+ on graphs (we know Stokes' Theorem holds on general smooth manifolds, so
+ this just a particularly simple proof of a special case).
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 Let 
 \begin_inset Formula $G\left(V,\,E,\,W\right)$
 \end_inset
@@ -3472,7 +4300,7 @@ is the total flux induced by
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We now give an informal proof.
  Let us denote by 
 \begin_inset Formula $d_{i}$
@@ -3600,6 +4428,11 @@ Despite the simplicity of the proof and the fact that there is a very general
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 To gain intuition about 
 \begin_inset Formula $L^{+}$
@@ -3673,10 +4506,6 @@ name "fig:3.1"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
  Intuitively, if the graph is disconnected this distribution should not
@@ -3695,7 +4524,11 @@ name "fig:3.1"
 \end_layout
 
 \begin_layout Subsection
-Online Projections over Graphs
+Drawbacks with the above approach
+\end_layout
+
+\begin_layout Standard
+Large diameter gaphs
 \end_layout
 
 \begin_layout Standard
@@ -3724,6 +4557,149 @@ Extension of the herbster paper – use different laplacians simulataneously
  by considering them each as different kernels in some set of kernels, and
  then applying the objective function for multiple kernels (need to flesh
  out this idea)
+\end_layout
+
+\begin_layout Subsection
+Bounding 
+\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}$
+\end_inset
+
+ in the Graph Setting
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $\boldsymbol{g}^{+}$
+\end_inset
+
+ be the positively labelled vertices, and let 
+\begin_inset Formula $\boldsymbol{g}^{-}$
+\end_inset
+
+ be the negatively labelled vertices.
+ Let 
+\begin_inset Formula $\left|\boldsymbol{g}^{+}\right|=n^{+}$
+\end_inset
+
+, 
+\begin_inset Formula $\left|\boldsymbol{g}^{-}\right|=n^{-}$
+\end_inset
+
+, and assume WLOG that 
+\begin_inset Formula $n^{+}>=n^{-}.$
+\end_inset
+
+ We claim that 
+\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}\leq\partial(\boldsymbol{g}^{+},\,\boldsymbol{g}^{-})(1+\frac{n_{+}}{n_{-}})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+To show this, we consider the vector 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+
+, with 
+\begin_inset Formula $f_{i}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=1$
+\end_inset
+
+, and 
+\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=-1.$
+\end_inset
+
+ Now suppose we order our vertices so that the first 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+ vertices are those in 
+\begin_inset Formula $\boldsymbol{g}^{+}$
+\end_inset
+
+, while the last 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+ vertices are those in 
+\begin_inset Formula $\boldsymbol{g}^{-}$
+\end_inset
+
+.
+ Now consider the Laplacian 
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+ of this matrix with the vertices ordered in such a way.
+ We are interested in the sums of the entries in the off-diagonal blocks,
+ the sums of whose entries are each the negative of the number of intra-partitio
+n edges.
+ We will denote this sum by S, as opposed to the sub-matrix 
+\series bold
+
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\boldsymbol{L} & =\left[\begin{array}{cc}
+\boldsymbol{A} & -\boldsymbol{S}\\
+\boldsymbol{-S}^{T} & \boldsymbol{B}
+\end{array}\right]\end{aligned}
+.
+\end{equation}
+
+\end_inset
+
+
+\series default
+Note that the sum of entries in the left partition of the matrix for any
+ given row is always the negative of the sum to the right of the partition.
+ Using this and the fact that the sum of entries in both 
+\series bold
+
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+
+\series default
+ and 
+\begin_inset Formula $\boldsymbol{S}^{T}$
+\end_inset
+
+ are both equal to 
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+, we find after some algebra that
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{f}\right\Vert ^{2}=\left\langle \boldsymbol{f},\,\boldsymbol{f}\right\rangle =\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{f}=\left(1+\frac{n^{+}}{n^{-}}\right)^{2}\boldsymbol{S}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aa
 \end_layout
 
 \begin_layout Standard
