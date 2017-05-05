@@ -2975,134 +2975,6 @@ key "HerbsterPontilWainer2005"
  using projection and and the concept of Reprducing Kernel Hilbert Spaces.
 \end_layout
 
-\begin_layout Section
-Bounding 
-\begin_inset Formula $||U||^{2}$
-\end_inset
-
-in the graph setting
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $g^{+}$
-\end_inset
-
- be the positively labeled vertices, and let 
-\begin_inset Formula $g^{-}$
-\end_inset
-
-be the negatively labeled vertices.
- Let 
-\begin_inset Formula $|g|^{+}=n^{+},|g^{-}|=n^{-},$
-\end_inset
-
- and assume WLOG that 
-\begin_inset Formula $n^{+}>=n^{-}.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Claim: 
-\begin_inset Formula $||U||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Proof.
- To show this, we consider the vector 
-\begin_inset Formula $f$
-\end_inset
-
-, with 
-\begin_inset Formula $f_{i}=1$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=1$
-\end_inset
-
-, and 
-\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=-1.$
-\end_inset
-
-Now suppose we order our vertices so that the first 
-\begin_inset Formula $n^{+}$
-\end_inset
-
-vertices are those in 
-\begin_inset Formula $g^{+},$
-\end_inset
-
- while the last 
-\begin_inset Formula $n_{-}$
-\end_inset
-
-vertices are those in 
-\begin_inset Formula $g^{-}.$
-\end_inset
-
- Now consider the Laplacian 
-\begin_inset Formula $L$
-\end_inset
-
- of this matrix with the vertices ordered in such a way.
- We are interested in the sums of the entries in the off-diagonal blocks,
- the sums of whose entries are each the negative of the number of intra-partitio
-n edges.
- We will denote this sum by S, as opposed to the sub-matrix 
-\series bold
-S.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}L & =\left[\begin{array}{cc}
-\boldsymbol{A} & -\boldsymbol{S}\\
-\boldsymbol{-S}^{T} & \boldsymbol{B}
-\end{array}\right]\end{aligned}
-,
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Note that the sum of entries in the left partition of the matrix for any
- given row is always the negative of the sum to the right of the partition.
- Using this and the fact that the sum of entries in both 
-\series bold
-S
-\series default
- and 
-\begin_inset Formula $\boldsymbol{\boldsymbol{S}^{T}}$
-\end_inset
-
- are both equal to S, we find after some algebra that
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
-\]
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Pseudo-Inverse of Graph Laplacian and Kernel of Hilbert
 \end_layout
@@ -3288,7 +3160,40 @@ Thus
 \end_layout
 
 \begin_layout Subsection
-Graph Laplacian and Heat Equation
+Online learning over graphs
+\end_layout
+
+\begin_layout Standard
+As shown in the previous section, the reproducing kernel of the Hilbert
+ space defined over the graph is given by the pseudoinverse of the Laplacian
+ matrix, 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+\end_inset
+
+ Ths suggests that we can apply the above projection algorithm, with its
+ associated guarantees, by letting the input vector 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+be replaced by the t-th row of 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+\end_inset
+
+ As before, our weight vector 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ reoresents a real-valued function on our hilbert space.
+ But in the graph setting, this Hilbert space and its reproducing kernel
+ 
+\begin_inset Formula $\boldsymbol{L}^{+}$
+\end_inset
+
+and the vector 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ admit a specific interpretation.
 \end_layout
 
 \begin_layout Standard
@@ -3337,6 +3242,10 @@ We can get more intuition about the basic objects such as
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 Let 
 \begin_inset Formula $G\left(V,\,E,\,W\right)$
 \end_inset
@@ -3472,7 +3381,7 @@ is the total flux induced by
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We now give an informal proof.
  Let us denote by 
 \begin_inset Formula $d_{i}$
@@ -3600,6 +3509,11 @@ Despite the simplicity of the proof and the fact that there is a very general
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 To gain intuition about 
 \begin_inset Formula $L^{+}$
@@ -3673,10 +3587,6 @@ name "fig:3.1"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
  Intuitively, if the graph is disconnected this distribution should not
@@ -3694,8 +3604,137 @@ name "fig:3.1"
  the graph is connected.
 \end_layout
 
+\begin_layout Standard
+Let 
+\begin_inset Formula $g^{+}$
+\end_inset
+
+ be the positively labeled vertices, and let 
+\begin_inset Formula $g^{-}$
+\end_inset
+
+be the negatively labeled vertices.
+ Let 
+\begin_inset Formula $|g|^{+}=n^{+},|g^{-}|=n^{-},$
+\end_inset
+
+ and assume WLOG that 
+\begin_inset Formula $n^{+}>=n^{-}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Claim: 
+\begin_inset Formula $||U||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proof.
+ To show this, we consider the vector 
+\begin_inset Formula $f$
+\end_inset
+
+, with 
+\begin_inset Formula $f_{i}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=1$
+\end_inset
+
+, and 
+\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=-1.$
+\end_inset
+
+Now suppose we order our vertices so that the first 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+vertices are those in 
+\begin_inset Formula $g^{+},$
+\end_inset
+
+ while the last 
+\begin_inset Formula $n_{-}$
+\end_inset
+
+vertices are those in 
+\begin_inset Formula $g^{-}.$
+\end_inset
+
+ Now consider the Laplacian 
+\begin_inset Formula $L$
+\end_inset
+
+ of this matrix with the vertices ordered in such a way.
+ We are interested in the sums of the entries in the off-diagonal blocks,
+ the sums of whose entries are each the negative of the number of intra-partitio
+n edges.
+ We will denote this sum by S, as opposed to the sub-matrix 
+\series bold
+S.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}L & =\left[\begin{array}{cc}
+\boldsymbol{A} & -\boldsymbol{S}\\
+\boldsymbol{-S}^{T} & \boldsymbol{B}
+\end{array}\right]\end{aligned}
+,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the sum of entries in the left partition of the matrix for any
+ given row is always the negative of the sum to the right of the partition.
+ Using this and the fact that the sum of entries in both 
+\series bold
+S
+\series default
+ and 
+\begin_inset Formula $\boldsymbol{\boldsymbol{S}^{T}}$
+\end_inset
+
+ are both equal to S, we find after some algebra that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, combined with the bound on the power mean of the input patterns
+ in terms of the graph diameter, we acheive a bound on the number of mistakes.
+\end_layout
+
 \begin_layout Subsection
-Online Projections over Graphs
+Drawbacks with the above approach
+\end_layout
+
+\begin_layout Standard
+Large diameter gaphs
 \end_layout
 
 \begin_layout Standard
