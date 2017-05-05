@@ -2495,18 +2495,12 @@ In particular, if
 \end_layout
 
 \begin_layout Standard
-Based on theorem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:3.1"
-
-\end_inset
-
-, and we let 
+Our learning scenario consists of a set of an example set 
 \begin_inset Formula $\mathcal{D}=\left\{ \left(x_{i,}\,y_{i}\right)\right\} _{t=1}^{l}\subseteq\mathcal{X}\times\left\{ -1,\,+1\right\} $
 \end_inset
 
- be an example set, let 
+ .
+ let 
 \begin_inset Formula $\mathcal{D}_{t}$
 \end_inset
 
@@ -2519,7 +2513,7 @@ denote the first
 \end_inset
 
 .
- if we consider an online learning algorithm (algorithm 
+ We consider an online learning algorithm (algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:3.4"
@@ -2734,23 +2728,11 @@ Now let
 \end_inset
 
 .
- Then we can find this projection of 
-\series bold
-w 
-\series default
-onto 
-\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} $
+ Then we can find 
+\begin_inset Formula $P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)$
 \end_inset
 
- by first projecting 
-\begin_inset Formula $v(\boldsymbol{w})$
-\end_inset
-
- onto 
-\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} $
-\end_inset
-
-, 
+ by first finding 
 \begin_inset Formula $v^{*}=Proj(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;v(\boldsymbol{w}))$
 \end_inset
 
@@ -2826,53 +2808,45 @@ reference "alg:3.5"
 \end_inset
 
 .
- This in turn determines the 
-\begin_inset Formula $\boldsymbol{noncyclic}$
+ While the full specification in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
 \end_inset
 
- feasible set 
-\begin_inset Formula $\mathcal{U}_{t}$
+ allows for a function 
+\begin_inset Quotes eld
 \end_inset
 
- or a 
-\begin_inset Formula $\boldsymbol{cyclic}$
+strategy
+\begin_inset Quotes erd
 \end_inset
 
- feasible sets 
-\begin_inset Formula $\left\{ \mathcal{U}_{t_{1}},\,\mathcal{U}_{t_{2}},\,\cdots\right\} $
-\end_inset
-
-, which each feasible set 
-\begin_inset Formula $\mathcal{U}_{t}$
-\end_inset
-
- consists of those hypothesis vectors which are “compatible” with a subset
- of the past examples 
-\begin_inset Formula $\left(x_{i},\,y_{i}\right)$
-\end_inset
-
-.
- In this algorithm, there are two strategies for the non-cyclic case and
- cyclic case.
- The non-cyclic strategy projects the current hypothesis 
-\begin_inset Formula $\boldsymbol{w}_{t}$
-\end_inset
-
- to a single affine set 
-\begin_inset Formula $af\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle =y_{i}\right\} $
-\end_inset
-
- that is determined by the example indices in 
+ to determine 
 \begin_inset Formula $U_{t}$
 \end_inset
 
-.
- The cyclic strategy projects on a sequence of half-spaces 
-\begin_inset Formula $hs\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
+, in this paper we will assume that
+\begin_inset Formula $U_{t}=\{1,...,l\}$
 \end_inset
 
- determined by the example indices in 
-\begin_inset Formula $U_{t}$
+, i.e.
+ the set of labeled vertices.
+ The author introduces two strategies: one called 
+\begin_inset Quotes eld
+\end_inset
+
+non-cyclic
+\begin_inset Quotes erd
+\end_inset
+
+ and the other called 
+\begin_inset Quotes eld
+\end_inset
+
+cyclic
+\begin_inset Quotes erd
 \end_inset
 
 .
@@ -2882,6 +2856,53 @@ reference "alg:3.5"
 
  controls whether an update is made on every trial (aggressive) or only
  on those trials when a mistake occurs (non-aggressive).
+\end_layout
+
+\begin_layout Standard
+The non-cyclic strategy projects the current hypothesis 
+\begin_inset Formula $\boldsymbol{w}_{t}$
+\end_inset
+
+ to a single affine set 
+\begin_inset Formula $af\left(U_{t}\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle =y_{i}\right\} $
+\end_inset
+
+ .
+ This ensures that all labeled points are accrately predicted.
+ In contrast, the cyclic strategy repeatedly projects 
+\series bold
+
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+
+\series default
+ onto the sequence of half-spaces 
+\begin_inset Formula $\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{t}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{t}\right\rangle \geq1,\right\} $
+\end_inset
+
+ for each 
+\begin_inset Formula $t\in M$
+\end_inset
+
+.
+ Note that the strategy continues to loop through the mislabeled vertices
+ until they are all predicting correctly.
+ The terminal condition of this algorithm is ensured by the fact that a
+ sequence of projections between closed convex sets converges to a point
+ in their intersection.
+ In other words, we can be sure that after completing the while loop, 
+\begin_inset Formula $w_{t+1}\in hs\left(U_{t}\right)\coloneqq\cap_{i\in U_{t}}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
+\end_inset
+
+.
+ The reason for this alternative projection algorithm is that it is more
+ efficient: rather than having to perfom t projections on each trial, we
+ only need to perform 
+\begin_inset Formula $|M|$
+\end_inset
+
+ projections.
 \end_layout
 
 \begin_layout Standard
@@ -3054,15 +3075,25 @@ reference "thm:3.2"
 \end_inset
 
 , which gives us 
-\begin_inset Formula $\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)B$
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
+\]
+
 \end_inset
 
-.
- After dropping the term 
-\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+
+\end_layout
+
+\begin_layout Standard
+Since the 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}>0$
 \end_inset
 
-, we then get formula 
+ we can neglect the second term, yielding the formula 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:3.21"
@@ -3093,7 +3124,11 @@ reference "alg:3.5"
 \end_inset
 
 .
- 
+ Note that 
+\begin_inset Formula $af\left(U\right)\in hs\left(U\right)$
+\end_inset
+
+, which implies that the bound is tighter using the 
 \end_layout
 
 \begin_layout Subsection
@@ -3261,8 +3296,7 @@ S
 \end_layout
 
 \begin_layout Standard
-Finally, combined with the bound on the power mean of the input patterns
- in terms of the graph diameter, we acheive a bound on the number of mistakes.
+Finally, we wish to bound the (-1)-power mean 
 \end_layout
 
 \begin_layout Standard
