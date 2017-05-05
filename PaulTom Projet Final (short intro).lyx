@@ -679,10 +679,8 @@ We can get more intuition about
 \begin_inset Formula $L$
 \end_inset
 
- by using the concept of conductance.
- As we saw in the previous section, the Laplacian is closely related to
- a second derivative, and it is no coincidence that the continuous version
- of the Laplacian appears in the heat equation.
+ by using the concept of conductance and borrowing intuition from the continous
+ version of this operator, for example in the heat equation.
  Let 
 \begin_inset Formula $\boldsymbol{f}$
 \end_inset
@@ -692,7 +690,7 @@ We can get more intuition about
 \begin_inset Formula $\boldsymbol{f}$
 \end_inset
 
- as a hat distribution, then we can think of 
+ as a heat distribution, then we can think of 
 \begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
 \end_inset
 
@@ -782,8 +780,9 @@ Given the graph
 
  and wish to see how these values propagate over the graph, as in a heat
  diffusion.
- While very simple, even scenario could be useful in settings such as fraud
- detection over a graph of accounts that are connected by their transactions.
+ While very simple, this scenario could be useful in settings such as fraud
+ detection over a transactional network of accounts that are modeled as
+ a graph.
  For example, we may have received knowledge that a small number of vertices
  in the graph are fraudulent, and we want to perform a quick analysis to
  see to what degree other vertices in the graph might be exposed to the
@@ -984,9 +983,9 @@ which matches exactly our formula in the discrete case.
  If we were to take the second order approximation, each step in our iteration
  would take into account not only immediate neighbours, but also neighbours
  of neighbours and so on as more terms from the Taylor series are kept.
- This in turn would reduce the total number of iteration needed to simulate
- the evolution o the system, so that we have achieved some of the time-efficienc
-y of the continuous model.
+ This in turn would reduce the total number of iterations needed to simulate
+ the evolution of the system, so that we have achieved some of the time-efficien
+cy of the continuous model.
  However, we need to pay for this more favourable time-complexity by computing
  and storing the matrix 
 \begin_inset Formula $\boldsymbol{L}^{2}$
@@ -1081,9 +1080,9 @@ key "BengioDelalleauRoux2006"
 
 \end_inset
 
-Please note that in order to write this equation in absolute form, reducing
- the number of computations, we need to pay for this by having to store
- powers of the matrix 
+Note that in order to write this equation in absolute form, reducing the
+ number of computations, we need to pay for this by having to store powers
+ of the matrix 
 \begin_inset Formula $\boldsymbol{L}$
 \end_inset
 
@@ -2296,7 +2295,7 @@ As we can see, the sum vanishes if
 \end_inset
 
 .
- Since 
+ Note that Since 
 \begin_inset Formula $H$
 \end_inset
 
@@ -2309,11 +2308,7 @@ As we can see, the sum vanishes if
 \begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)$
 \end_inset
 
-, being a linear functional 
-\begin_inset Formula $\left(\boldsymbol{f}+\boldsymbol{g}\right)\left(v_{i}\right)=\left(\boldsymbol{f}+\boldsymbol{g}\right)_{i}\left(v\right)=\boldsymbol{f}_{i}\left(v\right)+\boldsymbol{g}_{i}\left(v\right)=\boldsymbol{f}\left(v_{i}\right)+\boldsymbol{g}\left(v_{i}\right)$
-\end_inset
-
-, can be represented as an inner product 
+, being a linear functional, can be represented as an inner product 
 \begin_inset Formula 
 \begin{equation}
 \boldsymbol{f}\left(v_{i}\right)=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\boldsymbol{K}_{i}\boldsymbol{L}\boldsymbol{f}.
