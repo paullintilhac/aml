@@ -3271,7 +3271,7 @@ From the definition, we can see that
 Therefore by the Pythagorean Theorem, we have 
 \begin_inset Formula 
 \begin{equation}
-\left\Vert \boldsymbol{u^{*}}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}.
+\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}\min_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .=\left\Vert \boldsymbol{u^{*}}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}.
 \end{equation}
 
 \end_inset
