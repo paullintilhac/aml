@@ -2808,66 +2808,45 @@ reference "alg:3.5"
 \end_inset
 
 .
- This in turn determines the 
-\begin_inset Formula $\boldsymbol{noncyclic}$
+ While the full specification in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
 \end_inset
 
- feasible set 
-\begin_inset Formula $\mathcal{U}_{t}$
+ allows for a function 
+\begin_inset Quotes eld
 \end_inset
 
- or a 
-\begin_inset Formula $\boldsymbol{cyclic}$
+strategy
+\begin_inset Quotes erd
 \end_inset
 
- feasible sets 
-\begin_inset Formula $\left\{ \mathcal{U}_{t_{1}},\,\mathcal{U}_{t_{2}},\,\cdots\right\} $
-\end_inset
-
-, which each feasible set 
-\begin_inset Formula $\mathcal{U}_{t}$
-\end_inset
-
- consists of those hypothesis vectors which are “compatible” with a subset
- of the past examples 
-\begin_inset Formula $\left(x_{i},\,y_{i}\right)$
-\end_inset
-
-.
- In this algorithm, there are two strategies for the non-cyclic case and
- cyclic case.
- The non-cyclic strategy projects the current hypothesis 
-\begin_inset Formula $\boldsymbol{w}_{t}$
-\end_inset
-
- to a single affine set 
-\begin_inset Formula $af\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle =y_{i}\right\} $
-\end_inset
-
- that is determined by the example indices in 
+ to determine 
 \begin_inset Formula $U_{t}$
 \end_inset
 
-.
- This ensures that all labeled points are accrately predicted.
- In contrast, the cyclic strategy repeatedly projects 
-\series bold
-
-\begin_inset Formula $\boldsymbol{w}$
+, in this paper we will assume that
+\begin_inset Formula $U_{t}=\{1,...,l\}$
 \end_inset
 
-
-\series default
- onto a sequence of half-spaces 
-\begin_inset Formula $\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{t}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{t}\right\rangle \geq1\right\} $
+, i.e.
+ the set of labeled vertices.
+ The author introduces two strategies: one called 
+\begin_inset Quotes eld
 \end_inset
 
- 
-\begin_inset Formula $hs\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
+non-cyclic
+\begin_inset Quotes erd
 \end_inset
 
- determined by the example indices in 
-\begin_inset Formula $U_{t}$
+ and the other called 
+\begin_inset Quotes eld
+\end_inset
+
+cyclic
+\begin_inset Quotes erd
 \end_inset
 
 .
@@ -2877,6 +2856,53 @@ reference "alg:3.5"
 
  controls whether an update is made on every trial (aggressive) or only
  on those trials when a mistake occurs (non-aggressive).
+\end_layout
+
+\begin_layout Standard
+The non-cyclic strategy projects the current hypothesis 
+\begin_inset Formula $\boldsymbol{w}_{t}$
+\end_inset
+
+ to a single affine set 
+\begin_inset Formula $af\left(U_{t}\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle =y_{i}\right\} $
+\end_inset
+
+ .
+ This ensures that all labeled points are accrately predicted.
+ In contrast, the cyclic strategy repeatedly projects 
+\series bold
+
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+
+\series default
+ onto the sequence of half-spaces 
+\begin_inset Formula $\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{t}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{t}\right\rangle \geq1,\right\} $
+\end_inset
+
+ for each 
+\begin_inset Formula $t\in M$
+\end_inset
+
+.
+ Note that the strategy continues to loop through the mislabeled vertices
+ until they are all predicting correctly.
+ The terminal condition of this algorithm is ensured by the fact that a
+ sequence of projections between closed convex sets converges to a point
+ in their intersection.
+ In other words, we can be sure that after completing the while loop, 
+\begin_inset Formula $w_{t+1}\in hs\left(U_{t}\right)\coloneqq\cap_{i\in U_{t}}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
+\end_inset
+
+.
+ The reason for this alternative projection algorithm is that it is more
+ efficient: rather than having to perfom t projections on each trial, we
+ only need to perform 
+\begin_inset Formula $|M|$
+\end_inset
+
+ projections.
 \end_layout
 
 \begin_layout Standard
