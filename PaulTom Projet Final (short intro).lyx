@@ -2320,9 +2320,9 @@ Now we can define the objective function
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
 \min_{f\in H}\{||f||:f_{i}=y_{i},i=1,...,l\}
-\]
+\end{equation}
 
 \end_inset
 
@@ -2388,6 +2388,312 @@ We call
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Now, we return to the optimization problem (3.5).
+ After discussing with the first author (Mark Herbster), I found that in
+ fact the formula given in that paper is slightly off.
+ He claims that we can use the reproducing kernel property to express any
+ 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ as 
+\begin_inset Formula $f_{i}=\sum_{i=1}^{l}K_{ij}c_{j}$
+\end_inset
+
+ for some constants 
+\begin_inset Formula $\boldsymbol{c}$
+\end_inset
+
+.
+ In fact, this is only true for 
+\begin_inset Formula $1\leq i\leq l$
+\end_inset
+
+.
+ Since Herbster does not give a proof for this in the paper (or any of his
+ other papers, or for almost any of the other claims in the paper for that
+ matter) we give our own derivation of the minimizer of (3.5), following
+ the arguments of (Aronszajn 1950) and (Wahba 1990).
+\end_layout
+
+\begin_layout Standard
+Recall that the reproducing kernel of the direct sum of RKHS is equal to
+ the sum of the reproducing kernels of the two spaces (Aronszajn 1950).
+ In our case, we consider the two subspaces (both Hilbert spaces) of H,
+ 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ is the span of the first 
+\begin_inset Formula $l$
+\end_inset
+
+ basis vectors of 
+\begin_inset Formula $H$
+\end_inset
+
+, corresponding to the labeled vertices, while 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+ is the span of the last 
+\begin_inset Formula $n-l$
+\end_inset
+
+ basis vectors of 
+\begin_inset Formula $H$
+\end_inset
+
+, so that 
+\begin_inset Formula $H=H_{1}\oplus H_{2}$
+\end_inset
+
+.
+ Then we can write and 
+\begin_inset Formula $l\in H$
+\end_inset
+
+ as a unique decomposition 
+\begin_inset Formula $l=l_{1}+l_{2}$
+\end_inset
+
+ with 
+\begin_inset Formula $l_{1}\in H_{1},l_{2}\in H_{2}.$
+\end_inset
+
+ By the reproducing kernel property, we can express any 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ as 
+\begin_inset Formula $f_{i}=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f_{1}}\right\rangle +\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f_{2}}\right\rangle $
+\end_inset
+
+.
+ Since the last 
+\begin_inset Formula $n-l$
+\end_inset
+
+ terms of 
+\begin_inset Formula $\boldsymbol{f_{1}}$
+\end_inset
+
+and the first 
+\begin_inset Formula $l$
+\end_inset
+
+ terms of 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+are 0, we can equivalently write this as 
+\begin_inset Formula $f_{i}=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\left\langle \boldsymbol{K}_{i}^{1},\,\boldsymbol{f_{1}}\right\rangle +\left\langle \boldsymbol{K}_{i}^{2},\,\boldsymbol{f_{2}}\right\rangle $
+\end_inset
+
+, where 
+\begin_inset Formula $\boldsymbol{K_{i}}^{1}=(K_{i})_{j=1}^{l}$
+\end_inset
+
+and 
+\begin_inset Formula $K_{i}^{2}=(K_{i})_{j=l+1}^{n}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $K^{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $K^{2}$
+\end_inset
+
+are the reproducing kernels of 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $H_{2},$
+\end_inset
+
+respectively.
+\end_layout
+
+\begin_layout Standard
+Since the columns of 
+\series bold
+
+\begin_inset Formula $K^{1}$
+\end_inset
+
+
+\series default
+and 
+\begin_inset Formula $K^{2}$
+\end_inset
+
+for a basis for 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $H_{2}$
+\end_inset
+
+respectively, it follows that we can express any 
+\begin_inset Formula $f$
+\end_inset
+
+ as 
+\begin_inset Formula $f=\sum_{i=1}^{l}c_{j}K_{j}^{1}+\sum_{i=l+1}^{n}d_{j}K_{j}^{2}$
+\end_inset
+
+.
+ Note that the vectors 
+\begin_inset Formula $K_{j}^{2}$
+\end_inset
+
+ in the second sum are all perpendicular to the 
+\begin_inset Formula $K_{j}^{1},$
+\end_inset
+
+ and therefore for all 
+\begin_inset Formula $1\leq i\leq l$
+\end_inset
+
+, we have 
+\begin_inset Formula $f_{i}=$
+\end_inset
+
+ 
+\begin_inset Formula $\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\left\langle \boldsymbol{K}_{i},\,\sum_{i=1}^{l}c_{j}K_{j}^{1}+\sum_{i=l+1}^{n}d_{j}K_{j}^{2}\right\rangle =\left\langle \boldsymbol{K}_{i},\,\sum_{i=1}^{l}c_{j}K_{j}^{1}\right\rangle $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It follows that for all 
+\begin_inset Formula $1\leq i\leq l$
+\end_inset
+
+, 
+\begin_inset Formula $f=\sum_{i=1}^{l}c_{j}K_{j}^{1}=\sum_{i=1}^{n}e_{i}\sum_{j=1}^{l}c_{j}K_{ij}^{1}$
+\end_inset
+
+, or equivalently 
+\begin_inset Formula $f_{i}=\sum_{j=1}^{l}c_{j}K_{ij}^{1}$
+\end_inset
+
+, which matches the result of Herbster for 
+\begin_inset Formula $1\leq i\leq l.$
+\end_inset
+
+ It will turn out that for the sake of minimizing (3.5), we only need to
+ represent the first 
+\begin_inset Formula $l$
+\end_inset
+
+ components of 
+\begin_inset Formula $f$
+\end_inset
+
+ anyways, so this is not a real oversight.
+ In vector form, we can write have 
+\begin_inset Formula $f=K^{1}\boldsymbol{c}$
+\end_inset
+
+, where we are now referring to 
+\begin_inset Formula $K^{1}$
+\end_inset
+
+as an nxr matrix, since the last 
+\begin_inset Formula $n-l$
+\end_inset
+
+ columns are all 0 anyways.
+ We can now write the lagrange dual of (3.5) as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\min_{f\in H}\{||f||+\lambda\sum_{i=1}^{l}(y_{i}-f_{i})\}=\min_{c\in H_{1}}\{||K^{1}\boldsymbol{c}||+\lambda\sum_{i=1}^{l}(y_{i}-K_{i}^{1}\boldsymbol{c})\}=\min_{c\in H_{1}}\{c^{T}(K^{1})^{T}LK^{1}\boldsymbol{c}+\lambda\boldsymbol{1^{T}}(\boldsymbol{y}-\tilde{K}c)\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\tilde{K}$
+\end_inset
+
+ is the upper left block of 
+\begin_inset Formula $K^{1}$
+\end_inset
+
+ of dimension 
+\begin_inset Formula $l$
+\end_inset
+
+x
+\begin_inset Formula $l$
+\end_inset
+
+.
+ Taking the gradient with resepect to c, we have 
+\begin_inset Formula $(K^{1})^{T}LK^{1}\boldsymbol{c}=\tilde{K}c=\lambda\boldsymbol{1^{T}}\tilde{K}.$
+\end_inset
+
+ Pluggin in our constraint that 
+\begin_inset Formula $\boldsymbol{y}=\tilde{K}c,$
+\end_inset
+
+ we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y=\lambda\boldsymbol{1^{T}}\tilde{K}.$
+\end_inset
+
+ This implies that 
+\begin_inset Formula $\tilde{K}c=y,$
+\end_inset
+
+ and finally that 
+\begin_inset Formula $c=(\tilde{K})^{-1}y$
+\end_inset
+
+, which matches the solution given by Herbster.
+ Finally, we can express the minimizer of the original objective as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f=K^{1}\boldsymbol{c}=K^{1}(\tilde{K})^{-1}y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard

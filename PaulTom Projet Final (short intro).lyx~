@@ -2160,21 +2160,13 @@ key "HerbsterPontilWainer2005"
 \end_layout
 
 \begin_layout Subsection
-Pseudo-Inverse of Graph Laplacian and Kernel of Hilbert
+Pseudo-Inverse of Graph Laplacian as the Reproducing Kernel of a Hilbert
+ Space
 \end_layout
 
 \begin_layout Standard
-A key object in this approach is the pseudo-inverse of the graph Laplacian
- 
-\begin_inset Formula $\boldsymbol{L}^{+}$
-\end_inset
-
- can be thought of as the reproducing kernel of a particular Hilbert space
- 
-\begin_inset Formula $H$
-\end_inset
-
- of real-valued functions over the vertices of the graph
+As in the previous examples, we consider the set of real-valued functions
+ over the vertices of the graph
 \begin_inset Formula 
 \begin{equation}
 \boldsymbol{f}\,:V\rightarrow\mathbb{R}^{n}
@@ -2182,7 +2174,14 @@ A key object in this approach is the pseudo-inverse of the graph Laplacian
 
 \end_inset
 
-equipped with the inner product
+We define the function 
+\begin_inset Formula $\left\langle \boldsymbol{},\,\boldsymbol{}\right\rangle $
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle =\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{g}.
@@ -2190,7 +2189,24 @@ equipped with the inner product
 
 \end_inset
 
-Over the entire Vector space of real-valued functions on the graph, 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+is symmetric and positive semi-definite, which suggests that by appropriately
+ constraining our vector space containing containing 
+\begin_inset Formula $f$
+\end_inset
+
+, we could ensure the strict positiveity of 
+\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
+\end_inset
+
+, which would imply that that our space is in fact a Hilbert space.
+ Over the entire Vector space of real-valued functions on the graph, 
 \begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
 \end_inset
 
@@ -2217,7 +2233,7 @@ Over the entire Vector space of real-valued functions on the graph,
 
 .
  These eigenvectors with eigenvalues of zero are precisely the eigenvectors
- that are piecewise constant.
+ that are piecewise constant on each connected component.
  We can see this by noting that 
 \begin_inset Formula 
 \begin{equation}
@@ -2242,7 +2258,7 @@ This is because
 
 \end_inset
 
-Please notice that the diagonal component of 
+Note the diagonal component of 
 \begin_inset Formula $\boldsymbol{L}$
 \end_inset
 
@@ -2262,7 +2278,7 @@ Please notice that the diagonal component of
 \begin_inset Formula $\boldsymbol{D}_{ii}=\sum_{j=1}^{n}\boldsymbol{A}_{ij}$
 \end_inset
 
-, and in the proof we pick up a factor of 
+, and in the last line of the proof we drop a factor of 
 \begin_inset Formula $2$
 \end_inset
 
@@ -2295,7 +2311,41 @@ As we can see, the sum vanishes if
 \end_inset
 
 .
- Note that Since 
+ 
+\end_layout
+
+\begin_layout Standard
+Now we can define the objective function 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\min_{f\in H}\{||f||:f_{i}=y_{i},i=1,...,l\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that this is very similar to the objective function as that of section
+ 2, but our norm is being induced by a different inner product.
+ Once 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+has been computed, this formulation will allow us to solve a system of 
+\begin_inset Formula $l$
+\end_inset
+
+ equations rather than a system of 
+\begin_inset Formula $n$
+\end_inset
+
+ equations, as in the formulation of section 2.
+ Since 
 \begin_inset Formula $H$
 \end_inset
 
@@ -2304,14 +2354,11 @@ As we can see, the sum vanishes if
 \begin_inset Formula $\boldsymbol{f}$
 \end_inset
 
- at any vertex, 
-\begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)$
-\end_inset
-
-, being a linear functional, can be represented as an inner product 
+ at any vertex, being a linear functional, can be represented as an inner
+ product 
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{f}\left(v_{i}\right)=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\boldsymbol{K}_{i}\boldsymbol{L}\boldsymbol{f}.
+f_{i}=f(v_{i})=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\boldsymbol{K}_{i}\boldsymbol{L}\boldsymbol{f}.
 \end{equation}
 
 \end_inset
@@ -2320,23 +2367,425 @@ The pseudo-inverse
 \begin_inset Formula $\boldsymbol{L}^{+}$
 \end_inset
 
- satisfies this property, which can be verified by noting that 
+ satisfies this property for the reproducing kernel 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+, which can be verified by noting that 
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{f}=\boldsymbol{f}_{i}=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}_{i}.
+e_{i}^{T}\boldsymbol{\boldsymbol{L}^{+}}\boldsymbol{L}\boldsymbol{f}=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}=f_{i}
 \end{equation}
 
 \end_inset
 
-Thus 
+We call 
 \begin_inset Formula $\boldsymbol{L}^{+}$
 \end_inset
 
- is the reproducing kernel of 
+ the reproducing kernel of the hilbert space
 \begin_inset Formula $H$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+We can gain more intuition about this Hilbert Space by using the concept
+ of conductance (it is no coincidence that the continuous version of the
+ Laplacian appears in the heat equation).
+ If we think of f as some distribution over the nodes, we can think of 
+\begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
+\end_inset
+
+ roughly as the flux induced at each of the nodes by that distribution over
+ the graph.
+ Then the form 
+\begin_inset Formula $\boldsymbol{g}^{T}\boldsymbol{L}\boldsymbol{f}$
+\end_inset
+
+ represents some weighted measurement of this flux with the weights given
+ by 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+.
+ For example, if f is a binary vector representing the boundary of some
+ open set on the graph 
+\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
+\end_inset
+
+ would be the flux produced by 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ as measured on the boundary represented by 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+
+.
+ We can even use this formalism to quickly prove a version of Stokes' Theorem
+ on graphs (we know Stokes' Theorem holds on general smooth manifolds, so
+ this just a particularly simple proof of a special case).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $G\left(V,\,E,\,W\right)$
+\end_inset
+
+ be a graph imbued with the topology generated by the open neighbourhoods
+ 
+\begin_inset Formula $N_{i}=\left\{ v_{j}\,:\,\left(i,\,j\right)\in E\right\} $
+\end_inset
+
+.
+ Suppose we have some subset 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+ of vertices set 
+\begin_inset Formula $V\left(G\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $U\left(G\right)\subset V\left(G\right)$
+\end_inset
+
+.
+ Then we can define the boundary of 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+ as the set of all vertices contained in the closure of 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+ but not contained in 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+ itself 
+\begin_inset Formula $\partial U\left(G\right)=\left\{ v_{j}\,:\,v_{j}\in\bar{U}\left(G\right)-U\left(G\right)\right\} $
+\end_inset
+
+.
+ Now suppose our vertices 
+\begin_inset Formula $V\left(G\right)$
+\end_inset
+
+ are ordered such that 
+\begin_inset Formula $v_{1},\,\cdots,\,v_{k}\in U\left(G\right)$
+\end_inset
+
+, 
+\begin_inset Formula $v_{k+1},\,\cdots,\,v_{l}\in\partial U\left(G\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $v_{l+1},\,\cdots,\,v_{n}\in V\left(G\right)-\bar{U}\left(G\right)$
+\end_inset
+
+.
+ Now let 
+\begin_inset Formula $\boldsymbol{1}_{U}$
+\end_inset
+
+ be a binary vector with all 
+\begin_inset Formula $1$
+\end_inset
+
+ for the first 
+\begin_inset Formula $k$
+\end_inset
+
+ entries, and 
+\begin_inset Formula $0$
+\end_inset
+
+ elsewhere, and let 
+\begin_inset Formula $\boldsymbol{1}_{\partial U}$
+\end_inset
+
+ be the binary vector with all 
+\begin_inset Formula $1$
+\end_inset
+
+ for entries 
+\begin_inset Formula $k+1$
+\end_inset
+
+ through 
+\begin_inset Formula $l$
+\end_inset
+
+, and 
+\begin_inset Formula $0$
+\end_inset
+
+ elsewhere.
+ Then according to the above interpretation of the norm, 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{U}\coloneqq\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}
+\end{equation}
+
+\end_inset
+
+ is the total flux induced by distribution g over the interior of 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+, while
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{\partial U}\coloneqq\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}
+\end{equation}
+
+\end_inset
+
+is the total flux induced by 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ as measured over the boundary of 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+.
+ Our claim is that 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{U}=-\boldsymbol{F}_{\partial U}.\label{eq:3.9}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We now give an informal proof.
+ Let us denote by 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+ the degree of vertex 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $d_{i}^{int}$
+\end_inset
+
+ by the number of edges connecting vertex 
+\begin_inset Formula $i$
+\end_inset
+
+ to points in 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $d_{i}^{ext}$
+\end_inset
+
+ by the number of edges connecting vertex 
+\begin_inset Formula $i$
+\end_inset
+
+ to points not in 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\begin{equation}
+d_{i}=d_{i}^{int}+d_{i}^{ext}.
+\end{equation}
+
+\end_inset
+
+In particular, for any 
+\begin_inset Formula $v_{i}\in U$
+\end_inset
+
+, 
+\begin_inset Formula $d_{i}^{ext}$
+\end_inset
+
+ is the number of edges connecting 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ to points in 
+\begin_inset Formula $\partial U\left(G\right)$
+\end_inset
+
+, since by definition all other vertices are not connected to 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ Then for the left hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.9"
+
+\end_inset
+
+, note that the only contribution to the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ entry is given by the first 
+\begin_inset Formula $k$
+\end_inset
+
+ columns of 
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+, and a straightforward calculation shows that 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in U}(d_{i}-d_{i}^{int})=\sum_{i\in U}d^{ext}.
+\end{equation}
+
+\end_inset
+
+For the right hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.9"
+
+\end_inset
+
+, we can see that the only contribution to the sum is from entries 
+\begin_inset Formula $k+1$
+\end_inset
+
+ to 
+\begin_inset Formula $l$
+\end_inset
+
+, which another straightforward calculation shows that
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in\partial U}d_{i}^{ext}.
+\end{equation}
+
+\end_inset
+
+Thus
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g},\qquad\forall\boldsymbol{g}\in H.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To gain intuition about 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+, we turn back to the representation theorem, namely that 
+\begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}$
+\end_inset
+
+.
+ In the heat analogy, this could be interpreted as saying that the heat
+ at each vertex can be expressed in terms of, or derived from, the flux
+ through every vertex.
+ So in this heat analogy, 
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+ sends a heat distribution 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+
+ over each node to a flux through each vertex.
+ Conversely, 
+\begin_inset Formula $\boldsymbol{L}_{i}^{+}$
+\end_inset
+
+ sends some definition of fluxes over the graph back to some heat distribution
+ that would have induced it.
+ This relationship is shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3.1"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 3-1.png
+	lyxscale 70
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bidirectional Mapping Between Heat and Flux
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3.1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Intuitively, if the graph is disconnected this distribution should not
+ be unique, since a constant added to the distribution in each of the connected
+ components will not affect the flux induced through the graph.
+ Mathematically, this is affirmed by noting that
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{L}^{+}=\boldsymbol{L}^{-1}
+\end{equation}
+
+\end_inset
+
+ if and only if all eigenvalues of L are non-zero which, is exactly when
+ the graph is connected.
 \end_layout
 
 \begin_layout Subsection
@@ -3128,7 +3577,7 @@ reference "alg:3.5"
 \begin_inset Formula $af\left(U\right)\in hs\left(U\right)$
 \end_inset
 
-, which implies that the bound is tighter using the 
+, which implies that the bound is tighter using the non-cyclic strategy.
 \end_layout
 
 \begin_layout Subsection
@@ -3194,11 +3643,15 @@ be the negatively labeled vertices.
 \begin_inset Formula $n^{+}>=n^{-}.$
 \end_inset
 
+ then there exists a 
+\begin_inset Formula $u\in af(U_{t})$
+\end_inset
 
+ such that
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $||U||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
+\begin_inset Formula $||u||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
 \end_inset
 
 
@@ -3296,6 +3749,10 @@ S
 \end_layout
 
 \begin_layout Standard
+Thus we have that 
+\end_layout
+
+\begin_layout Standard
 Finally, we wish to bound the (-1)-power mean 
 \end_layout
 
@@ -3304,7 +3761,7 @@ As before, our weight vector
 \begin_inset Formula $\boldsymbol{g}$
 \end_inset
 
- reoresents a real-valued function on our hilbert space.
+ represents a real-valued function on our hilbert space.
  But in the graph setting, this Hilbert space and its reproducing kernel
  
 \begin_inset Formula $\boldsymbol{L}^{+}$
@@ -3315,415 +3772,6 @@ and the vector
 \end_inset
 
  admit a specific interpretation.
-\end_layout
-
-\begin_layout Standard
-We can get more intuition about the basic objects such as 
-\begin_inset Formula $\left\Vert \boldsymbol{g}\right\Vert $
-\end_inset
-
- and 
-\begin_inset Formula $\boldsymbol{L}^{+}$
-\end_inset
-
- by using the concept of conductance (it is no coincidence that the continuous
- version of the Laplacian appears in the heat equation).
- If we think of f as some distribution over the nodes, we can think of 
-\begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
- roughly as the flux induced at each of the nodes by that distribution over
- the graph.
- Then the form 
-\begin_inset Formula $\boldsymbol{g}^{T}\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
- represents some weighted measurement of this flux with the weights given
- by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
-.
- For example, if f is a binary vector representing the boundary of some
- open set on the graph 
-\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
-\end_inset
-
- would be the flux produced by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- as measured on the boundary represented by 
-\begin_inset Formula $\boldsymbol{f}$
-\end_inset
-
-.
- We can even use this formalism to quickly prove a version of Stokes' Theorem
- on graphs (we know Stokes' Theorem holds on general smooth manifolds, so
- this just a particularly simple proof of a special case).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Let 
-\begin_inset Formula $G\left(V,\,E,\,W\right)$
-\end_inset
-
- be a graph imbued with the topology generated by the open neighbourhoods
- 
-\begin_inset Formula $N_{i}=\left\{ v_{j}\,:\,\left(i,\,j\right)\in E\right\} $
-\end_inset
-
-.
- Suppose we have some subset 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- of vertices set 
-\begin_inset Formula $V\left(G\right)$
-\end_inset
-
-, i.e.
- 
-\begin_inset Formula $U\left(G\right)\subset V\left(G\right)$
-\end_inset
-
-.
- Then we can define the boundary of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- as the set of all vertices contained in the closure of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- but not contained in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- itself 
-\begin_inset Formula $\partial U\left(G\right)=\left\{ v_{j}\,:\,v_{j}\in\bar{U}\left(G\right)-U\left(G\right)\right\} $
-\end_inset
-
-.
- Now suppose our vertices 
-\begin_inset Formula $V\left(G\right)$
-\end_inset
-
- are ordered such that 
-\begin_inset Formula $v_{1},\,\cdots,\,v_{k}\in U\left(G\right)$
-\end_inset
-
-, 
-\begin_inset Formula $v_{k+1},\,\cdots,\,v_{l}\in\partial U\left(G\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $v_{l+1},\,\cdots,\,v_{n}\in V\left(G\right)-\bar{U}\left(G\right)$
-\end_inset
-
-.
- Now let 
-\begin_inset Formula $\boldsymbol{1}_{U}$
-\end_inset
-
- be a binary vector with all 
-\begin_inset Formula $1$
-\end_inset
-
- for the first 
-\begin_inset Formula $k$
-\end_inset
-
- entries, and 
-\begin_inset Formula $0$
-\end_inset
-
- elsewhere, and let 
-\begin_inset Formula $\boldsymbol{1}_{\partial U}$
-\end_inset
-
- be the binary vector with all 
-\begin_inset Formula $1$
-\end_inset
-
- for entries 
-\begin_inset Formula $k+1$
-\end_inset
-
- through 
-\begin_inset Formula $l$
-\end_inset
-
-, and 
-\begin_inset Formula $0$
-\end_inset
-
- elsewhere.
- Then according to the above interpretation of the norm, 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{U}\coloneqq\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}
-\end{equation}
-
-\end_inset
-
- is the total flux induced by distribution g over the interior of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, while
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{\partial U}\coloneqq\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}
-\end{equation}
-
-\end_inset
-
-is the total flux induced by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- as measured over the boundary of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-.
- Our claim is that 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{U}=-\boldsymbol{F}_{\partial U}.\label{eq:3.9}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-We now give an informal proof.
- Let us denote by 
-\begin_inset Formula $d_{i}$
-\end_inset
-
- the degree of vertex 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $d_{i}^{int}$
-\end_inset
-
- by the number of edges connecting vertex 
-\begin_inset Formula $i$
-\end_inset
-
- to points in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $d_{i}^{ext}$
-\end_inset
-
- by the number of edges connecting vertex 
-\begin_inset Formula $i$
-\end_inset
-
- to points not in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, so that 
-\begin_inset Formula 
-\begin{equation}
-d_{i}=d_{i}^{int}+d_{i}^{ext}.
-\end{equation}
-
-\end_inset
-
-In particular, for any 
-\begin_inset Formula $v_{i}\in U$
-\end_inset
-
-, 
-\begin_inset Formula $d_{i}^{ext}$
-\end_inset
-
- is the number of edges connecting 
-\begin_inset Formula $v_{i}$
-\end_inset
-
- to points in 
-\begin_inset Formula $\partial U\left(G\right)$
-\end_inset
-
-, since by definition all other vertices are not connected to 
-\begin_inset Formula $v_{i}$
-\end_inset
-
-.
- Then for the left hand side of formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.9"
-
-\end_inset
-
-, note that the only contribution to the 
-\begin_inset Formula $i^{\text{th}}$
-\end_inset
-
- entry is given by the first 
-\begin_inset Formula $k$
-\end_inset
-
- columns of 
-\begin_inset Formula $\boldsymbol{L}$
-\end_inset
-
-, and a straightforward calculation shows that 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in U}(d_{i}-d_{i}^{int})=\sum_{i\in U}d^{ext}.
-\end{equation}
-
-\end_inset
-
-For the right hand side of formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.9"
-
-\end_inset
-
-, we can see that the only contribution to the sum is from entries 
-\begin_inset Formula $k+1$
-\end_inset
-
- to 
-\begin_inset Formula $l$
-\end_inset
-
-, which another straightforward calculation shows that
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in\partial U}d_{i}^{ext}.
-\end{equation}
-
-\end_inset
-
-Thus
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g},\qquad\forall\boldsymbol{g}\in H.
-\end{equation}
-
-\end_inset
-
-Despite the simplicity of the proof and the fact that there is a very general
- form of Stoke's theorem over smooth manifolds, this graphical version of
- Stokes' theorem has not been seen by the authors, and could potentially
- be leveraged for new graphical algorithms.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To gain intuition about 
-\begin_inset Formula $L^{+}$
-\end_inset
-
-, we turn back to the representation theorem, namely that 
-\begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
-.
- In the heat analogy, this could be interpreted as saying that the heat
- at each vertex can be expressed in terms of, or derived from, the flux
- through every vertex.
- So in this heat analogy, 
-\begin_inset Formula $\boldsymbol{L}$
-\end_inset
-
- sends a heat distribution 
-\begin_inset Formula $\boldsymbol{f}$
-\end_inset
-
- over each node to a flux through each vertex.
- Conversely, 
-\begin_inset Formula $\boldsymbol{L}_{i}^{+}$
-\end_inset
-
- sends some definition of fluxes over the graph back to some heat distribution
- that would have induced it.
- This relationship is shown in figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:3.1"
-
-\end_inset
-
-.
- 
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename 3-1.png
-	lyxscale 70
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Bidirectional Mapping Between Heat and Flux
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:3.1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Intuitively, if the graph is disconnected this distribution should not
- be unique, since a constant added to the distribution in each of the connected
- components will not affect the flux induced through the graph.
- Mathematically, this is affirmed by noting that
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{L}^{+}=\boldsymbol{L}^{-1}
-\end{equation}
-
-\end_inset
-
- if and only if all eigenvalues of L are non-zero which, is exactly when
- the graph is connected.
 \end_layout
 
 \begin_layout Subsection
