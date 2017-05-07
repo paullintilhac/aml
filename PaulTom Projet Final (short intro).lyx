@@ -2552,6 +2552,10 @@ key "HerbsterPontilWainer2005"
 \end_layout
 
 \begin_layout Subsection
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+Pseudo-Inverse of Graph Laplacian as the Reproducing Kernel of a Hilbert
+ Space
+=======
 Pseudo-Inverse of Graph Laplacian and Kernel of Hilbert
 \begin_inset CommandInset label
 LatexCommand label
@@ -2560,6 +2564,7 @@ name "subsec:3.1"
 \end_inset
 
 
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_layout
 
 \begin_layout Standard
@@ -2573,10 +2578,20 @@ As in the previous examples, we consider the set of real-valued functions
 \end_inset
 
 We define the function 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_inset Formula $\left\langle \cdot;\cdot\right\rangle $
 \end_inset
 
  as
+=======
+\begin_inset Formula $\left\langle \boldsymbol{},\,\boldsymbol{}\right\rangle $
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \begin_inset Formula 
 \begin{equation}
 \left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle =\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{g}.
@@ -2585,15 +2600,29 @@ We define the function
 \end_inset
 
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_inset Formula $\boldsymbol{L}$
 \end_inset
 
  is symmetric and positive semi-definite, which suggests that by appropriately
+=======
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+is symmetric and positive semi-definite, which suggests that by appropriately
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
  constraining our vector space containing containing 
 \begin_inset Formula $f$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 , we could ensure the strict positivity of 
+=======
+, we could ensure the strict positiveity of 
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
 \end_inset
 
@@ -2703,10 +2732,16 @@ As we can see, the sum vanishes if
 \end_inset
 
 .
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
+=======
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ 
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_layout
 
 \begin_layout Standard
 Now we can define the objective function 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_inset Formula 
 \begin{equation}
 \min_{f\in H}\left\{ \left\Vert \boldsymbol{f}\right\Vert \,:\,f_{i}=y_{i},\,i=1,\,\cdots,\,l\right\} .\label{eq:3.5}
@@ -2718,6 +2753,26 @@ Note that this is very similar to the objective function as that of section
  2, but our norm is being induced by a different inner product.
  Once 
 \begin_inset Formula $\boldsymbol{L}^{+}$
+=======
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\min_{f\in H}\{||f||:f_{i}=y_{i},i=1,...,l\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that this is very similar to the objective function as that of section
+ 2, but our norm is being induced by a different inner product.
+ Once 
+\begin_inset Formula $L^{+}$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
 has been computed, this formulation will allow us to solve a system of 
@@ -2729,6 +2784,11 @@ has been computed, this formulation will allow us to solve a system of
 \end_inset
 
  equations, as in the formulation of section 2.
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
+=======
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
  Since 
 \begin_inset Formula $H$
 \end_inset
@@ -2738,11 +2798,31 @@ has been computed, this formulation will allow us to solve a system of
 \begin_inset Formula $\boldsymbol{f}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  at any vertex, being a linear functional, can be represented as an inner
  product 
 \begin_inset Formula 
 \begin{equation}
 \boldsymbol{f}_{i}=\boldsymbol{f}\left(v_{i}\right)=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\boldsymbol{K}_{i}\boldsymbol{L}\boldsymbol{f}.
+=======
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ at any vertex, being a linear functional, can be represented as an inner
+ product 
+=======
+ at any vertex, 
+\begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)$
+\end_inset
+
+, being a linear functional 
+\begin_inset Formula $\left(\boldsymbol{f}+\boldsymbol{g}\right)\left(v_{i}\right)=\left(\boldsymbol{f}+\boldsymbol{g}\right)_{i}\left(v\right)=\boldsymbol{f}_{i}\left(v\right)+\boldsymbol{g}_{i}\left(v\right)=\boldsymbol{f}\left(v_{i}\right)+\boldsymbol{g}\left(v_{i}\right)$
+\end_inset
+
+, can be represented as an inner product 
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\begin_inset Formula 
+\begin{equation}
+f_{i}=f(v_{i})=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\boldsymbol{K}_{i}\boldsymbol{L}\boldsymbol{f}.
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end{equation}
 
 \end_inset
@@ -2758,7 +2838,11 @@ The pseudo-inverse
 , which can be verified by noting that 
 \begin_inset Formula 
 \begin{equation}
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \boldsymbol{e}_{i}^{T}\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}_{i}=\boldsymbol{f}_{i}.
+=======
+e_{i}^{T}\boldsymbol{\boldsymbol{L}^{+}}\boldsymbol{L}\boldsymbol{f}=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}=f_{i}
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end{equation}
 
 \end_inset
@@ -2767,7 +2851,11 @@ We call
 \begin_inset Formula $\boldsymbol{L}^{+}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  the reproducing kernel of the Hilbert space 
+=======
+ the reproducing kernel of the hilbert space
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \begin_inset Formula $H$
 \end_inset
 
@@ -2775,14 +2863,33 @@ We call
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 Now, we return to the optimization problem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:3.5"
+=======
+We can gain more intuition about this Hilbert Space by using the concept
+ of conductance (it is no coincidence that the continuous version of the
+ Laplacian appears in the heat equation).
+ If we think of f as some distribution over the nodes, we can think of 
+\begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
+\end_inset
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
+ roughly as the flux induced at each of the nodes by that distribution over
+ the graph.
+ Then the form 
+\begin_inset Formula $\boldsymbol{g}^{T}\boldsymbol{L}\boldsymbol{f}$
+\end_inset
+
+ represents some weighted measurement of this flux with the weights given
+ by 
+\begin_inset Formula $\boldsymbol{g}$
 \end_inset
 
 .
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  After discussing with the first author Mark Herbster, I found that in fact
  the formula given in that paper is slightly off.
  He claims that we can use the reproducing kernel property to express any
@@ -2808,9 +2915,37 @@ reference "eq:3.5"
 \begin_inset CommandInset citation
 LatexCommand citet
 key "HerbsterPontilWainer2005"
-
+=======
+ For example, if f is a binary vector representing the boundary of some
+ open set on the graph 
+\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
 \end_inset
 
+ would be the flux produced by 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ as measured on the boundary represented by 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+
+.
+ We can even use this formalism to quickly prove a version of Stokes' Theorem
+ on graphs (we know Stokes' Theorem holds on general smooth manifolds, so
+ this just a particularly simple proof of a special case).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $G\left(V,\,E,\,W\right)$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  does not give a proof for this in the paper (or any of his other papers,
  or for almost any of the other claims in the paper for that matter) we
  give our own derivation of the minimizer of 
@@ -2945,11 +3080,140 @@ and
  and 
 \begin_inset Formula $\boldsymbol{K}^{2}$
 \end_inset
+=======
+ be a graph imbued with the topology generated by the open neighbourhoods
+ 
+\begin_inset Formula $N_{i}=\left\{ v_{j}\,:\,\left(i,\,j\right)\in E\right\} $
+\end_inset
+
+.
+ Suppose we have some subset 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+ of vertices set 
+\begin_inset Formula $V\left(G\right)$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $U\left(G\right)\subset V\left(G\right)$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+.
+ Then we can define the boundary of 
+\begin_inset Formula $U\left(G\right)$
+=======
+ is defined by 
+\begin_inset Formula 
+\begin{equation}
+P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.7}
+\end{equation}
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+ as the set of all vertices contained in the closure of 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+ but not contained in 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+ itself 
+\begin_inset Formula $\partial U\left(G\right)=\left\{ v_{j}\,:\,v_{j}\in\bar{U}\left(G\right)-U\left(G\right)\right\} $
+\end_inset
+
+.
+ Now suppose our vertices 
+\begin_inset Formula $V\left(G\right)$
+\end_inset
+
+ are ordered such that 
+\begin_inset Formula $v_{1},\,\cdots,\,v_{k}\in U\left(G\right)$
+\end_inset
+
+, 
+\begin_inset Formula $v_{k+1},\,\cdots,\,v_{l}\in\partial U\left(G\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $v_{l+1},\,\cdots,\,v_{n}\in V\left(G\right)-\bar{U}\left(G\right)$
+\end_inset
+
+.
+ Now let 
+\begin_inset Formula $\boldsymbol{1}_{U}$
+\end_inset
+
+ be a binary vector with all 
+\begin_inset Formula $1$
+\end_inset
+
+ for the first 
+\begin_inset Formula $k$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ entries, and 
+\begin_inset Formula $0$
+=======
+Therefore by the Pythagorean Theorem, we have 
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}.
+\end{equation}
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+ elsewhere, and let 
+\begin_inset Formula $\boldsymbol{1}_{\partial U}$
+\end_inset
+
+ be the binary vector with all 
+\begin_inset Formula $1$
+\end_inset
+
+ for entries 
+\begin_inset Formula $k+1$
+\end_inset
+
+ through 
+\begin_inset Formula $l$
+\end_inset
+
+, and 
+\begin_inset Formula $0$
+\end_inset
+
+ elsewhere.
+ Then according to the above interpretation of the norm, 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{U}\coloneqq\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}
+\end{equation}
+
+\end_inset
+
+ is the total flux induced by distribution g over the interior of 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+, while
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{\partial U}\coloneqq\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}
+\end{equation}
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
  are the reproducing kernels of 
 \begin_inset Formula $H_{1}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 and 
 \begin_inset Formula $H_{2}$
 \end_inset
@@ -2962,6 +3226,23 @@ Since the columns of
 \series bold
 
 \begin_inset Formula $\boldsymbol{K}^{1}$
+=======
+is the total flux induced by 
+\begin_inset Formula $\boldsymbol{g}$
+\end_inset
+
+ as measured over the boundary of 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+.
+ Our claim is that 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{U}=-\boldsymbol{F}_{\partial U}.\label{eq:3.9}
+\end{equation}
+
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
  
@@ -2974,9 +3255,27 @@ and
 \begin_inset Formula $H_{1}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  and 
 \begin_inset Formula $H_{2}$
 \end_inset
+=======
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Plain Layout
+We now give an informal proof.
+ Let us denote by 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+ the degree of vertex 
+\begin_inset Formula $i$
+=======
+\begin_layout Standard
+Based on theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:3.1"
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
  respectively, it follows that we can express any 
 \begin_inset Formula $\boldsymbol{f}$
@@ -2986,6 +3285,7 @@ and
 \begin_inset Formula $\boldsymbol{f}=\sum_{i=1}^{l}\boldsymbol{c}_{j}\boldsymbol{K}_{j}^{1}+\sum_{i=l+1}^{n}\boldsymbol{d}_{j}\boldsymbol{K}_{j}^{2}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 .
  Note that the vectors 
 \begin_inset Formula $\boldsymbol{K}_{j}^{2}$
@@ -3001,11 +3301,29 @@ and
 
 , we have 
 \begin_inset Formula $\boldsymbol{f}_{i}=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\left\langle \boldsymbol{K}_{i},\,\sum_{i=1}^{l}\boldsymbol{c}_{j}\boldsymbol{K}_{j}^{1}+\sum_{i=l+1}^{n}\boldsymbol{d}_{j}\boldsymbol{K}_{j}^{2}\right\rangle =\left\langle \boldsymbol{K}_{i},\,\sum_{i=1}^{l}\boldsymbol{c}_{j}\boldsymbol{K}_{j}^{1}\right\rangle $
+=======
+ be an example set, let 
+\begin_inset Formula $\mathcal{D}_{t}$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
+, 
+\begin_inset Formula $d_{i}^{int}$
+\end_inset
+
+ by the number of edges connecting vertex 
+\begin_inset Formula $i$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ to points in 
+\begin_inset Formula $U\left(G\right)$
+=======
 .
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_layout Standard
 It follows that for all 
 \begin_inset Formula $1\leq i\leq l$
@@ -3023,9 +3341,37 @@ It follows that for all
 \begin_inset CommandInset citation
 LatexCommand citet
 key "HerbsterPontilWainer2005"
-
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
+, and 
+\begin_inset Formula $d_{i}^{ext}$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ by the number of edges connecting vertex 
+\begin_inset Formula $i$
+\end_inset
+=======
+ is updated by the projection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.7"
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
+
+ to points not in 
+\begin_inset Formula $U\left(G\right)$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\begin{equation}
+d_{i}=d_{i}^{int}+d_{i}^{ext}.
+\end{equation}
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  for 
 \begin_inset Formula $1\leq i\leq l.$
 \end_inset
@@ -3034,9 +3380,19 @@ key "HerbsterPontilWainer2005"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:3.5"
-
+=======
 \end_inset
 
+In particular, for any 
+\begin_inset Formula $v_{i}\in U$
+\end_inset
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
+
+, 
+\begin_inset Formula $d_{i}^{ext}$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 , we only need to represent the first 
 \begin_inset Formula $l$
 \end_inset
@@ -3082,11 +3438,72 @@ reference "eq:3.5"
 \end{aligned}
 \end{equation}
 
+=======
+ is the number of edges connecting 
+\begin_inset Formula $v_{i}$
 \end_inset
 
+ to points in 
+\begin_inset Formula $\partial U\left(G\right)$
+\end_inset
 
-\end_layout
+, since by definition all other vertices are not connected to 
+\begin_inset Formula $v_{i}$
+\end_inset
 
+.
+ Then for the left hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.9"
+
+\end_inset
+
+, note that the only contribution to the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ entry is given by the first 
+\begin_inset Formula $k$
+\end_inset
+
+ columns of 
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+, and a straightforward calculation shows that 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in U}(d_{i}-d_{i}^{int})=\sum_{i\in U}d^{ext}.
+\end{equation}
+
+\end_inset
+
+For the right hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.9"
+
+\end_inset
+
+, we can see that the only contribution to the sum is from entries 
+\begin_inset Formula $k+1$
+\end_inset
+
+ to 
+\begin_inset Formula $l$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
+\end_inset
+
+, which another straightforward calculation shows that
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in\partial U}d_{i}^{ext}.
+\end{equation}
+
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_layout Standard
 where 
 \begin_inset Formula $\tilde{\boldsymbol{K}}$
@@ -3094,6 +3511,14 @@ where
 
  is the upper left block of 
 \begin_inset Formula $\boldsymbol{K}^{1}$
+=======
+Thus
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g},\qquad\forall\boldsymbol{g}\in H.
+\end{equation}
+
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
  of dimension 
@@ -3105,6 +3530,7 @@ where
 \begin_inset Formula $\boldsymbol{c}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 , we have 
 \begin_inset Formula $\left(\boldsymbol{K}^{1}\right)^{T}\boldsymbol{L}\boldsymbol{K}^{1}\boldsymbol{c}=\tilde{\boldsymbol{K}}\boldsymbol{c}=\lambda\boldsymbol{1^{T}}\tilde{\boldsymbol{K}}.$
 \end_inset
@@ -3145,6 +3571,79 @@ key "HerbsterPontilWainer2005"
 \[
 \boldsymbol{f}=\boldsymbol{K}^{1}\boldsymbol{c}=\boldsymbol{K}^{1}(\tilde{\boldsymbol{K}})^{-1}\boldsymbol{y}.
 \]
+=======
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To gain intuition about 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+, we turn back to the representation theorem, namely that 
+\begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)=\boldsymbol{L}_{i}^{+}\boldsymbol{L}\boldsymbol{f}$
+\end_inset
+
+.
+ In the heat analogy, this could be interpreted as saying that the heat
+ at each vertex can be expressed in terms of, or derived from, the flux
+ through every vertex.
+ So in this heat analogy, 
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+ sends a heat distribution 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+
+ over each node to a flux through each vertex.
+ Conversely, 
+\begin_inset Formula $\boldsymbol{L}_{i}^{+}$
+\end_inset
+
+ sends some definition of fluxes over the graph back to some heat distribution
+ that would have induced it.
+ This relationship is shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3.1"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 3-1.png
+	lyxscale 70
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bidirectional Mapping Between Heat and Flux
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3.1"
+
+\begin_layout Plain Layout
+
+\end_layout
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 \end_inset
 
@@ -3160,6 +3659,7 @@ We can get more intuition about the basic objects such as
 \begin_inset Formula $\boldsymbol{L}^{+}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  by using the concept of conductance (it is no coincidence that the continuous
  version of the Laplacian appears in the heat equation).
  If we think of f as some distribution over the nodes, we can think of 
@@ -3242,6 +3742,102 @@ Let
  Now suppose our vertices 
 \begin_inset Formula $V\left(G\right)$
 \end_inset
+=======
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\end_layout
+=======
+, then 
+\begin_inset Formula 
+\begin{equation}
+P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}\label{eq:3.11}
+\end{equation}
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+
+\end_inset
+
+ Intuitively, if the graph is disconnected this distribution should not
+ be unique, since a constant added to the distribution in each of the connected
+ components will not affect the flux induced through the graph.
+ Mathematically, this is affirmed by noting that
+\begin_inset Formula 
+\begin{equation}
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\boldsymbol{L}^{+}=\boldsymbol{L}^{-1}
+=======
+P\left(\left\{ \boldsymbol{u}:\,y\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle \geq1\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{y\max\left(0,\,1-y\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}\label{eq:3.12}
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end{equation}
+
+\end_inset
+
+ if and only if all eigenvalues of L are non-zero which, is exactly when
+ the graph is connected.
+\end_layout
+
+\begin_layout Subsection
+Online Projections over Graphs
+\end_layout
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Standard
+With that in mind, we can introduce the mathematical framework for the online
+ projection algorithm of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "HerbsterPontilWainer2005"
+
+\end_inset
+
+.
+ Herbster seeks to minimize the number of mistakes (cumulative error) on
+ the sequence of pattern-label pairs over a series of trials.
+ The key tool for this algorithm is projection, which is defined by definition
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:3.1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:3.1"
+
+\end_inset
+
+The projection of a point 
+\begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
+\end_inset
+
+, which is a Hilbert space with inner product 
+\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
+\end_inset
+
+ and norm 
+\begin_inset Formula $\left\Vert \cdot\right\Vert =\sqrt{\left\langle \cdot,\cdot\right\rangle }$
+\end_inset
+
+, onto a closed convex non-empty set 
+\begin_inset Formula $\mathcal{N}\subseteq\mathcal{H}$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\begin{equation}
+P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.15}
+\end{equation}
+
+=======
+\begin_layout Proof
+We give a proof of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.11"
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
  are ordered such that 
 \begin_inset Formula $v_{1},\,\cdots,\,v_{k}\in U\left(G\right)$
@@ -3284,8 +3880,14 @@ Let
 \begin_inset Formula $k+1$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  through 
 \begin_inset Formula $l$
+=======
+, 
+\begin_inset Formula $\boldsymbol{v}^{*}=\text{Proj}\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;\,\boldsymbol{v}\left(\boldsymbol{w}\right)\right)$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
 , and 
@@ -3299,6 +3901,11 @@ Let
 \boldsymbol{F}_{U}\coloneqq\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}
 \end{equation}
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Standard
+\begin_inset Separator plain
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
  is the total flux induced by distribution g over the interior of 
@@ -3317,6 +3924,7 @@ is the total flux induced by
 \begin_inset Formula $\boldsymbol{g}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  as measured over the boundary of 
 \begin_inset Formula $U\left(G\right)$
 \end_inset
@@ -3346,19 +3954,151 @@ We now give an informal proof.
 , 
 \begin_inset Formula $d_{i}^{int}$
 \end_inset
+=======
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Standard
+From the definition, we can see that 
+\begin_inset Formula $\boldsymbol{u}$
+=======
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+ any point in 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ that is closest to 
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+.
+ If we assume 
+\begin_inset Formula $\boldsymbol{u}^{*}=P\left(\mathcal{N};\,\boldsymbol{w}\right)=\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert $
+\end_inset
+
+, then the solution is characterized by an orthogonality condition: 
+\begin_inset Formula $\boldsymbol{u}^{*}$
+\end_inset
+
+ is the solution if and only if 
+\begin_inset Formula 
+\begin{equation}
+\left\langle \boldsymbol{w}-\boldsymbol{u}^{*},\,\boldsymbol{u}-\boldsymbol{u}^{*}\right\rangle =0.
+\end{equation}
+
+\end_inset
+
+Therefore by the Pythagorean Theorem, we have 
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}\ge\min_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert =\left\Vert \boldsymbol{u^{*}}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}.
+\end{equation}
+
+\end_inset
+
+Hence we have the following theorem.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:3.1"
+
+\end_inset
+
+If 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ is a closed convex subset of 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, then, for every 
+\begin_inset Formula $\boldsymbol{u}\in\mathcal{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+, we have that
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}\geq\left\Vert \boldsymbol{u}-P\left(\mathcal{N};\,\boldsymbol{w}\right)\right\Vert ^{2}+\left\Vert P\left(\mathcal{N};\,\boldsymbol{w}\right)-\boldsymbol{w}\right\Vert ^{2}.
+\end{equation}
+
+\end_inset
+
+In particular, if 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ is an affine set the equality holds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our learning scenario consists of a set of an example set 
+\begin_inset Formula $\mathcal{D}=\left\{ \left(x_{i,}\,y_{i}\right)\right\} _{t=1}^{l}\subseteq\mathcal{X}\times\left\{ -1,\,+1\right\} $
+\end_inset
+
+ .
+ let 
+\begin_inset Formula $\mathcal{D}_{t}$
+\end_inset
+
+denote the first 
+\begin_inset Formula $t$
+\end_inset
+
+ examples of 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+.
+ We consider an online learning algorithm (algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.4"
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
  by the number of edges connecting vertex 
 \begin_inset Formula $i$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  to points in 
 \begin_inset Formula $U\left(G\right)$
 \end_inset
+=======
+) such that at each iteration, 
+\begin_inset Formula $\boldsymbol{w}_{t}$
+\end_inset
+
+ is updated by the projection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.15"
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 , and 
 \begin_inset Formula $d_{i}^{ext}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  by the number of edges connecting vertex 
 \begin_inset Formula $i$
 \end_inset
@@ -3389,6 +4129,58 @@ In particular, for any
 
  to points in 
 \begin_inset Formula $\partial U\left(G\right)$
+=======
+, then it is convergent.
+ Because on any trial 
+\begin_inset Formula $t=1,\,2,\,\cdots,\,l$
+\end_inset
+
+, the theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:3.1"
+
+\end_inset
+
+ implies, for all 
+\begin_inset Formula $\boldsymbol{u}\in\mathcal{U}$
+\end_inset
+
+, that 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}\geq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t+1}\right\Vert ^{2}+\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}$
+\end_inset
+
+, which is 
+\begin_inset Formula $\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}+\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t+1}\right\Vert ^{2}$
+\end_inset
+
+.
+ Therefore, by summing it from 
+\begin_inset Formula $t=1$
+\end_inset
+
+ to 
+\begin_inset Formula $t=l$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathcal{U}_{t}\in\mathcal{H}$
+\end_inset
+
+, and 
+\begin_inset Formula $\boldsymbol{u}\in\cap_{t=1}^{l}\mathcal{U}_{t}$
+\end_inset
+
+.
+=======
+.
+ This in turn determines the 
+\begin_inset Formula $\boldsymbol{noncyclic}$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
 , since by definition all other vertices are not connected to 
@@ -3454,11 +4246,17 @@ Thus
 
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 Despite the simplicity of the proof and the fact that there is a very general
  form of Stoke's theorem over smooth manifolds, this graphical version of
  Stokes' theorem has not been seen by the authors, and could potentially
  be leveraged for new graphical algorithms.
  
+=======
+ controls whether an update is made on every trial (aggressive) or only
+ on those trials when a mistake occurs (non-aggressive).
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_layout
 
 \begin_layout Standard
@@ -3504,25 +4302,83 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \align center
 \begin_inset Graphics
 	filename 3-1.png
 	lyxscale 70
 	scale 60
+=======
 
+\series bold
+Input
+\series default
+: A sequence of closed convex sets 
+\begin_inset Formula $\left\{ \mathcal{U}_{t}\right\} _{t=1}^{l}\subset\mathcal{H}$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Initialization
+\series default
+: 
+\begin_inset Formula $\boldsymbol{w}_{1}\in\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+for
+\series default
+ 
+\begin_inset Formula $t=1,\,2,\,\cdots,\,l$
+\end_inset
+
+ 
+\series bold
+do
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
+
+
+\begin_inset Formula $\boldsymbol{w}_{t+1}=P\left(\mathcal{U}_{t};\,\boldsymbol{w}_{t}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+end
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 Bidirectional Mapping Between Heat and Flux
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:3.1"
+=======
+Prototypical Projection Algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:3.4"
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 \end_inset
 
@@ -3536,6 +4392,7 @@ name "fig:3.1"
 
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  Intuitively, if the graph is disconnected this distribution should not
  be unique, since a constant added to the distribution in each of the connected
  components will not affect the flux induced through the graph.
@@ -3588,11 +4445,41 @@ name "def:3.1"
 The projection of a point 
 \begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
 \end_inset
+=======
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:3.1"
+
+\end_inset
+
+If 
+\begin_inset Formula $\left(x,\,y\right)\in\mathcal{H}\times\left\{ -1,\,+1\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\begin{equation}
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
+=======
+\left|M\right|\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}B\label{eq:3.15}
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end{equation}
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 , which is a Hilbert space with inner product 
 \begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  and norm 
 \begin_inset Formula $\left\Vert \cdot\right\Vert =\sqrt{\left\langle \cdot,\cdot\right\rangle }$
 \end_inset
@@ -3605,6 +4492,12 @@ The projection of a point
 \begin_inset Formula 
 \begin{equation}
 P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.7}
+=======
+
+\begin_inset Formula 
+\begin{equation}
+P\left(\left\{ \boldsymbol{u}:\,y\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle \geq1\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{y\max\left(0,\,1-y\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end{equation}
 
 \end_inset
@@ -3620,6 +4513,7 @@ P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\ma
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 From the definition, we can see that 
 \begin_inset Formula $\boldsymbol{u}$
 \end_inset
@@ -3694,6 +4588,79 @@ If
 
 In particular, if 
 \begin_inset Formula $\mathcal{N}$
+=======
+Proof:
+\end_layout
+
+\begin_layout Standard
+We give a proof of (3.11), which is almost exactly the same as the proof
+ of (3.12).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} =\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u-\frac{xy}{||x||^{2}}},\,\boldsymbol{x}\right\rangle =0\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now let 
+\begin_inset Formula $v(\boldsymbol{u})=\boldsymbol{u-\frac{xy}{||x||^{2}}}$
+\end_inset
+
+.
+ Then we can find 
+\begin_inset Formula $P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)$
+\end_inset
+
+ by first finding 
+\begin_inset Formula $v^{*}=Proj(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;v(\boldsymbol{w}))$
+\end_inset
+
+ and then taking 
+\begin_inset Formula $w^{*}=v^{-1}(v^{*}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v^{*}=Proj(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;v(\boldsymbol{w}))=v(\boldsymbol{w})-Proj_{x}(v(\boldsymbol{w}))=v(\boldsymbol{w})-\boldsymbol{\frac{\left\langle \boldsymbol{v(w)},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x=v(\boldsymbol{w})+\boldsymbol{\frac{\left\langle \boldsymbol{w-\frac{xy}{||x||^{2}}},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x=v(\boldsymbol{w})+\boldsymbol{\frac{y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x}}}$
+\end_inset
+
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\end_layout
+
+\begin_layout Standard
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{w}^{*}=\boldsymbol{w+}\frac{y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Based on the prototypical projection algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.4"
+
+\end_inset
+
+ and lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:3.1"
+=======
+, which gives us 
+\begin_inset Formula $\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)B$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
  is an affine set the equality holds.
@@ -3710,6 +4677,7 @@ In particular, if
 Based on theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 reference "thm:3.1"
 
 \end_inset
@@ -3717,6 +4685,10 @@ reference "thm:3.1"
 , and we let 
 \begin_inset Formula $\mathcal{D}=\left\{ \left(x_{i,}\,y_{i}\right)\right\} _{t=1}^{l}\subseteq\mathcal{X}\times\left\{ -1,\,+1\right\} $
 \end_inset
+=======
+reference "eq:3.15"
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
  be an example set, let 
 \begin_inset Formula $\mathcal{D}_{t}$
@@ -3730,6 +4702,7 @@ denote the first
 \begin_inset Formula $\mathcal{D}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 .
  if we consider an online learning algorithm (algorithm 
 \begin_inset CommandInset ref
@@ -3743,18 +4716,50 @@ reference "alg:3.4"
 \end_inset
 
  is updated by the projection 
+=======
+, the main algorithm of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "HerbsterPontilWainer2005"
+
+\end_inset
+
+ is given in algorithm 
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:3.7"
 
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 , then it is convergent.
  Because on any trial 
 \begin_inset Formula $t=1,\,2,\,\cdots,\,l$
 \end_inset
 
 , the theorem 
+=======
+.
+ In the algorithm, 
+\begin_inset Formula $M$
+\end_inset
+
+ is the set of trials in which the algorithm predicts incorrectly, 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+ is the index set, which is determines by the 
+\begin_inset Formula $\boldsymbol{strategy}$
+\end_inset
+
+ function on trial 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ While the full specification in 
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:3.1"
@@ -3773,6 +4778,28 @@ reference "thm:3.1"
 \begin_inset Formula $\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}+\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t+1}\right\Vert ^{2}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ allows for a function 
+\begin_inset Quotes eld
+\end_inset
+
+strategy
+\begin_inset Quotes erd
+\end_inset
+
+ to determine 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+, in this paper we will assume that
+\begin_inset Formula $U_{t}=\{1,...,l\}$
+\end_inset
+
+, i.e.
+ the set of labeled vertices.
+ The author introduces two strategies: one called 
+\begin_inset Quotes eld
+=======
 .
  Therefore, by summing it from 
 \begin_inset Formula $t=1$
@@ -3893,6 +4920,7 @@ name "lem:3.1"
 
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 If 
 \begin_inset Formula $\left(x,\,y\right)\in\mathcal{H}\times\left\{ -1,\,+1\right\} $
 \end_inset
@@ -3918,6 +4946,101 @@ P\left(\left\{ \boldsymbol{u}:\,y\left\langle \boldsymbol{u},\,\boldsymbol{x}\ri
 \end_inset
 
 
+=======
+ row of 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+non-cyclic
+\begin_inset Quotes erd
+\end_inset
+
+ and the other called 
+\begin_inset Quotes eld
+\end_inset
+
+cyclic
+\begin_inset Quotes erd
+\end_inset
+
+.
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ The boolean 
+\begin_inset Formula $\boldsymbol{aggressive}$
+\end_inset
+
+ controls whether an update is made on every trial (aggressive) or only
+ on those trials when a mistake occurs (non-aggressive).
+\end_layout
+
+\begin_layout Standard
+The non-cyclic strategy projects the current hypothesis 
+\begin_inset Formula $\boldsymbol{w}_{t}$
+\end_inset
+
+ to a single affine set 
+\begin_inset Formula $af\left(U_{t}\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle =y_{i}\right\} $
+\end_inset
+
+ .
+ This ensures that all labeled points are accrately predicted.
+ In contrast, the cyclic strategy repeatedly projects 
+\series bold
+
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+
+\series default
+ onto the sequence of half-spaces 
+\begin_inset Formula $\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{t}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{t}\right\rangle \geq1,\right\} $
+\end_inset
+
+ for each 
+\begin_inset Formula $t\in M$
+\end_inset
+
+.
+ Note that the strategy continues to loop through the mislabeled vertices
+ until they are all predicting correctly.
+ The terminal condition of this algorithm is ensured by the fact that a
+ sequence of projections between closed convex sets converges to a point
+ in their intersection.
+ In other words, we can be sure that after completing the while loop, 
+\begin_inset Formula $w_{t+1}\in hs\left(U_{t}\right)\coloneqq\cap_{i\in U_{t}}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
+\end_inset
+
+.
+ The reason for this alternative projection algorithm is that it is more
+ efficient: rather than having to perfom t projections on each trial, we
+ only need to perform 
+\begin_inset Formula $|M|$
+\end_inset
+
+ projections.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align left
+
+\series bold
+\begin_inset Graphics
+	filename Algorithm 3.5.png
+	lyxscale 70
+	scale 60
+
+=======
+ In the following analysis, we will derive upper bounds for each of these
+ terms using the properties of our graph, and of the labellings given to
+ us.
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_layout
 
 \begin_layout Proof
@@ -3974,6 +5097,7 @@ onto
 \begin_inset Formula $\boldsymbol{w}^{*}=\boldsymbol{v}^{-1}\left(\boldsymbol{v}^{*}\right)$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 .
 \begin_inset Formula 
 \begin{equation}
@@ -3993,15 +5117,38 @@ Thus
 \boldsymbol{w}^{*}=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
 \end{equation}
 
+=======
+ We claim that 
+\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}\leq\partial(\boldsymbol{g}^{+},\,\boldsymbol{g}^{-})(1+\frac{n_{+}}{n_{-}})^{2}$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
 
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_layout Standard
 \begin_inset Separator plain
+=======
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+=======
+\begin_layout Proof
+To show this, we consider the vector 
+\begin_inset Formula $\boldsymbol{f}$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
+\begin_layout Plain Layout
+Online Projection Algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:3.5"
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 
 \end_layout
 
@@ -4028,15 +5175,69 @@ key "HerbsterPontilWainer2005"
 \end_inset
 
  is given in algorithm 
+=======
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:3.2"
+
+\end_inset
+
+If 
+\begin_inset Formula $\left\{ \left(\boldsymbol{x}_{i},\,y_{i}\right)\right\} _{i=1}^{l}\subseteq\mathcal{H}\times\left\{ -1,\,+1\right\} $
+\end_inset
+
+ is a sequence of examples, 
+\begin_inset Formula $\boldsymbol{w}_{1}\in\mathcal{H}$
+\end_inset
+
+ a start vector and 
+\begin_inset Formula $M$
+\end_inset
+
+ the set of trials in which Algorithm 
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:3.5"
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \end_inset
 
 .
  In the algorithm, 
 \begin_inset Formula $M$
+=======
+\end_inset
+
+ predicted incorrectly, then the cumulative number of mistakes 
+\begin_inset Formula $\left|M\right|$
+\end_inset
+
+ of the algorithm is bounded by
+\begin_inset Formula 
+\begin{equation}
+\left|M\right|\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}B\label{eq:3.21}
+=======
+ Now suppose we order our vertices so that the first 
+\begin_inset Formula $n^{+}$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
  is the set of trials in which the algorithm predicts incorrectly, 
@@ -4093,6 +5294,7 @@ reference "alg:3.5"
 \end_inset
 
 .
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  The cyclic strategy projects on a sequence of half-spaces 
 \begin_inset Formula $hs\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
 \end_inset
@@ -4109,6 +5311,10 @@ reference "alg:3.5"
  controls whether an update is made on every trial (aggressive) or only
  on those trials when a mistake occurs (non-aggressive).
 \end_layout
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end{equation}
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 \begin_layout Standard
 \begin_inset Float algorithm
@@ -4116,8 +5322,26 @@ wide false
 sideways false
 status open
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_layout Plain Layout
 \align left
+=======
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+for all 
+\begin_inset Formula $\boldsymbol{u}\in hs\left(\left\{ 1,\,\cdots,\,l\right\} \right)$
+\end_inset
+
+ with cyclic updating and for all 
+\begin_inset Formula $\boldsymbol{u}\in af\left(\left\{ 1,\,\cdots,\,l\right\} \right)$
+\end_inset
+
+ with non-cyclic updating, where
+\begin_inset Formula 
+\begin{equation}
+B=\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
+\end{equation}
+=======
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 \series bold
 \begin_inset Graphics
@@ -4141,6 +5365,7 @@ name "alg:3.5"
 
 \end_inset
 
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
 \end_layout
 
@@ -4149,6 +5374,7 @@ name "alg:3.5"
 
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \end_inset
 
 
@@ -4315,6 +5541,201 @@ reference "alg:3.5"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:3.5"
+=======
+\begin_layout Standard
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_inset Separator plain
+\end_inset
+
+
+=======
+Finally, combined with the bound on the power mean of the input patterns
+ in terms of the graph diameter, we achieve a bound on the number of mistakes.
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_layout
+
+\begin_layout Standard
+Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:3.2"
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+=======
+ reoresents a real-valued function on our Hilbert space.
+ But in the graph setting, this Hilbert space and its reproducing kernel
+ 
+\begin_inset Formula $\boldsymbol{L}^{+}$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+ bounds the number of mistakes as proportional to the squared norm (“complexity”
+) of the predictor 
+\begin_inset Formula $\boldsymbol{u}$
+\end_inset
+
+.
+ We can sketch the proof.
+ For instance, let us consider the non-cyclic case.
+ On each trial t there is a projection to a single affine set 
+\begin_inset Formula $\mathcal{U}_{t}=af\left(U_{t}\right)$
+\end_inset
+
+.
+ Since we showed that for all 
+\begin_inset Formula $\boldsymbol{u}\in af\left(\left\{ 1,\,\cdots,\,l\right\} \right)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+.
+ If a mistake has occurred at trial 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $y_{y}=\left\langle \boldsymbol{w}_{t+1},\,\boldsymbol{x}_{t}\right\rangle $
+\end_inset
+
+, then 
+\begin_inset Formula $1\leq\left|\left\langle \boldsymbol{w}_{t},\,\boldsymbol{x}_{t}\right\rangle -y_{t}\right|\leq\left|\left\langle \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1},\,\boldsymbol{x}_{t}\right\rangle -y_{t}\right|\leq\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert \left\Vert \boldsymbol{x}_{t}\right\Vert $
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $1\leq\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert \left\Vert \boldsymbol{x}_{t}\right\Vert $
+\end_inset
+
+, which implies 
+\begin_inset Formula $\left\Vert \boldsymbol{x}_{t}\right\Vert ^{-1}\leq\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert $
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\sum_{t\in M}\left\Vert \boldsymbol{x}_{t}\right\Vert ^{-2}\leq\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t}-\boldsymbol{w}_{t+1}\right\Vert ^{2}$
+\end_inset
+
+.
+ Combining them, we have 
+\begin_inset Formula $\sum_{t\in M}\left\Vert \boldsymbol{x}_{t}\right\Vert ^{-2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}+\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+, which gives us 
+\end_layout
+
+\begin_layout Standard
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_inset Formula 
+\[
+\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
+\]
+
+=======
+Let 
+\begin_inset Formula $G\left(V,\,E,\,W\right)$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}>0$
+\end_inset
+
+ we can neglect the second term, yielding the formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.21"
+
+\end_inset
+
+.
+ The argument for the cyclic case follows the above argument except that
+ the left hand side of the analogous inequality to 
+\begin_inset Formula $\sum_{t=1}^{l}\left\Vert \boldsymbol{w}_{t+1}-\boldsymbol{w}_{t}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+ contains sub-terms due to repeatedly cycling through the past examples,
+ which is line 2 in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
+\end_inset
+
+.
+ These terms may all be lower-bounded by zero except the term corresponding
+ to the first projection, which is line 1 in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.5"
+
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $af\left(U\right)\in hs\left(U\right)$
+\end_inset
+
+, which implies that the bound is tighter using the non-cyclic strategy.
+\end_layout
+
+\begin_layout Subsection
+Online learning over graphs
+\end_layout
+
+\begin_layout Standard
+As shown in section 3.1, the reproducing kernel of the Hilbert space defined
+ over the graph is given by the pseudoinverse of the Laplacian matrix, 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+\end_inset
+
+ Ths suggests that we can apply the above projection algorithm, with its
+ associated guarantees, by letting the input vector 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+be replaced by the t-th row of 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+\end_inset
+
+ We saw in the previous section that the number of cumulative mistakes is
+ upper bounded by the product of two terms: one involving 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}$
+\end_inset
+
+, and the other involving the harmonic mean of the input patterns that were
+ misclassified.
+ Since the initial weight vector 
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+ is arbitrary, we will consider the first term to be bounded more generally
+ by 
+\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert ^{2}$
+\end_inset
+
+.
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+ In the following analysis, we will derive upper bounds for each of these
+ terms using the properties of our graph, and of the labelings given to
+ us.
+\end_layout
+
+\begin_layout Standard
+Claim:
+\end_layout
+=======
+ Our claim is that 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{U}=-\boldsymbol{F}_{\partial U}.\label{eq:3.21}
+\end{equation}
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 \end_inset
 
@@ -4343,7 +5764,9 @@ reference "subsec:3.1"
  associated guarantees, by letting the input vector 
 \begin_inset Formula $x_{t}$
 \end_inset
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 be replaced by the 
 \begin_inset Formula $t^{th}$
 \end_inset
@@ -4451,10 +5874,122 @@ To show this, we consider the vector
 n edges.
  We will denote this sum by S, as opposed to the sub-matrix 
 \series bold
+=======
+\begin_layout Standard
+Let 
+\begin_inset Formula $g^{+}$
+\end_inset
+
+ be the positively labeled vertices, and let 
+\begin_inset Formula $g^{-}$
+\end_inset
+
+be the negatively labeled vertices.
+ Let 
+\begin_inset Formula $|g|^{+}=n^{+},|g^{-}|=n^{-},$
+\end_inset
+
+ and assume WLOG that 
+\begin_inset Formula $n^{+}>=n^{-}.$
+\end_inset
+
+ then there exists a 
+\begin_inset Formula $u\in af(U_{t})$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $||u||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proof.
+ To show this, we consider the vector 
+\begin_inset Formula $f$
+\end_inset
+
+, with 
+\begin_inset Formula $f_{i}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=1$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+, and 
+\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
+=======
+.
+ Then for the left hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.21"
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+ if 
+\begin_inset Formula $g_{i}=-1.$
+\end_inset
+
+Now suppose we order our vertices so that the first 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+vertices are those in 
+\begin_inset Formula $g^{+},$
+\end_inset
+
+ while the last 
+\begin_inset Formula $n_{-}$
+\end_inset
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+vertices are those in 
+\begin_inset Formula $g^{-}.$
+=======
+For the right hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.21"
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+ Now consider the Laplacian 
+\begin_inset Formula $L$
+\end_inset
+
+ of this matrix with the vertices ordered in such a way.
+ We are interested in the sums of the entries in the off-diagonal blocks,
+ the sums of whose entries are each the negative of the number of intra-partitio
+n edges.
+ We will denote this sum by S, as opposed to the sub-matrix 
+\series bold
+S.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}L & =\left[\begin{array}{cc}
+\boldsymbol{A} & -\boldsymbol{S}\\
+\boldsymbol{-S}^{T} & \boldsymbol{B}
+\end{array}\right]\end{aligned}
+,
+\end{equation}
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 
 \begin_inset Formula $\boldsymbol{S}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 .
 \begin_inset Formula 
 \begin{equation}
@@ -4469,10 +6004,18 @@ n edges.
 
 
 \series default
+=======
+
+\end_layout
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Standard
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 Note that the sum of entries in the left partition of the matrix for any
  given row is always the negative of the sum to the right of the partition.
  Using this and the fact that the sum of entries in both 
 \series bold
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 
 \begin_inset Formula $\boldsymbol{S}$
 \end_inset
@@ -4493,21 +6036,46 @@ Note that the sum of entries in the left partition of the matrix for any
 \left\Vert \boldsymbol{f}\right\Vert ^{2}=\left\langle \boldsymbol{f},\,\boldsymbol{f}\right\rangle =\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{f}=\left(1+\frac{n^{+}}{n^{-}}\right)^{2}\boldsymbol{S}
 \end{equation}
 
+=======
+S
+\series default
+ and 
+\begin_inset Formula $\boldsymbol{\boldsymbol{S}^{T}}$
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
-
+ are both equal to S, we find after some algebra that
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 \begin_layout Standard
 \begin_inset Separator plain
+=======
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
+\]
+
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
 Finally, combined with the bound on the power mean of the input patterns
  in terms of the graph diameter, we achieve a bound on the number of mistakes.
+=======
+Thus we have that 
+\end_layout
+
+\begin_layout Standard
+Finally, we wish to bound the (-1)-power mean 
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
 \end_layout
 
 \begin_layout Standard
@@ -4515,7 +6083,11 @@ As before, our weight vector
 \begin_inset Formula $\boldsymbol{g}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx
  reoresents a real-valued function on our Hilbert space.
+=======
+ represents a real-valued function on our hilbert space.
+>>>>>>> 61c770701ca2a0ec22e78b5db0b4c71294afba60:PaulTom Projet Final Short.lyx
  But in the graph setting, this Hilbert space and its reproducing kernel
  
 \begin_inset Formula $\boldsymbol{L}^{+}$
