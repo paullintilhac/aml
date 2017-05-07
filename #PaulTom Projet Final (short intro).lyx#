@@ -929,8 +929,8 @@ This system differs from the one described by the original difference equation
 
 \begin_layout Standard
 The underlying reason for this discrepancy is that whereas the continuous
- Laplacian establishes a dependency among all vertices within a given connected
- component of the graph, the discrete Laplacian 
+ Laplacian establishes a relationship among all vertices within an entire
+ connected component of the graph, the discrete Laplacian 
 \begin_inset Formula $\boldsymbol{L}\left(G\right)$
 \end_inset
 
@@ -942,7 +942,8 @@ The underlying reason for this discrepancy is that whereas the continuous
 \begin_inset Formula $v_{j}$
 \end_inset
 
-, which are not connected by an edge will have value zero.
+, which are not connected by an edge will receive no flux contribution from
+ each other.
  To gain more intuition about this discrepancy, we recall that the matrix
  exponential is defined by its Taylor series
 \begin_inset Formula 
@@ -979,8 +980,8 @@ Plugging this approximation into our update formula for the continuous case
 
 which matches exactly our formula in the discrete case.
  If we were to take the second order approximation, each step in our iteration
- would take into account not only immediate neighbours, but also neighbours
- of neighbours and so on as more terms from the Taylor series are kept.
+ would take into account not only immediate neighbors, but also neighbors
+ of neighbors and so on as more terms from the Taylor series are kept.
  This in turn would reduce the total number of iterations needed to simulate
  the evolution of the system, so that we have achieved some of the time-efficien
 cy of the continuous model.
@@ -1001,7 +1002,7 @@ cy of the continuous model.
 will have exponentially more non-zero entries, and will thus be much larger,
  and will also take much longer to compute.
  Therefore, if we want to optimize label propagation in practice, we may
- want to take as many term of the Taylor expansion as we can without exceeded
+ want to take as many term of the Taylor expansion as we can without exceeding
  our memory.
 \end_layout
 
@@ -1037,7 +1038,7 @@ Now suppose that we wish to maintain the effects of our initial function
  Thus our objective function now has the form
 \begin_inset Formula 
 \begin{equation}
-C\left(\boldsymbol{f}_{t+1}\Bigl|\boldsymbol{f}_{t}\right)=\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)^{T}\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)+\boldsymbol{f}_{t+1}^{T}\left(\boldsymbol{I}-\alpha\hat{\boldsymbol{L}}\right)\boldsymbol{f}_{t+1}+\beta\boldsymbol{f}_{t+1}^{T}\boldsymbol{f}_{0}.
+C\left(\boldsymbol{f}_{t+1}\Bigl|\boldsymbol{f}_{t}\right)=\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)^{T}\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)+\boldsymbol{f}_{t+1}^{T}\left(\boldsymbol{I}-\alpha\hat{\boldsymbol{L}}\right)\boldsymbol{f}_{t+1}-\beta\boldsymbol{f}_{t+1}^{T}\boldsymbol{f}_{0}.
 \end{equation}
 
 \end_inset
@@ -1045,7 +1046,7 @@ C\left(\boldsymbol{f}_{t+1}\Bigl|\boldsymbol{f}_{t}\right)=\left(\boldsymbol{f}_
 Straightforward calculus and linear algebra give the solution
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{f}_{t+1}=\alpha\hat{\boldsymbol{L}}\boldsymbol{f}_{t}+\beta\boldsymbol{f}_{0}.
+\boldsymbol{f}_{t+1}=\alpha\hat{\boldsymbol{L}}\boldsymbol{f}_{t}-\beta\boldsymbol{f}_{0}.
 \end{equation}
 
 \end_inset
@@ -1073,7 +1074,7 @@ key "BengioDelalleauRoux2006"
 
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{f}_{t+1}=\left(\alpha\hat{\boldsymbol{L}}\right)^{t}\boldsymbol{f}_{0}+\beta\sum_{i=0}^{t}\left(\alpha\hat{\boldsymbol{L}}\right)^{i}\boldsymbol{f}_{0}.
+\boldsymbol{f}_{t+1}=\left(\alpha\hat{\boldsymbol{L}}\right)^{t}\boldsymbol{f}_{0}-\beta\sum_{i=0}^{t}\left(\alpha\hat{\boldsymbol{L}}\right)^{i}\boldsymbol{f}_{0}.
 \end{equation}
 
 \end_inset
@@ -2782,7 +2783,12 @@ to determine the heat distribution
 \end_layout
 
 \begin_layout Standard
-Now, suppose we have calculated our optimal function 
+In the Herbster paper this result is stated (but not proven), and then the
+ authors proceed to describe the projection algorithm described in the next
+ section, gurantee its convergence, and derive a bound on the number of
+ mistakes using that algorithm.
+ However, one might ask Now, suppose we have calculated our optimal function
+ 
 \begin_inset Formula $\boldsymbol{f}(t)$
 \end_inset
 
@@ -2847,7 +2853,27 @@ On the other hand if
 \end_inset
 
 .
- By the reproducing kernel property, we have 
+ 
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $(\tilde{K})^{-1}$
+\end_inset
+
+ is a positive definite matrix, and thus we can define the inner product
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\langle K_{i}^{1},\,\boldsymbol{(Proj_{t+1}(\boldsymbol{f}(t))+e_{t+1}(\boldsymbol{y_{t+1}}-\boldsymbol{f_{t+1}}(t)))}\right\rangle _{(\tilde{K})^{-1}}=\left\langle K_{i}^{1},\,\boldsymbol{Proj_{t}(f(t))}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By the reproducing kernel property, we have 
 \begin_inset Formula $K_{ii}^{1}=\left\langle \boldsymbol{K}_{i}^{1},\,\boldsymbol{K_{i}^{1}}\right\rangle $
 \end_inset
 
