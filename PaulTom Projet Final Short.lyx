@@ -314,7 +314,7 @@ MAY 9
 \end_layout
 
 \begin_layout Section
-Learning over graphs
+Introduction to Graph
 \end_layout
 
 \begin_layout Subsection
@@ -325,8 +325,8 @@ Concepts and Definitions
 Graphs are mathematical structures that appear in many different applications
  of machine learning, and especially in the context of semi-supervised learning.
  In semi-supervised learning, we hope to exploit not only the information
- in the labeled examples, but also the information in the unlabeled examples
- by incorporating some notion of similarity between labeled and unlabeled
+ in the labelled examples, but also the information in the unlabelled examples
+ by incorporating some notion of similarity between labelled and unlabelled
  examples.
  Even if our examples do not lie in a metric space, we can naturally define
  a notion of similarity between the examples by considering them as the
@@ -337,8 +337,8 @@ Graphs are mathematical structures that appear in many different applications
  In this case, certain sites are known to be of interest to a consumer,
  while other sites may be of interest based on their proximity to sies previousl
 y visited on the web.
- Another application might be to identify suspiscious accounts on a transactiona
-l network such as the block chain.
+ Another application might be to identify suspicious accounts on a transactional
+ network such as the block chain.
  In this paper we detail several different graphical models, including basic
  diffusion models, label propagation, regression, semi-supervised learning,
  and finally online learning.
@@ -465,12 +465,12 @@ Let
 
  diagonal matrix defined as
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{aligned}\boldsymbol{D}\left(G\right)_{i,j} & \coloneqq\begin{cases}
 d\left(v_{i}\right) & \text{if }i=j\\
 0 & \text{otherwise}.
 \end{cases}\end{aligned}
-\]
+\end{equation}
 
 \end_inset
 
@@ -540,6 +540,10 @@ w\left(e\right) & \text{if }e=\left(i,\,j\right)\in E\\
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The weight matrix 
 \begin_inset Formula $\boldsymbol{W}\left(G\right)$
 \end_inset
@@ -569,12 +573,16 @@ The weight matrix
 
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{W}\left(G\right)_{ij}=e^{-\frac{\left\Vert v_{i}-v_{j}\right\Vert ^{2}}{2\sigma^{2}}}.\label{eq:1.5}
+\boldsymbol{W}\left(G\right)_{ij}=e^{-\frac{\left\Vert v_{i}-v_{j}\right\Vert ^{2}}{2\sigma^{2}}}.\label{eq:1.3}
 \end{equation}
 
 \end_inset
 
- Then the 
+ 
+\end_layout
+
+\begin_layout Standard
+Then the 
 \begin_inset Formula $\boldsymbol{degree}$
 \end_inset
 
@@ -602,7 +610,7 @@ The weight matrix
 \end_layout
 
 \begin_layout Subsection
-Graph Laplacian and the Heat Equation
+Graph Laplacian and Heat Equation
 \end_layout
 
 \begin_layout Standard
@@ -654,7 +662,7 @@ and the
 
 \end_inset
 
- The Laplacian matrix 
+The Laplacian matrix 
 \begin_inset Formula $\boldsymbol{L}$
 \end_inset
 
@@ -675,12 +683,11 @@ and the
 \end_layout
 
 \begin_layout Standard
-We can get more intuition about 
-\begin_inset Formula $L$
-\end_inset
-
- by using the concept of conductance and borrowing intuition from the continous
- version of this operator, for example in the heat equation.
+We can get more intuition about the basic objects in Graph learning by using
+ the concept of conductance.
+ As we saw in the previous section, the Laplacian is closely related to
+ a second derivative, and it is no coincidence that the continuous version
+ of the Laplacian appears in the heat equation.
  Let 
 \begin_inset Formula $\boldsymbol{f}$
 \end_inset
@@ -690,7 +697,7 @@ We can get more intuition about
 \begin_inset Formula $\boldsymbol{f}$
 \end_inset
 
- as a heat distribution, then we can think of 
+ as a hat distribution, then we can think of 
 \begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
 \end_inset
 
@@ -780,9 +787,8 @@ Given the graph
 
  and wish to see how these values propagate over the graph, as in a heat
  diffusion.
- While very simple, this scenario could be useful in settings such as fraud
- detection over a transactional network of accounts that are modeled as
- a graph.
+ While very simple, even scenario could be useful in settings such as fraud
+ detection over a graph of accounts that are connected by their transactions.
  For example, we may have received knowledge that a small number of vertices
  in the graph are fraudulent, and we want to perform a quick analysis to
  see to what degree other vertices in the graph might be exposed to the
@@ -983,9 +989,9 @@ which matches exactly our formula in the discrete case.
  If we were to take the second order approximation, each step in our iteration
  would take into account not only immediate neighbours, but also neighbours
  of neighbours and so on as more terms from the Taylor series are kept.
- This in turn would reduce the total number of iterations needed to simulate
- the evolution of the system, so that we have achieved some of the time-efficien
-cy of the continuous model.
+ This in turn would reduce the total number of iteration needed to simulate
+ the evolution o the system, so that we have achieved some of the time-efficienc
+y of the continuous model.
  However, we need to pay for this more favourable time-complexity by computing
  and storing the matrix 
 \begin_inset Formula $\boldsymbol{L}^{2}$
@@ -1080,9 +1086,9 @@ key "BengioDelalleauRoux2006"
 
 \end_inset
 
-Note that in order to write this equation in absolute form, reducing the
- number of computations, we need to pay for this by having to store powers
- of the matrix 
+Please note that in order to write this equation in absolute form, reducing
+ the number of computations, we need to pay for this by having to store
+ powers of the matrix 
 \begin_inset Formula $\boldsymbol{L}$
 \end_inset
 
@@ -2156,12 +2162,26 @@ key "HerbsterPontilWainer2005"
 \end_inset
 
  using projection and kernel methods.
- 
+ The method uses minimal norm interpolation, which I will later explain
+ can be thought of as finding the distribution over the vertices that minimizes
+ the total flux induced over the graph, under the constraint that the labelled
+ points are approximately correct.
 \end_layout
 
 \begin_layout Subsection
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 Pseudo-Inverse of Graph Laplacian as the Reproducing Kernel of a Hilbert
  Space
+=======
+Pseudo-Inverse of Graph Laplacian and Kernel of Hilbert
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:3.1"
+
+\end_inset
+
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_layout
 
 \begin_layout Standard
@@ -2311,6 +2331,7 @@ As we can see, the sum vanishes if
 \end_inset
 
 .
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  
 \end_layout
 
@@ -2345,6 +2366,8 @@ has been computed, this formulation will allow us to solve a system of
 \end_inset
 
  equations, as in the formulation of section 2.
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
  Since 
 \begin_inset Formula $H$
 \end_inset
@@ -2354,8 +2377,20 @@ has been computed, this formulation will allow us to solve a system of
 \begin_inset Formula $\boldsymbol{f}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  at any vertex, being a linear functional, can be represented as an inner
  product 
+=======
+ at any vertex, 
+\begin_inset Formula $\boldsymbol{f}\left(v_{i}\right)$
+\end_inset
+
+, being a linear functional 
+\begin_inset Formula $\left(\boldsymbol{f}+\boldsymbol{g}\right)\left(v_{i}\right)=\left(\boldsymbol{f}+\boldsymbol{g}\right)_{i}\left(v\right)=\boldsymbol{f}_{i}\left(v\right)+\boldsymbol{g}_{i}\left(v\right)=\boldsymbol{f}\left(v_{i}\right)+\boldsymbol{g}\left(v_{i}\right)$
+\end_inset
+
+, can be represented as an inner product 
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \begin_inset Formula 
 \begin{equation}
 f_{i}=f(v_{i})=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{f}\right\rangle =\boldsymbol{K}_{i}\boldsymbol{L}\boldsymbol{f}.
@@ -2457,9 +2492,18 @@ Let
 \begin_inset Formula $U\left(G\right)\subset V\left(G\right)$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 .
  Then we can define the boundary of 
 \begin_inset Formula $U\left(G\right)$
+=======
+ is defined by 
+\begin_inset Formula 
+\begin{equation}
+P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.7}
+\end{equation}
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
  as the set of all vertices contained in the closure of 
@@ -2504,8 +2548,17 @@ Let
 \begin_inset Formula $k$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  entries, and 
 \begin_inset Formula $0$
+=======
+Therefore by the Pythagorean Theorem, we have 
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}=\left\Vert \boldsymbol{u}-\boldsymbol{u}^{*}\right\Vert ^{2}+\left\Vert \boldsymbol{u}^{*}-\boldsymbol{w}\right\Vert ^{2}\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert ^{2}.
+\end{equation}
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
  elsewhere, and let 
@@ -2569,6 +2622,7 @@ is the total flux induced by
 
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \begin_layout Plain Layout
 We now give an informal proof.
  Let us denote by 
@@ -2577,6 +2631,22 @@ We now give an informal proof.
 
  the degree of vertex 
 \begin_inset Formula $i$
+=======
+\begin_layout Standard
+Based on theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:3.1"
+
+\end_inset
+
+, and we let 
+\begin_inset Formula $\mathcal{D}=\left\{ \left(x_{i,}\,y_{i}\right)\right\} _{t=1}^{l}\subseteq\mathcal{X}\times\left\{ -1,\,+1\right\} $
+\end_inset
+
+ be an example set, let 
+\begin_inset Formula $\mathcal{D}_{t}$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
 , 
@@ -2587,17 +2657,33 @@ We now give an informal proof.
 \begin_inset Formula $i$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  to points in 
 \begin_inset Formula $U\left(G\right)$
+=======
+.
+ if we consider an online learning algorithm (algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:3.4"
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
 , and 
 \begin_inset Formula $d_{i}^{ext}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  by the number of edges connecting vertex 
 \begin_inset Formula $i$
 \end_inset
+=======
+ is updated by the projection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.7"
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
  to points not in 
 \begin_inset Formula $U\left(G\right)$
@@ -2761,6 +2847,10 @@ Bidirectional Mapping Between Heat and Flux
 LatexCommand label
 name "fig:3.1"
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -2769,7 +2859,15 @@ name "fig:3.1"
 \end_inset
 
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \end_layout
+=======
+, then 
+\begin_inset Formula 
+\begin{equation}
+P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}\label{eq:3.11}
+\end{equation}
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
 \end_inset
 
@@ -2779,7 +2877,11 @@ name "fig:3.1"
  Mathematically, this is affirmed by noting that
 \begin_inset Formula 
 \begin{equation}
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \boldsymbol{L}^{+}=\boldsymbol{L}^{-1}
+=======
+P\left(\left\{ \boldsymbol{u}:\,y\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle \geq1\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{y\max\left(0,\,1-y\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}\label{eq:3.12}
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end{equation}
 
 \end_inset
@@ -2792,6 +2894,7 @@ name "fig:3.1"
 Online Projections over Graphs
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \begin_layout Standard
 With that in mind, we can introduce the mathematical framework for the online
  projection algorithm of 
@@ -2844,21 +2947,99 @@ The projection of a point
 P\left(\mathcal{N};\,\boldsymbol{w}\right)\coloneqq\argmin_{\boldsymbol{u}\in\mathcal{N}}\left\Vert \boldsymbol{u}-\boldsymbol{w}\right\Vert .\label{eq:3.15}
 \end{equation}
 
+=======
+\begin_layout Proof
+We give a proof of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.11"
+
+\end_inset
+
+, which is almost exactly the same as the proof of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.12"
+
+\end_inset
+
+.
+ We know that 
+\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} =\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u}-\frac{\boldsymbol{x}y}{\left\Vert \boldsymbol{x}\right\Vert ^{2}},\,\boldsymbol{x}\right\rangle =0\right\} $
+\end_inset
+
+ .
+ Now let 
+\begin_inset Formula $\boldsymbol{v}\left(\boldsymbol{u}\right)=\boldsymbol{u}-\frac{\boldsymbol{x}y}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}$
+\end_inset
+
+.
+ Then we can find this projection of 
+\series bold
+
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+ 
+\series default
+onto 
+\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} $
+\end_inset
+
+ by first projecting 
+\begin_inset Formula $\boldsymbol{v}\left(\boldsymbol{w}\right)$
+\end_inset
+
+ onto 
+\begin_inset Formula $\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{v}^{*}=\text{Proj}\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;\,\boldsymbol{v}\left(\boldsymbol{w}\right)\right)$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+ and then taking 
+\begin_inset Formula $\boldsymbol{w}^{*}=\boldsymbol{v}^{-1}\left(\boldsymbol{v}^{*}\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\boldsymbol{v}^{*} & =\text{Proj}\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =0\right\} ;\,v\left(\boldsymbol{w}\right)\right)\\
+ & =\boldsymbol{v}\left(\boldsymbol{w}\right)-\text{Proj}_{x}\left(v\left(\boldsymbol{w}\right)\right)\\
+ & =\boldsymbol{v}\left(\boldsymbol{w}\right)-\frac{\left\langle v\left(\boldsymbol{w}\right),\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }\boldsymbol{x}\\
+ & =\boldsymbol{v}\left(\boldsymbol{w}\right)+\frac{\left\langle \boldsymbol{w}-\frac{\boldsymbol{x}y}{\left\Vert \boldsymbol{x}\right\Vert ^{2}},\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }\boldsymbol{x}\\
+ & =\boldsymbol{v}\left(\boldsymbol{w}\right)+\frac{y-\left\langle \boldsymbol{w};\,\boldsymbol{x}\right\rangle }{\left\langle \boldsymbol{x},\,\boldsymbol{x}\right\rangle }\boldsymbol{x}.
+\end{aligned}
+\end{equation}
+
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Standard
+\begin_inset Separator plain
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_inset
+
+Thus
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{w}^{*}=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
+\end{equation}
+
 \end_inset
 
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_layout Standard
+From the definition, we can see that 
+\begin_inset Formula $\boldsymbol{u}$
+=======
 \end_layout
 
 \begin_layout Standard
 \begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-From the definition, we can see that 
-\begin_inset Formula $\boldsymbol{u}$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
  any point in 
@@ -2921,6 +3102,7 @@ If
 \begin_inset Formula $\boldsymbol{w}\in\mathcal{H}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 , we have that
 \begin_inset Formula 
 \begin{equation}
@@ -3026,6 +3208,65 @@ reference "thm:3.1"
 \end_inset
 
 .
+=======
+.
+ This in turn determines the 
+\begin_inset Formula $\boldsymbol{noncyclic}$
+\end_inset
+
+ feasible set 
+\begin_inset Formula $\mathcal{U}_{t}$
+\end_inset
+
+ or a 
+\begin_inset Formula $\boldsymbol{cyclic}$
+\end_inset
+
+ feasible sets 
+\begin_inset Formula $\left\{ \mathcal{U}_{t_{1}},\,\mathcal{U}_{t_{2}},\,\cdots\right\} $
+\end_inset
+
+, which each feasible set 
+\begin_inset Formula $\mathcal{U}_{t}$
+\end_inset
+
+ consists of those hypothesis vectors which are “compatible” with a subset
+ of the past examples 
+\begin_inset Formula $\left(x_{i},\,y_{i}\right)$
+\end_inset
+
+.
+ In this algorithm, there are two strategies for the non-cyclic case and
+ cyclic case.
+ The non-cyclic strategy projects the current hypothesis 
+\begin_inset Formula $\boldsymbol{w}_{t}$
+\end_inset
+
+ to a single affine set 
+\begin_inset Formula $af\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle =y_{i}\right\} $
+\end_inset
+
+ that is determined by the example indices in 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+.
+ The cyclic strategy projects on a sequence of half-spaces 
+\begin_inset Formula $hs\left(U\right)\coloneqq\cap_{i\in U}\left\{ \boldsymbol{u}\in\mathcal{H}:\,y_{i}\left\langle \boldsymbol{u},\,\boldsymbol{x}_{i}\right\rangle \geq1\right\} $
+\end_inset
+
+ determined by the example indices in 
+\begin_inset Formula $U_{t}$
+\end_inset
+
+.
+ The boolean 
+\begin_inset Formula $\boldsymbol{aggressive}$
+\end_inset
+
+ controls whether an update is made on every trial (aggressive) or only
+ on those trials when a mistake occurs (non-aggressive).
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_layout
 
 \begin_layout Standard
@@ -3131,7 +3372,11 @@ If
 , then 
 \begin_inset Formula 
 \begin{equation}
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 P\left(\left\{ \boldsymbol{u}:\,\left\langle \boldsymbol{u},\,\boldsymbol{x}\right\rangle =y\right\} ;\,\boldsymbol{w}\right)=\boldsymbol{w}+\frac{\left(y-\left\langle \boldsymbol{w},\,\boldsymbol{x}\right\rangle \right)}{\left\Vert \boldsymbol{x}\right\Vert ^{2}}\boldsymbol{x}
+=======
+\left|M\right|\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}B\label{eq:3.15}
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end{equation}
 
 \end_inset
@@ -3197,6 +3442,7 @@ Now let
 \end_inset
 
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \end_layout
 
 \begin_layout Standard
@@ -3222,6 +3468,21 @@ reference "alg:3.4"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:3.1"
+=======
+, which gives us 
+\begin_inset Formula $\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)B$
+\end_inset
+
+.
+ After dropping the term 
+\begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}$
+\end_inset
+
+, we then get formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.15"
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
 \end_inset
 
@@ -3264,6 +3525,7 @@ reference "alg:3.5"
 
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  allows for a function 
 \begin_inset Quotes eld
 \end_inset
@@ -3284,6 +3546,40 @@ strategy
  the set of labeled vertices.
  The author introduces two strategies: one called 
 \begin_inset Quotes eld
+=======
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Online Learning over Graphs 
+\end_layout
+
+\begin_layout Standard
+As shown in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:3.1"
+
+\end_inset
+
+, the reproducing kernel of the Hilbert space defined over the graph is
+ given by the pseudo-inverse of the Laplacian matrix, 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+\end_inset
+
+ This suggests that we can apply the above projection algorithm, with its
+ associated guarantees, by letting the input vector 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+be replaced by the 
+\begin_inset Formula $t^{th}$
+\end_inset
+
+ row of 
+\begin_inset Formula $\boldsymbol{L}^{+}.$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
 non-cyclic
@@ -3299,6 +3595,7 @@ cyclic
 \end_inset
 
 .
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  The boolean 
 \begin_inset Formula $\boldsymbol{aggressive}$
 \end_inset
@@ -3369,13 +3666,51 @@ status open
 	lyxscale 70
 	scale 60
 
+=======
+ In the following analysis, we will derive upper bounds for each of these
+ terms using the properties of our graph, and of the labellings given to
+ us.
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $\boldsymbol{g}^{+}$
+\end_inset
+
+ be the positively labelled vertices, and let 
+\begin_inset Formula $\boldsymbol{g}^{-}$
+\end_inset
+
+ be the negatively labelled vertices.
+ Let 
+\begin_inset Formula $\left|\boldsymbol{g}^{+}\right|=n^{+}$
+\end_inset
+
+, 
+\begin_inset Formula $\left|\boldsymbol{g}^{-}\right|=n^{-}$
+\end_inset
+
+, and assume WLOG that 
+\begin_inset Formula $n^{+}>=n^{-}.$
+\end_inset
+
+ We claim that 
+\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}\leq\partial(\boldsymbol{g}^{+},\,\boldsymbol{g}^{-})(1+\frac{n_{+}}{n_{-}})^{2}$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
 
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \begin_layout Plain Layout
 \begin_inset Caption Standard
+=======
+\begin_layout Proof
+To show this, we consider the vector 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
 \begin_layout Plain Layout
 Online Projection Algorithm
@@ -3395,6 +3730,7 @@ name "alg:3.5"
 
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 
 \end_layout
 
@@ -3432,10 +3768,52 @@ reference "alg:3.5"
 \begin_inset Formula 
 \begin{equation}
 \left|M\right|\leq\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}B\label{eq:3.21}
+=======
+ Now suppose we order our vertices so that the first 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+ vertices are those in 
+\begin_inset Formula $\boldsymbol{g}^{+}$
+\end_inset
+
+, while the last 
+\begin_inset Formula $n^{+}$
+\end_inset
+
+ vertices are those in 
+\begin_inset Formula $\boldsymbol{g}^{-}$
+\end_inset
+
+.
+ Now consider the Laplacian 
+\begin_inset Formula $\boldsymbol{L}$
+\end_inset
+
+ of this matrix with the vertices ordered in such a way.
+ We are interested in the sums of the entries in the off-diagonal blocks,
+ the sums of whose entries are each the negative of the number of intra-partitio
+n edges.
+ We will denote this sum by S, as opposed to the sub-matrix 
+\series bold
+
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\boldsymbol{L} & =\left[\begin{array}{cc}
+\boldsymbol{A} & -\boldsymbol{S}\\
+\boldsymbol{-S}^{T} & \boldsymbol{B}
+\end{array}\right]\end{aligned}
+.
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end{equation}
 
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 for all 
 \begin_inset Formula $\boldsymbol{u}\in hs\left(\left\{ 1,\,\cdots,\,l\right\} \right)$
 \end_inset
@@ -3449,9 +3827,36 @@ for all
 \begin{equation}
 B=\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
 \end{equation}
+=======
+
+\series default
+Note that the sum of entries in the left partition of the matrix for any
+ given row is always the negative of the sum to the right of the partition.
+ Using this and the fact that the sum of entries in both 
+\series bold
+
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+
+\series default
+ and 
+\begin_inset Formula $\boldsymbol{S}^{T}$
+\end_inset
+
+ are both equal to 
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+, we find after some algebra that
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \boldsymbol{f}\right\Vert ^{2}=\left\langle \boldsymbol{f},\,\boldsymbol{f}\right\rangle =\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{f}=\left(1+\frac{n^{+}}{n^{-}}\right)^{2}\boldsymbol{S}
+\end{equation}
 
 \end_inset
 
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
 \end_layout
 
@@ -3463,11 +3868,30 @@ B=\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\righ
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+\begin_inset Separator plain
+\end_inset
+
+
+=======
+Finally, combined with the bound on the power mean of the input patterns
+ in terms of the graph diameter, we achieve a bound on the number of mistakes.
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
+\end_layout
+
+\begin_layout Standard
 Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:3.2"
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
+=======
+ reoresents a real-valued function on our Hilbert space.
+ But in the graph setting, this Hilbert space and its reproducing kernel
+ 
+\begin_inset Formula $\boldsymbol{L}^{+}$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
  bounds the number of mistakes as proportional to the squared norm (“complexity”
@@ -3527,11 +3951,16 @@ reference "thm:3.2"
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \begin_inset Formula 
 \[
 \left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
 \]
 
+=======
+Let 
+\begin_inset Formula $G\left(V,\,E,\,W\right)$
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
 
@@ -3616,6 +4045,7 @@ be replaced by the t-th row of
 \end_inset
 
 .
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
  In the following analysis, we will derive upper bounds for each of these
  terms using the properties of our graph, and of the labelings given to
  us.
@@ -3624,6 +4054,32 @@ be replaced by the t-th row of
 \begin_layout Standard
 Claim:
 \end_layout
+=======
+ Our claim is that 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{F}_{U}=-\boldsymbol{F}_{\partial U}.\label{eq:3.21}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now give an informal proof.
+ Let us denote by 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+ the degree of vertex 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $d_{i}^{int}$
+\end_inset
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 
 \begin_layout Standard
 Let 
@@ -3671,8 +4127,17 @@ Proof.
 \begin_inset Formula $g_{i}=1$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 , and 
 \begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
+=======
+.
+ Then for the left hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.21"
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
  if 
@@ -3691,8 +4156,16 @@ vertices are those in
 \begin_inset Formula $n_{-}$
 \end_inset
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 vertices are those in 
 \begin_inset Formula $g^{-}.$
+=======
+For the right hand side of formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3.21"
+
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \end_inset
 
  Now consider the Laplacian 
@@ -3723,6 +4196,7 @@ S.
 
 \end_layout
 
+<<<<<<< HEAD:PaulTom Projet Final (short intro).lyx~
 \begin_layout Standard
 Note that the sum of entries in the left partition of the matrix for any
  given row is always the negative of the sum to the right of the partition.
@@ -3737,6 +4211,8 @@ S
  are both equal to S, we find after some algebra that
 \end_layout
 
+=======
+>>>>>>> 13934052782e190bcc5958b384d41633f3fff320:PaulTom Projet Final Short.lyx
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -3775,7 +4251,7 @@ and the vector
 \end_layout
 
 \begin_layout Subsection
-Drawbacks with the above approach
+Drawbacks with the above Approach
 \end_layout
 
 \begin_layout Standard
@@ -3808,149 +4284,6 @@ Extension of the herbster paper – use different laplacians simulataneously
  by considering them each as different kernels in some set of kernels, and
  then applying the objective function for multiple kernels (need to flesh
  out this idea)
-\end_layout
-
-\begin_layout Subsection
-Bounding 
-\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}$
-\end_inset
-
- in the Graph Setting
-\end_layout
-
-\begin_layout Theorem
-Let 
-\begin_inset Formula $\boldsymbol{g}^{+}$
-\end_inset
-
- be the positively labelled vertices, and let 
-\begin_inset Formula $\boldsymbol{g}^{-}$
-\end_inset
-
- be the negatively labelled vertices.
- Let 
-\begin_inset Formula $\left|\boldsymbol{g}^{+}\right|=n^{+}$
-\end_inset
-
-, 
-\begin_inset Formula $\left|\boldsymbol{g}^{-}\right|=n^{-}$
-\end_inset
-
-, and assume WLOG that 
-\begin_inset Formula $n^{+}>=n^{-}.$
-\end_inset
-
- We claim that 
-\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}\leq\partial(\boldsymbol{g}^{+},\,\boldsymbol{g}^{-})(1+\frac{n_{+}}{n_{-}})^{2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-To show this, we consider the vector 
-\begin_inset Formula $\boldsymbol{f}$
-\end_inset
-
-, with 
-\begin_inset Formula $f_{i}=1$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=1$
-\end_inset
-
-, and 
-\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=-1.$
-\end_inset
-
- Now suppose we order our vertices so that the first 
-\begin_inset Formula $n^{+}$
-\end_inset
-
- vertices are those in 
-\begin_inset Formula $\boldsymbol{g}^{+}$
-\end_inset
-
-, while the last 
-\begin_inset Formula $n^{+}$
-\end_inset
-
- vertices are those in 
-\begin_inset Formula $\boldsymbol{g}^{-}$
-\end_inset
-
-.
- Now consider the Laplacian 
-\begin_inset Formula $\boldsymbol{L}$
-\end_inset
-
- of this matrix with the vertices ordered in such a way.
- We are interested in the sums of the entries in the off-diagonal blocks,
- the sums of whose entries are each the negative of the number of intra-partitio
-n edges.
- We will denote this sum by S, as opposed to the sub-matrix 
-\series bold
-
-\begin_inset Formula $\boldsymbol{S}$
-\end_inset
-
-.
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}\boldsymbol{L} & =\left[\begin{array}{cc}
-\boldsymbol{A} & -\boldsymbol{S}\\
-\boldsymbol{-S}^{T} & \boldsymbol{B}
-\end{array}\right]\end{aligned}
-.
-\end{equation}
-
-\end_inset
-
-
-\series default
-Note that the sum of entries in the left partition of the matrix for any
- given row is always the negative of the sum to the right of the partition.
- Using this and the fact that the sum of entries in both 
-\series bold
-
-\begin_inset Formula $\boldsymbol{S}$
-\end_inset
-
-
-\series default
- and 
-\begin_inset Formula $\boldsymbol{S}^{T}$
-\end_inset
-
- are both equal to 
-\begin_inset Formula $\boldsymbol{S}$
-\end_inset
-
-, we find after some algebra that
-\begin_inset Formula 
-\begin{equation}
-\left\Vert \boldsymbol{f}\right\Vert ^{2}=\left\langle \boldsymbol{f},\,\boldsymbol{f}\right\rangle =\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{f}=\left(1+\frac{n^{+}}{n^{-}}\right)^{2}\boldsymbol{S}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-aa
 \end_layout
 
 \begin_layout Standard
