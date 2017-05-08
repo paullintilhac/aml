@@ -720,9 +720,7 @@ We can get more intuition about
 \end_inset
 
 .
- We can even use this formalism to quickly prove a version of Stokes' Theorem
- specialized to the graph setting.
- In particular, we can see that the quadratic form 
+ In particular, the quadratic form 
 \begin_inset Formula $\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{f}$
 \end_inset
 
@@ -791,7 +789,10 @@ Given the graph
 \end_layout
 
 \begin_layout Standard
-We proceed by deriving an update equation starting with two basic assumptions:
+Rather than taking the discrete version of the diffusion equation as given,
+ we frame the equation as the solution to an optimization problem over the
+ graph.
+ We proceed by deriving an update equation starting with two basic assumptions:
  First, we want our function 
 \begin_inset Formula $\boldsymbol{f}_{t+1}$
 \end_inset
@@ -931,8 +932,8 @@ This system differs from the one described by the original difference equation
 
 \begin_layout Standard
 The underlying reason for this discrepancy is that whereas the continuous
- Laplacian establishes a dependency among all vertices within a given connected
- component of the graph, the discrete Laplacian 
+ Laplacian establishes a relationship among all vertices within an entire
+ connected component of the graph, the discrete Laplacian 
 \begin_inset Formula $\boldsymbol{L}\left(G\right)$
 \end_inset
 
@@ -944,7 +945,8 @@ The underlying reason for this discrepancy is that whereas the continuous
 \begin_inset Formula $v_{j}$
 \end_inset
 
-, which are not connected by an edge will have value zero.
+, which are not connected by an edge will receive no flux contribution from
+ each other.
  To gain more intuition about this discrepancy, we recall that the matrix
  exponential is defined by its Taylor series
 \begin_inset Formula 
@@ -981,8 +983,8 @@ Plugging this approximation into our update formula for the continuous case
 
 which matches exactly our formula in the discrete case.
  If we were to take the second order approximation, each step in our iteration
- would take into account not only immediate neighbours, but also neighbours
- of neighbours and so on as more terms from the Taylor series are kept.
+ would take into account not only immediate neighbors, but also neighbors
+ of neighbors and so on as more terms from the Taylor series are kept.
  This in turn would reduce the total number of iterations needed to simulate
  the evolution of the system, so that we have achieved some of the time-efficien
 cy of the continuous model.
@@ -1003,7 +1005,7 @@ cy of the continuous model.
 will have exponentially more non-zero entries, and will thus be much larger,
  and will also take much longer to compute.
  Therefore, if we want to optimize label propagation in practice, we may
- want to take as many term of the Taylor expansion as we can without exceeded
+ want to take as many term of the Taylor expansion as we can without exceeding
  our memory.
 \end_layout
 
@@ -1039,7 +1041,7 @@ Now suppose that we wish to maintain the effects of our initial function
  Thus our objective function now has the form
 \begin_inset Formula 
 \begin{equation}
-C\left(\boldsymbol{f}_{t+1}\Bigl|\boldsymbol{f}_{t}\right)=\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)^{T}\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)+\boldsymbol{f}_{t+1}^{T}\left(\boldsymbol{I}-\alpha\hat{\boldsymbol{L}}\right)\boldsymbol{f}_{t+1}+\beta\boldsymbol{f}_{t+1}^{T}\boldsymbol{f}_{0}.
+C\left(\boldsymbol{f}_{t+1}\Bigl|\boldsymbol{f}_{t}\right)=\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)^{T}\left(\boldsymbol{f}_{t+1}-\boldsymbol{f}_{t}\right)+\boldsymbol{f}_{t+1}^{T}\left(\boldsymbol{I}-\alpha\hat{\boldsymbol{L}}\right)\boldsymbol{f}_{t+1}-2\beta\boldsymbol{f}_{t+1}^{T}\boldsymbol{f}_{0}.
 \end{equation}
 
 \end_inset
@@ -1075,7 +1077,7 @@ key "BengioDelalleauRoux2006"
 
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{f}_{t+1}=\left(\alpha\hat{\boldsymbol{L}}\right)^{t}\boldsymbol{f}_{0}+\beta\sum_{i=0}^{t}\left(\alpha\hat{\boldsymbol{L}}\right)^{i}\boldsymbol{f}_{0}.
+\boldsymbol{f}_{t+1}=\left(\alpha\hat{\boldsymbol{L}}\right)^{t}\boldsymbol{f}_{0}=\beta\sum_{i=0}^{t}\left(\alpha\hat{\boldsymbol{L}}\right)^{i}\boldsymbol{f}_{0}.
 \end{equation}
 
 \end_inset
@@ -1115,7 +1117,18 @@ Note that in order to write this equation in absolute form, reducing the
 
 \end_inset
 
-We will see in the sequel that the inverse or generalized inverse of the
+This matches the update formula for the 
+\begin_inset Quotes eld
+\end_inset
+
+label spreading
+\begin_inset Quotes erd
+\end_inset
+
+ algorithm in (Begnio 2006), though we derive the strategy here starting
+ with an objective function for the sake of consistency with other algorithms
+ discussed herein.
+ We will see in the sequel that the inverse or generalized inverse of the
  Laplacian and closely related matrices play a key role for online learning
  over graphs.
  The above is a linear system of equations which can be solved iteratively,
@@ -2165,8 +2178,8 @@ Pseudo-Inverse of Graph Laplacian as the Reproducing Kernel of a Hilbert
 \end_layout
 
 \begin_layout Standard
-As in the previous examples, we consider the set of real-valued functions
- over the vertices of the graph
+As in the previous examples, we consider real-valued functions over the
+ vertices of the graph
 \begin_inset Formula 
 \begin{equation}
 \boldsymbol{f}\,:V\rightarrow\mathbb{R}^{n}
@@ -2237,7 +2250,7 @@ is symmetric and positive semi-definite, which suggests that by appropriately
  We can see this by noting that 
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned}\left\Vert \boldsymbol{g}\right\Vert ^{2} & =\sum_{\left(i,\,j\right)\in E\left(G\right)}(\boldsymbol{g}_{i}-\boldsymbol{g}_{j})^{2}\end{aligned}
+\begin{aligned}\left\Vert \boldsymbol{f}\right\Vert ^{2} & =\sum_{\left(i,\,j\right)\in E\left(G\right)}(\boldsymbol{f}_{i}-\boldsymbol{f}_{j})^{2}\end{aligned}
 .
 \end{equation}
 
@@ -2246,13 +2259,13 @@ is symmetric and positive semi-definite, which suggests that by appropriately
 This is because 
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned}\left\Vert \boldsymbol{g}\right\Vert ^{2} & =\left\langle \boldsymbol{g},\,\boldsymbol{g}\right\rangle \\
- & =\sum_{i,\,j=1}^{n}\boldsymbol{g}_{i}\boldsymbol{L}_{ij}\boldsymbol{g}_{j}\\
- & =\sum_{i=j}^{n}\boldsymbol{g}_{i}\boldsymbol{L}_{ij}\boldsymbol{g}_{j}+\sum_{i\neq j}^{n}\boldsymbol{g}_{i}\boldsymbol{L}_{ij}\boldsymbol{g}_{j}\\
- & =\sum_{i=1}^{n}\boldsymbol{g}_{i}^{2}\boldsymbol{D}_{ii}+\sum_{i\neq j}^{n}\boldsymbol{g}_{i}\boldsymbol{A}_{ij}\boldsymbol{g}_{j}\\
- & =\sum_{i,\,j=1}^{n}\boldsymbol{g}_{i}{}_{i}^{2}\boldsymbol{A}_{ij}+\sum_{i\neq j}^{n}\boldsymbol{g}_{i}\boldsymbol{L}_{ij}\boldsymbol{g}_{j}\\
- & =\sum_{i,j\in E\left(G\right)}^{n}\boldsymbol{g}_{i}^{2}-2\boldsymbol{g}_{i}\boldsymbol{g}_{j}\\
- & =\sum_{\left(i,\,j\right)\in E\left(G\right)}(\boldsymbol{g}_{i}-\boldsymbol{g}_{j})^{2}.
+\begin{aligned}\left\Vert \boldsymbol{f}\right\Vert ^{2} & =\left\langle \boldsymbol{f},\,\boldsymbol{f}\right\rangle \\
+ & =\sum_{i,\,j=1}^{n}\boldsymbol{f}_{i}\boldsymbol{L}_{ij}\boldsymbol{f}_{j}\\
+ & =\sum_{i=j}^{n}\boldsymbol{f}_{i}\boldsymbol{L}_{ij}\boldsymbol{f}_{j}+\sum_{i\neq j}^{n}\boldsymbol{f}_{i}\boldsymbol{L}_{ij}\boldsymbol{f}_{j}\\
+ & =\sum_{i=1}^{n}\boldsymbol{f}_{i}^{2}\boldsymbol{D}_{ii}+\sum_{i\neq j}^{n}\boldsymbol{f}_{i}\boldsymbol{A}_{ij}\boldsymbol{f}_{j}\\
+ & =\sum_{i,\,j=1}^{n}\boldsymbol{f}_{i}{}_{i}^{2}\boldsymbol{A}_{ij}+\sum_{i\neq j}^{n}\boldsymbol{f}_{i}\boldsymbol{L}_{ij}\boldsymbol{f}_{j}\\
+ & =\sum_{i,j\in E\left(G\right)}^{n}\boldsymbol{f}_{i}^{2}-2\boldsymbol{f}_{i}\boldsymbol{f}_{j}\\
+ & =\sum_{\left(i,\,j\right)\in E\left(G\right)}(\boldsymbol{f}_{i}-\boldsymbol{f}_{j})^{2}.
 \end{aligned}
 \end{equation}
 
@@ -2292,7 +2305,7 @@ Note the diagonal component of
 
 \begin_layout Standard
 As we can see, the sum vanishes if 
-\begin_inset Formula $\boldsymbol{g}_{i}=\boldsymbol{g}_{j}$
+\begin_inset Formula $\boldsymbol{f}_{i}=\boldsymbol{f}_{j}$
 \end_inset
 
  for all vertices connected by an edge, i.e.
@@ -2307,7 +2320,7 @@ As we can see, the sum vanishes if
 \end_inset
 
  is indeed an inner product, and therefore induces a true norm 
-\begin_inset Formula $\left\Vert \boldsymbol{g}\right\Vert $
+\begin_inset Formula $\left\Vert \boldsymbol{f}\right\Vert $
 \end_inset
 
 .
@@ -2380,7 +2393,7 @@ e_{i}^{T}\boldsymbol{\boldsymbol{L}^{+}}\boldsymbol{L}\boldsymbol{f}=\boldsymbol
 \end_inset
 
 We call 
-\begin_inset Formula $\boldsymbol{L}^{+}$
+\begin_inset Formula $\boldsymbol{L}^{+}=K$
 \end_inset
 
  the reproducing kernel of the hilbert space
@@ -2392,35 +2405,10 @@ We call
 
 \begin_layout Standard
 Now, we return to the optimization problem (3.5).
- After discussing with the first author (Mark Herbster), I found that in
- fact the formula given in that paper is slightly off.
- He claims that we can use the reproducing kernel property to express any
- 
-\begin_inset Formula $f_{i}$
-\end_inset
-
- as 
-\begin_inset Formula $f_{i}=\sum_{i=1}^{l}K_{ij}c_{j}$
-\end_inset
-
- for some constants 
-\begin_inset Formula $\boldsymbol{c}$
-\end_inset
-
-.
- In fact, this is only true for 
-\begin_inset Formula $1\leq i\leq l$
-\end_inset
-
-.
- Since Herbster does not give a proof for this in the paper (or any of his
- other papers, or for almost any of the other claims in the paper for that
- matter) we give our own derivation of the minimizer of (3.5), following
- the arguments of (Aronszajn 1950) and (Wahba 1990).
-\end_layout
-
-\begin_layout Standard
-Recall that the reproducing kernel of the direct sum of RKHS is equal to
+ Since Herbster does not give a proof for this in the paper, we give our
+ own derivation of the minimizer of (3.5), following the arguments of (Aronszajn
+ 1950) and (Wahba 1990).
+ Recall that the reproducing kernel of the direct sum of RKHS is equal to
  the sum of the reproducing kernels of the two spaces (Aronszajn 1950).
  In our case, we consider the two subspaces (both Hilbert spaces) of H,
  
@@ -2461,15 +2449,15 @@ and
 
 .
  Then we can write and 
-\begin_inset Formula $l\in H$
+\begin_inset Formula $f\in H$
 \end_inset
 
  as a unique decomposition 
-\begin_inset Formula $l=l_{1}+l_{2}$
+\begin_inset Formula $f=f_{1}+f_{2}$
 \end_inset
 
  with 
-\begin_inset Formula $l_{1}\in H_{1},l_{2}\in H_{2}.$
+\begin_inset Formula $f_{1}\in H_{1},f_{2}\in H_{2}.$
 \end_inset
 
  By the reproducing kernel property, we can express any 
@@ -2527,10 +2515,11 @@ and
 \end_inset
 
 respectively.
+ 
 \end_layout
 
 \begin_layout Standard
-Since the columns of 
+Since 
 \series bold
 
 \begin_inset Formula $K^{1}$
@@ -2542,7 +2531,19 @@ and
 \begin_inset Formula $K^{2}$
 \end_inset
 
-for a basis for 
+ are positive definite, the columns of 
+\series bold
+
+\begin_inset Formula $K^{1}$
+\end_inset
+
+
+\series default
+and 
+\begin_inset Formula $K^{2}$
+\end_inset
+
+form a basis for 
 \begin_inset Formula $H_{1}$
 \end_inset
 
@@ -2550,12 +2551,13 @@ and
 \begin_inset Formula $H_{2}$
 \end_inset
 
-respectively, it follows that we can express any 
+respectively.
+ It follows that we can express any 
 \begin_inset Formula $f$
 \end_inset
 
  as 
-\begin_inset Formula $f=\sum_{i=1}^{l}c_{j}K_{j}^{1}+\sum_{i=l+1}^{n}d_{j}K_{j}^{2}$
+\begin_inset Formula $f=f_{1}+f_{2}=\sum_{i=1}^{l}c_{j}K_{j}^{1}+\sum_{i=l+1}^{n}d_{j}K_{j}^{2}$
 \end_inset
 
 .
@@ -2599,8 +2601,12 @@ It follows that for all
 \begin_inset Formula $1\leq i\leq l.$
 \end_inset
 
- It will turn out that for the sake of minimizing (3.5), we only need to
- represent the first 
+ Herbster's paper does not mention that this only holds true for 
+\begin_inset Formula $1\leq i\leq l$
+\end_inset
+
+ but it will turn out not to matter for the sake of minimizing (3.5), as
+ we only need to represent the first 
 \begin_inset Formula $l$
 \end_inset
 
@@ -2608,8 +2614,8 @@ It follows that for all
 \begin_inset Formula $f$
 \end_inset
 
- anyways, so this is not a real oversight.
- In vector form, we can write have 
+ anyways.
+ We adopt our notation slightly to vector form: we have 
 \begin_inset Formula $f=K^{1}\boldsymbol{c}$
 \end_inset
 
@@ -2617,11 +2623,15 @@ It follows that for all
 \begin_inset Formula $K^{1}$
 \end_inset
 
-as an nxr matrix, since the last 
+as the upper left nxr submatrix of 
+\begin_inset Formula $K^{1}$
+\end_inset
+
+ (the last 
 \begin_inset Formula $n-l$
 \end_inset
 
- columns are all 0 anyways.
+ columns are all 0 an were therefore not .
  We can now write the lagrange dual of (3.5) as
 \end_layout
 
@@ -2663,9 +2673,6 @@ x
 \end_inset
 
  we have
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula $y=\lambda\boldsymbol{1^{T}}\tilde{K}.$
 \end_inset
 
@@ -2674,330 +2681,18 @@ x
 \end_inset
 
  and finally that 
-\begin_inset Formula $c=(\tilde{K})^{-1}y$
+\begin_inset Formula $c=(\tilde{K})^{+}y$
 \end_inset
 
-, which matches the solution given by Herbster.
+.
  Finally, we can express the minimizer of the original objective as 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-f=K^{1}\boldsymbol{c}=K^{1}(\tilde{K})^{-1}y
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-We can gain more intuition about this Hilbert Space by using the concept
- of conductance (it is no coincidence that the continuous version of the
- Laplacian appears in the heat equation).
- If we think of f as some distribution over the nodes, we can think of 
-\begin_inset Formula $\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
- roughly as the flux induced at each of the nodes by that distribution over
- the graph.
- Then the form 
-\begin_inset Formula $\boldsymbol{g}^{T}\boldsymbol{L}\boldsymbol{f}$
-\end_inset
-
- represents some weighted measurement of this flux with the weights given
- by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
-.
- For example, if f is a binary vector representing the boundary of some
- open set on the graph 
-\begin_inset Formula $\left\langle \boldsymbol{f},\,\boldsymbol{g}\right\rangle $
-\end_inset
-
- would be the flux produced by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- as measured on the boundary represented by 
-\begin_inset Formula $\boldsymbol{f}$
-\end_inset
-
-.
- We can even use this formalism to quickly prove a version of Stokes' Theorem
- on graphs (we know Stokes' Theorem holds on general smooth manifolds, so
- this just a particularly simple proof of a special case).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-Let 
-\begin_inset Formula $G\left(V,\,E,\,W\right)$
-\end_inset
-
- be a graph imbued with the topology generated by the open neighbourhoods
- 
-\begin_inset Formula $N_{i}=\left\{ v_{j}\,:\,\left(i,\,j\right)\in E\right\} $
-\end_inset
-
-.
- Suppose we have some subset 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- of vertices set 
-\begin_inset Formula $V\left(G\right)$
-\end_inset
-
-, i.e.
- 
-\begin_inset Formula $U\left(G\right)\subset V\left(G\right)$
-\end_inset
-
-.
- Then we can define the boundary of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- as the set of all vertices contained in the closure of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- but not contained in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
- itself 
-\begin_inset Formula $\partial U\left(G\right)=\left\{ v_{j}\,:\,v_{j}\in\bar{U}\left(G\right)-U\left(G\right)\right\} $
-\end_inset
-
-.
- Now suppose our vertices 
-\begin_inset Formula $V\left(G\right)$
-\end_inset
-
- are ordered such that 
-\begin_inset Formula $v_{1},\,\cdots,\,v_{k}\in U\left(G\right)$
-\end_inset
-
-, 
-\begin_inset Formula $v_{k+1},\,\cdots,\,v_{l}\in\partial U\left(G\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $v_{l+1},\,\cdots,\,v_{n}\in V\left(G\right)-\bar{U}\left(G\right)$
-\end_inset
-
-.
- Now let 
-\begin_inset Formula $\boldsymbol{1}_{U}$
-\end_inset
-
- be a binary vector with all 
-\begin_inset Formula $1$
-\end_inset
-
- for the first 
-\begin_inset Formula $k$
-\end_inset
-
- entries, and 
-\begin_inset Formula $0$
-\end_inset
-
- elsewhere, and let 
-\begin_inset Formula $\boldsymbol{1}_{\partial U}$
-\end_inset
-
- be the binary vector with all 
-\begin_inset Formula $1$
-\end_inset
-
- for entries 
-\begin_inset Formula $k+1$
-\end_inset
-
- through 
-\begin_inset Formula $l$
-\end_inset
-
-, and 
-\begin_inset Formula $0$
-\end_inset
-
- elsewhere.
- Then according to the above interpretation of the norm, 
-\begin_inset Formula 
 \begin{equation}
-\boldsymbol{F}_{U}\coloneqq\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}
+f=K^{1}\boldsymbol{c}=K^{1}(\tilde{K})^{+}y
 \end{equation}
-
-\end_inset
-
- is the total flux induced by distribution g over the interior of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, while
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{\partial U}\coloneqq\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}
-\end{equation}
-
-\end_inset
-
-is the total flux induced by 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- as measured over the boundary of 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-.
- Our claim is that 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{F}_{U}=-\boldsymbol{F}_{\partial U}.\label{eq:3.9}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-We now give an informal proof.
- Let us denote by 
-\begin_inset Formula $d_{i}$
-\end_inset
-
- the degree of vertex 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $d_{i}^{int}$
-\end_inset
-
- by the number of edges connecting vertex 
-\begin_inset Formula $i$
-\end_inset
-
- to points in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $d_{i}^{ext}$
-\end_inset
-
- by the number of edges connecting vertex 
-\begin_inset Formula $i$
-\end_inset
-
- to points not in 
-\begin_inset Formula $U\left(G\right)$
-\end_inset
-
-, so that 
-\begin_inset Formula 
-\begin{equation}
-d_{i}=d_{i}^{int}+d_{i}^{ext}.
-\end{equation}
-
-\end_inset
-
-In particular, for any 
-\begin_inset Formula $v_{i}\in U$
-\end_inset
-
-, 
-\begin_inset Formula $d_{i}^{ext}$
-\end_inset
-
- is the number of edges connecting 
-\begin_inset Formula $v_{i}$
-\end_inset
-
- to points in 
-\begin_inset Formula $\partial U\left(G\right)$
-\end_inset
-
-, since by definition all other vertices are not connected to 
-\begin_inset Formula $v_{i}$
-\end_inset
-
-.
- Then for the left hand side of formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.9"
-
-\end_inset
-
-, note that the only contribution to the 
-\begin_inset Formula $i^{\text{th}}$
-\end_inset
-
- entry is given by the first 
-\begin_inset Formula $k$
-\end_inset
-
- columns of 
-\begin_inset Formula $\boldsymbol{L}$
-\end_inset
-
-, and a straightforward calculation shows that 
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in U}(d_{i}-d_{i}^{int})=\sum_{i\in U}d^{ext}.
-\end{equation}
-
-\end_inset
-
-For the right hand side of formula 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.9"
-
-\end_inset
-
-, we can see that the only contribution to the sum is from entries 
-\begin_inset Formula $k+1$
-\end_inset
-
- to 
-\begin_inset Formula $l$
-\end_inset
-
-, which another straightforward calculation shows that
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g}=\sum_{i\in\partial U}d_{i}^{ext}.
-\end{equation}
-
-\end_inset
-
-Thus
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{1}_{U}\boldsymbol{L}\boldsymbol{g}=-\boldsymbol{1}_{\partial U}\boldsymbol{L}\boldsymbol{g},\qquad\forall\boldsymbol{g}\in H.
-\end{equation}
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -3006,7 +2701,7 @@ Thus
 
 \begin_layout Standard
 To gain intuition about 
-\begin_inset Formula $L^{+}$
+\begin_inset Formula $K=L^{+}$
 \end_inset
 
 , we turn back to the representation theorem, namely that 
@@ -3030,7 +2725,7 @@ To gain intuition about
 \begin_inset Formula $\boldsymbol{L}_{i}^{+}$
 \end_inset
 
- sends some definition of fluxes over the graph back to some heat distribution
+ sends some vector of fluxes through vertex graph back to some heat distribution
  that would have induced it.
  This relationship is shown in figure 
 \begin_inset CommandInset ref
@@ -3062,7 +2757,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Bidirectional Mapping Between Heat and Flux
+Mapping Between Heat and Flux
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:3.1"
@@ -3079,19 +2774,46 @@ name "fig:3.1"
 
 \end_inset
 
- Intuitively, if the graph is disconnected this distribution should not
- be unique, since a constant added to the distribution in each of the connected
- components will not affect the flux induced through the graph.
- Mathematically, this is affirmed by noting that
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{L}^{+}=\boldsymbol{L}^{-1}
-\end{equation}
-
+ Returning to equation (3.8), we can now interpret the solution to this minimizat
+ion problem roughly as two steps: first we compute the flux through each
+ label generated by each other label as 
+\begin_inset Formula $(\tilde{K})^{+}y$
 \end_inset
 
- if and only if all eigenvalues of L are non-zero which, is exactly when
- the graph is connected.
+, ignoring the presence of any unlabeled nodes.
+ Then we apply the mapping 
+\begin_inset Formula $K^{1}$
+\end_inset
+
+to determine the heat distribution 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+
+ over all vertices that remains consistent with this flux, by taking 
+\begin_inset Formula $K^{1}(\tilde{K})^{+}y.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+In the Herbster paper this result is stated (but not proven), and then the
+ authors proceed to describe the projection algorithm described in the next
+ section, gurantee its convergence, and derive a bound on the number of
+ mistakes using that algorithm.
+ However, one might ask how this projection algorithm and the solution of
+ Wahba are related.
+ Briefly, I will say that we can think of the optimal weight given by (3.8)
+ as a projection of the vetor 
+\begin_inset Formula $c$
+\end_inset
+
+ onto the first 
+\begin_inset Formula $l$
+\end_inset
+
+ columns of K.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -3119,6 +2841,19 @@ reference "def:3.1"
 \end_inset
 
 .
+ In the sequel, we will refer to the weight vector of the genetic projection
+ algorithm as 
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+ rather than 
+\begin_inset Formula $\boldsymbol{f,}$
+\end_inset
+
+which refers specifically to the definition of the minimizer of (3.5).
+ While it can be shown that the following algorithm converges to the solution
+ of (3.5), we will keep separate notation for the solution obtained through
+ the two different algorithms.
 \end_layout
 
 \begin_layout Definition
@@ -3834,9 +3569,9 @@ reference "thm:3.2"
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
-\]
+\begin{equation}
+\left|M\right|\leq\left(\left\Vert \boldsymbol{u}-\boldsymbol{w}_{t}\right\Vert ^{2}-\left\Vert \boldsymbol{u}-\boldsymbol{w}_{l+1}\right\Vert ^{2}\right)\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}
+\end{equation}
 
 \end_inset
 
@@ -3886,6 +3621,68 @@ reference "alg:3.5"
 , which implies that the bound is tighter using the non-cyclic strategy.
 \end_layout
 
+\begin_layout Standard
+The arguments in Herbster show that the above algorithm converges to an
+ element in the feasible set, and that we can obtain an explicit bound on
+ the number of mistakes.
+ However, there is no guarantee that this algorithm indeed converges to
+ the minimizer of (3.5).
+ We claim this is the case.
+ In order to make a heuristic argument for why this is the case, we argue
+ that at each step of the iteration, we have 
+\begin_inset Formula $||w_{t+1}||^{2}\leq||w_{t}||^{2}.$
+\end_inset
+
+ This is very straightforward using the Pythagorean Inequality, since we
+ have for all 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall u\in af(U_{t}),||u-w_{t}||^{2}\ge||u-P(U_{t},w_{t})||^{2}+||P(U_{t},w_{t})-w_{t}||^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Letting 
+\begin_inset Formula $u=\boldsymbol{0},$
+\end_inset
+
+we obtain 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+||w_{t}||^{2}\ge||P(U_{t},w_{t})||^{2}+||P(U_{t},w_{t})-w_{t}||^{2}=||w_{t+1}||^{2}+||w_{t+1}-w_{t}||^{2}\ge||w_{t+1}||^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus the objective function is always non-decreasing, and strictly decreasing
+ whenever there is an mistake made, i.e.
+ when there is an update and 
+\begin_inset Formula $w_{t+1}\neq w_{t}$
+\end_inset
+
+.
+ Since the convergence of the algorithm is guaranteeed, this means that
+ the algorithm will converge to a local minimum.
+ To complete the full proof, we would need to prove th subtle but non-trivial
+ fact that the objective will not become stuck in a local minimum.
+ The proof of this fact is much more in-depth, so we don't summarize it
+ here.
+\end_layout
+
 \begin_layout Subsection
 Online learning over graphs
 \end_layout
@@ -3902,9 +3699,14 @@ As shown in section 3.1, the reproducing kernel of the Hilbert space defined
 \end_inset
 
 be replaced by the t-th row of 
-\begin_inset Formula $\boldsymbol{L}^{+}.$
+\begin_inset Formula $\boldsymbol{L}^{+},$
 \end_inset
 
+ 
+\begin_inset Formula $K_{t}$
+\end_inset
+
+.
  We saw in the previous section that the number of cumulative mistakes is
  upper bounded by the product of two terms: one involving 
 \begin_inset Formula $\left\Vert \boldsymbol{u}-\boldsymbol{w}_{1}\right\Vert ^{2}$
@@ -3957,7 +3759,7 @@ be the negatively labeled vertices.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $||u||^{2}\leq\partial(g^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
+\begin_inset Formula $||u||^{2}\leq\partial(w^{+},g^{-})*(1+\frac{n_{+}}{n_{-}})^{2}$
 \end_inset
 
 
@@ -4046,7 +3848,7 @@ S
 \begin_layout Standard
 \begin_inset Formula 
 \[
-||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}S
+||f||^{2}=<f,f>=f^{T}Lf=(1+\frac{n^{+}}{n^{-}})^{2}\partial(g^{+},g^{-})
 \]
 
 \end_inset
@@ -4055,11 +3857,198 @@ S
 \end_layout
 
 \begin_layout Standard
-Thus we have that 
+Since this equality holds for at least one 
+\begin_inset Formula $u\in U_{t}$
+\end_inset
+
+ since the bound in (3.17) holds for all 
+\begin_inset Formula $u\in U_{t}$
+\end_inset
+
+we have 
 \end_layout
 
 \begin_layout Standard
-Finally, we wish to bound the (-1)-power mean 
+\begin_inset Formula 
+\[
+\left|M\right|\leq(1+\frac{n^{+}}{n^{-}})^{2}\partial(g^{+},g^{-})\left(\frac{1}{\left|M\right|}\sum_{i}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+While this bound is the tightest given by the authors, the third term on
+ the RHS is not very intuitive.
+ However, we can bound this term in terms of the more intuitive quantity
+ 
+\begin_inset Formula $\max_{1\leq t\leq l}||x_{t}||^{2}$
+\end_inset
+
+.
+ Note that the function 
+\begin_inset Formula $\frac{1}{x}$
+\end_inset
+
+ is convex for 
+\begin_inset Formula $x>0$
+\end_inset
+
+, so by Jensen's Inequality it follows that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\sum_{i}\frac{1}{\left|M\right|}\left(\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\right)^{-1}\right)^{-1}\leq\sum_{i}((\frac{1}{\left|M\right|}\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2})^{-1})^{^{-1}}=\sum_{i}\frac{1}{\left|M\right|}\left\Vert \boldsymbol{x}_{i}\right\Vert ^{2}\leq\max_{1\leq t\leq l}||x_{t}||^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To simplify notation, let 
+\begin_inset Formula $\beta=(1+\frac{n^{+}}{n^{-}})^{2}$
+\end_inset
+
+ be called the 
+\begin_inset Quotes eld
+\end_inset
+
+imbalance
+\begin_inset Quotes erd
+\end_inset
+
+ of the graph, and let 
+\begin_inset Formula $\Phi(G)=\partial(g^{+},g^{-})$
+\end_inset
+
+ be called the 
+\begin_inset Quotes eld
+\end_inset
+
+cut-size
+\begin_inset Quotes erd
+\end_inset
+
+ of the graph.
+ Asuming that there exists some 
+\begin_inset Formula $r$
+\end_inset
+
+ such that 
+\begin_inset Formula $||x_{t}||^{2}\leq r^{2}$
+\end_inset
+
+for all 
+\begin_inset Formula $1\leq t\leq l,$
+\end_inset
+
+ we have a bound on thh mistakes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|M\right|\leq\beta\Phi(G)r^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the dependence on 
+\begin_inset Formula $r^{2}$
+\end_inset
+
+ also appears on the mistake bound for the perceptron algorithm.
+ However we can still make the bound more explicit.
+ Recall thatby the reproducing kernel property, we have that 
+\begin_inset Formula $K_{ii}=\left\langle \boldsymbol{K}_{i},\,\boldsymbol{K_{i}}\right\rangle =||K_{i}||^{2}.$
+\end_inset
+
+ Therefore we seek an upper bound on 
+\begin_inset Formula $K_{ii}$
+\end_inset
+
+ in terms of the properties of the graph.
+ By the Rayleigh-Reisz characterization of eigenvalues, we have that for
+ all 
+\begin_inset Formula $f\in H$
+\end_inset
+
+, 
+\begin_inset Formula $f^{T}Lf\ge\min_{f\in H}\left\langle f,\,f\right\rangle =min_{1\leq i\leq n}|\lambda_{i}|\left\langle f,\,f\right\rangle =\lambda_{2}\left\langle f,\,f\right\rangle $
+\end_inset
+
+.
+ The smallest eigenvalue 
+\begin_inset Formula $\lambda_{2}>0$
+\end_inset
+
+ is often referred to a the 
+\begin_inset Quotes eld
+\end_inset
+
+Fielder Value
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Algebraic Connectivity
+\begin_inset Quotes erd
+\end_inset
+
+ of the graph G.
+ A famous graph-theoretic result by Brendan McKay states that the algebraic
+ connectivity of a graph is bounded below by 
+\begin_inset Formula $\frac{4}{nD},$
+\end_inset
+
+ where 
+\begin_inset Formula $D$
+\end_inset
+
+ is the diameter of the graph.
+ Thus we have 
+\begin_inset Formula $K_{ii}\ge\frac{4}{nD}K_{p}\,\cdot K_{p}=\frac{4}{nD}\sum_{j=1}^{n}K_{jj}^{2}\ge\frac{4}{nD}K_{ii}^{2}.$
+\end_inset
+
+In all, this implies that 
+\begin_inset Formula $K_{jj}\le\frac{nD}{4}$
+\end_inset
+
+.
+ Thus our inequality becomes 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|M\right|\leq\beta\Phi(G)\frac{nD}{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This bound using the result of Brendan McKay is slightly different than
+ the one given by Herbster, who gives a bound involvingalgebraic connectivity,
+ and a separate bound involving just the diameter of the graph.
+ For graphs where the number of vertices n is large compared to the Diameter
+ (i.e.
+ a highly connected graph), this bound may be favorable.
 \end_layout
 
 \begin_layout Standard
@@ -4078,6 +4067,7 @@ and the vector
 \end_inset
 
  admit a specific interpretation.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -4114,138 +4104,6 @@ Extension of the herbster paper – use different laplacians simulataneously
  by considering them each as different kernels in some set of kernels, and
  then applying the objective function for multiple kernels (need to flesh
  out this idea)
-\end_layout
-
-\begin_layout Subsection
-Bounding 
-\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}$
-\end_inset
-
- in the Graph Setting
-\end_layout
-
-\begin_layout Theorem
-Let 
-\begin_inset Formula $\boldsymbol{g}^{+}$
-\end_inset
-
- be the positively labelled vertices, and let 
-\begin_inset Formula $\boldsymbol{g}^{-}$
-\end_inset
-
- be the negatively labelled vertices.
- Let 
-\begin_inset Formula $\left|\boldsymbol{g}^{+}\right|=n^{+}$
-\end_inset
-
-, 
-\begin_inset Formula $\left|\boldsymbol{g}^{-}\right|=n^{-}$
-\end_inset
-
-, and assume WLOG that 
-\begin_inset Formula $n^{+}>=n^{-}.$
-\end_inset
-
- We claim that 
-\begin_inset Formula $\left\Vert \boldsymbol{u}\right\Vert {}^{2}\leq\partial(\boldsymbol{g}^{+},\,\boldsymbol{g}^{-})(1+\frac{n_{+}}{n_{-}})^{2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-To show this, we consider the vector 
-\begin_inset Formula $\boldsymbol{f}$
-\end_inset
-
-, with 
-\begin_inset Formula $f_{i}=1$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=1$
-\end_inset
-
-, and 
-\begin_inset Formula $f_{i}=-\frac{n^{+}}{n^{-}}$
-\end_inset
-
- if 
-\begin_inset Formula $g_{i}=-1.$
-\end_inset
-
- Now suppose we order our vertices so that the first 
-\begin_inset Formula $n^{+}$
-\end_inset
-
- vertices are those in 
-\begin_inset Formula $\boldsymbol{g}^{+}$
-\end_inset
-
-, while the last 
-\begin_inset Formula $n^{+}$
-\end_inset
-
- vertices are those in 
-\begin_inset Formula $\boldsymbol{g}^{-}$
-\end_inset
-
-.
- Now consider the Laplacian 
-\begin_inset Formula $\boldsymbol{L}$
-\end_inset
-
- of this matrix with the vertices ordered in such a way.
- We are interested in the sums of the entries in the off-diagonal blocks,
- the sums of whose entries are each the negative of the number of intra-partitio
-n edges.
- We will denote this sum by S, as opposed to the sub-matrix 
-\series bold
-
-\begin_inset Formula $\boldsymbol{S}$
-\end_inset
-
-.
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}\boldsymbol{L} & =\left[\begin{array}{cc}
-\boldsymbol{A} & -\boldsymbol{S}\\
-\boldsymbol{-S}^{T} & \boldsymbol{B}
-\end{array}\right]\end{aligned}
-.
-\end{equation}
-
-\end_inset
-
-
-\series default
-Note that the sum of entries in the left partition of the matrix for any
- given row is always the negative of the sum to the right of the partition.
- Using this and the fact that the sum of entries in both 
-\series bold
-
-\begin_inset Formula $\boldsymbol{S}$
-\end_inset
-
-
-\series default
- and 
-\begin_inset Formula $\boldsymbol{S}^{T}$
-\end_inset
-
- are both equal to 
-\begin_inset Formula $\boldsymbol{S}$
-\end_inset
-
-, we find after some algebra that
-\begin_inset Formula 
-\begin{equation}
-\left\Vert \boldsymbol{f}\right\Vert ^{2}=\left\langle \boldsymbol{f},\,\boldsymbol{f}\right\rangle =\boldsymbol{f}^{T}\boldsymbol{L}\boldsymbol{f}=\left(1+\frac{n^{+}}{n^{-}}\right)^{2}\boldsymbol{S}
-\end{equation}
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
