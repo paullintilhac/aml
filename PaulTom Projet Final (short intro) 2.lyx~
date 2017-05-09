@@ -4031,6 +4031,10 @@ In all, this implies that
 
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
 Drawbacks with the above approach
 \end_layout
@@ -4072,6 +4076,10 @@ Extension of the herbster paper – use different laplacians simulataneously
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+aa
 \end_layout
 
 \begin_layout Standard
